@@ -32,10 +32,10 @@ namespace HozDepartment
             using (MySqlConnection conn = new MySqlConnection(this.connString))
             {
                 conn.Open();
-                using (MySqlDataAdapter da = new MySqlDataAdapter(sql, conn))
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn))
                 {
                     DataTable dt = new DataTable();
-                    da.Fill(dt);
+                    adapter.Fill(dt);
 
                     CbCategory.DataSource = dt;
                     CbCategory.DisplayMember = "Category_name";
@@ -52,10 +52,10 @@ namespace HozDepartment
             using (MySqlConnection conn = new MySqlConnection(this.connString))
             {
                 conn.Open();
-                using (MySqlDataAdapter da = new MySqlDataAdapter(sql, conn))
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn))
                 {
                     DataTable dt = new DataTable();
-                    da.Fill(dt);
+                    adapter.Fill(dt);
 
                     CbEmployee.DataSource = null;
                     CbEmployee.Items.Clear();
