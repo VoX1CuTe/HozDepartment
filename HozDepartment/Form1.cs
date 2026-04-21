@@ -96,7 +96,6 @@ namespace HozDepartment
         {
             string sqlSclad = @"SELECT 
                 inv.Name AS Inventory_Name,
-                cat.Category_name,
                 inv.Unit_Measurements,
                 ent.Quantity AS Entrance_Quantity,
                 ent.Access_Date,
@@ -104,18 +103,14 @@ namespace HozDepartment
                 pay.Release_date,
                 pay.Return_date,
                 CONCAT(st.Surname, ' ', st.Name, ' ', st.Middle_name) AS FIO,
-    
-                inv.Id_Inventory,
-                cat.Id_Category,
-                ent.Id_Entrance,
-                pay.Id_Issue,
-                pay.Id_Employee
-    
+
+                inv.Id_Inventory
                 FROM Inventory inv
                 LEFT JOIN Category_material cat ON inv.Id_Category = cat.Id_Category
                 LEFT JOIN Entrance ent ON inv.Id_Inventory = ent.Id_Inventory
                 LEFT JOIN Payout_in_work pay ON inv.Id_Inventory = pay.Id_Inventory
                 LEFT JOIN Staff st ON pay.Id_Employee = st.Id_Employee
+                WHERE inv.is_deleted = 0
                 ORDER BY ent.Access_Date DESC, inv.Name ASC;";
 
             using (MySqlConnection conn = new MySqlConnection(this.connString))
@@ -159,7 +154,9 @@ namespace HozDepartment
 
                         int idEmployee = Convert.ToInt32(readactAndAddSclad.CbEmployee.SelectedValue);
                         int idCategory = Convert.ToInt32(readactAndAddSclad.CbCategory.SelectedValue);
-                        long actualInventoryId; long finalInventoryId;
+
+                        long actualInventoryId; 
+                        long finalInventoryId;
 
                         using (MySqlConnection conn = new MySqlConnection(this.connString))
                         {
@@ -280,11 +277,30 @@ namespace HozDepartment
             }
         }
 
+        private void StripMenuDleteSclad_Click(object sender, EventArgs e)
+        {
+            if (TbSclad.SelectedRows.Count > 0)
+            {
+                int idInventory = Convert.ToInt32(TbSclad.SelectedRows[0].Cells["Id_Inventory"].Value);
+
+                using (MySqlConnection conn = new MySqlConnection(this.connString))
+                {
+                    conn.Open();
+                    string sqlDelete = "UPDATE Inventory SET is_deleted = 1 WHERE Id_Inventory = @id";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sqlDelete, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", idInventory);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                fillTableSclad();
+            }
+        }
+
         void fillTabelShift()
         {
-            string sqlShift = @"SELECT
-             
-
+            string sqlShift = @"SELECT            
 	            CONCAT(st.Surname,' ',st.Name,' ',st.Middle_name) AS FIO_Shift,
                 ash.Date_of_shift,
                 sh.Change_name,
@@ -336,55 +352,85 @@ namespace HozDepartment
         {
             if (activeTable == TbShift)
             {
-
                 using (RedactAndAddShift readactAndAddShift = new RedactAndAddShift(connString))
                 {
                     if (readactAndAddShift.ShowDialog() == DialogResult.OK)
                     {
+                        int idEmployee = Convert.ToInt32(readactAndAddShift.CbStaff.SelectedValue);
+                        int idBody = Convert.ToInt32(readactAndAddShift.CbBody.SelectedValue);
+                        int idFloor = Convert.ToInt32(readactAndAddShift.GbFloorNumber.SelectedValue);
+
+                        long idShiftType;
+                        long idPlace;
+                        long idPlannedGrahy;
+
                         using (MySqlConnection conn = new MySqlConnection(this.connString))
                         {
-                            string sqlAddShiftTheActualShift = @"INSERT INTO The_actual_shift (Id_Grahy, Date_of_shift, Cause_change) VALUES (@Id_Grahy, @Date_of_shift, @Cause_change)";
-
                             conn.Open();
-                            using (MySqlCommand cmd = new MySqlCommand(sqlAddShiftTheActualShift, conn))
+
+                            // 19  òðàíçàêöèÿ
+                            using (MySqlTransaction trancaction = conn.BeginTransaction())
                             {
-                                cmd.Parameters.AddWithValue("@Date_of_shift", readactAndAddShift.DtShift.Value);
-                                cmd.Parameters.AddWithValue("@Cause_change", readactAndAddShift.TbNameInventory.Text);
-                                cmd.ExecuteNonQuery();
-                            }
+                                // 1 Place_work
 
-                            string sqlAddShiftChangeName = @"INSERT INTO Shift_type (Id_Tvm_Smena,Change_name,Start_Time,End_Time) VALUES(@Id_Tvm_Smena,@Change_name,@Start_Time,@End_Time)";
-
-                            using (MySqlCommand cmd = new MySqlCommand(sqlAddShiftChangeName, conn))
-                            {
-                                cmd.Parameters.AddWithValue("@Change_name", readactAndAddShift.CbTypeSmena.Text);
-                                string[] timeRange = readactAndAddShift.CbTimeWork.Text.Split(new[] { " - " }, StringSplitOptions.None);
-
-                                if (timeRange.Length == 2)
+                                string sqlPlace = @"INSERT INTO Place_work (Id_Body, Id_Floor) VALUES (@Id_Body, @Id_Floor) ";
+                                using (MySqlCommand cmd = new MySqlCommand(sqlPlace, conn, trancaction))
                                 {
-                                    cmd.Parameters.AddWithValue("@Start_Time", timeRange[0].Trim());
-                                    cmd.Parameters.AddWithValue("@End_Time", timeRange[1].Trim());
+                                    cmd.Parameters.AddWithValue("@Id_Body", idBody);
+                                    cmd.Parameters.AddWithValue("@Id_Floor", idFloor);
+                                    cmd.ExecuteNonQuery();
+                                    idPlace = cmd.LastInsertedId;
                                 }
-                                cmd.ExecuteNonQuery();
-                            }
 
-                            string sqlAddShiftBody = @"INSERT INTO Body (Id_Body, Body_name) VALUES (@Id_Body, @Body_name)";
+                                // 2 Shift_type
+                                string sqlAddShiftChangeName = @"INSERT INTO Shift_type (Change_name, Start_Time, End_Time) VALUES (@Change_name, @Start_Time, @End_Time)";
 
-                            using (MySqlCommand cmd = new MySqlCommand(sqlAddShiftBody, conn))
-                            {
-                                cmd.Parameters.AddWithValue("@Body_name", readactAndAddShift.CbBody.Text);
-                            }
+                                using (MySqlCommand cmd = new MySqlCommand(sqlAddShiftChangeName, conn, trancaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@Change_name", readactAndAddShift.CbTypeSmena.Text);
+                                    string[] timeRange = readactAndAddShift.CbTimeWork.Text.Split(new[] { " - " }, StringSplitOptions.None);
 
-                            string sqlAddShiftFloor = @"INSERT INTO Floor (Id_Floor,Floor_number) VALUES (@Id_Floor,@Floor_number)";
+                                    if (timeRange.Length == 2)
+                                    {
+                                        cmd.Parameters.AddWithValue("@Start_Time", timeRange[0].Trim());
+                                        cmd.Parameters.AddWithValue("@End_Time", timeRange[1].Trim());
+                                    }
+                                    cmd.ExecuteNonQuery();
+                                    idShiftType = cmd.LastInsertedId;
+                                }
 
-                            using (MySqlCommand cmd = new MySqlCommand(sqlAddShiftFloor, conn))
-                            {
-                                cmd.Parameters.AddWithValue("@Floor_number", readactAndAddShift.GbFloorNumber.Text);
-                            }
+                                // 3 Planned_scheduló
+                                string sqlAddShiftPlannedScheduló = @"INSERT INTO Planned_scheduló (Id_Employee,Schedule_assignment_date) VALUES (@Id_Employee,@Schedule_assignment_date)";
+
+                                using (MySqlCommand cmd = new MySqlCommand(sqlAddShiftPlannedScheduló, conn, trancaction))
+                                {
+                                    
+                                    cmd.Parameters.AddWithValue("@Id_Employee", idEmployee);
+                                    cmd.Parameters.AddWithValue("@Schedule_assignment_date", readactAndAddShift.DtNzGraf.Value);
+                                    cmd.ExecuteNonQuery();
+                                    idPlannedGrahy = cmd.LastInsertedId;
+                                }
+                                 // 4 The_actual_shift
+                                string sqlAddShiftTheActualShift = @"INSERT INTO The_actual_shift (Id_Grahy, Id_Place, `Id_ Type_of_Substitution`, Date_of_shift, Cause_change) 
+                                    VALUES (@Id_Grahy, @Id_Place, @Id_Type_of_Substitution, @Date_of_shift, @Cause_change)";
+
+                                using (MySqlCommand cmd = new MySqlCommand(sqlAddShiftTheActualShift, conn, trancaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@Id_Type_of_Substitution", idShiftType);
+                                    cmd.Parameters.AddWithValue("@Id_Grahy", idPlannedGrahy);
+                                    cmd.Parameters.AddWithValue("@Id_Place", idPlace);
+                                    cmd.Parameters.AddWithValue("@Date_of_shift", readactAndAddShift.DtShift.Value);
+                                    cmd.Parameters.AddWithValue("@Cause_change", readactAndAddShift.TbPrichIzmen.Text);
+                                    cmd.ExecuteNonQuery();
+                                }
+                                trancaction.Commit();
+                            }                        
+                            fillTabelShift();                            
                         }
+
                     }
                 }
             }
-        }
+        }       
     }
 }

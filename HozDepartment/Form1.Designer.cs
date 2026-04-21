@@ -71,10 +71,6 @@
             StripMenuAddSclad = new ToolStripMenuItem();
             StripMenuRedactSclad = new ToolStripMenuItem();
             TbShift = new Guna.UI2.WinForms.Guna2DataGridView();
-            ContextMenuShift = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
-            StripMenuAdd = new ToolStripMenuItem();
-            StripMenuRedact = new ToolStripMenuItem();
-            StripMenuDelete = new ToolStripMenuItem();
             Id_Grahy = new DataGridViewTextBoxColumn();
             Id_Tvm_Smena = new DataGridViewTextBoxColumn();
             FIO_Shift = new DataGridViewTextBoxColumn();
@@ -85,6 +81,11 @@
             Body_name = new DataGridViewTextBoxColumn();
             Floor_number = new DataGridViewTextBoxColumn();
             Cause_change = new DataGridViewTextBoxColumn();
+            ContextMenuShift = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            StripMenuAdd = new ToolStripMenuItem();
+            StripMenuRedact = new ToolStripMenuItem();
+            StripMenuDelete = new ToolStripMenuItem();
+            StripMenuDleteSclad = new ToolStripMenuItem();
             PanelToolbar.SuspendLayout();
             PanelButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TbSclad).BeginInit();
@@ -392,7 +393,7 @@
             // 
             // ContextMenuSclad
             // 
-            ContextMenuSclad.Items.AddRange(new ToolStripItem[] { StripMenuAddSclad, StripMenuRedactSclad });
+            ContextMenuSclad.Items.AddRange(new ToolStripItem[] { StripMenuAddSclad, StripMenuRedactSclad, StripMenuDleteSclad });
             ContextMenuSclad.Name = "ContextMenuSclad";
             ContextMenuSclad.RenderStyle.ArrowColor = Color.FromArgb(151, 143, 255);
             ContextMenuSclad.RenderStyle.BorderColor = Color.Gainsboro;
@@ -403,19 +404,19 @@
             ContextMenuSclad.RenderStyle.SelectionForeColor = Color.White;
             ContextMenuSclad.RenderStyle.SeparatorColor = Color.Gainsboro;
             ContextMenuSclad.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            ContextMenuSclad.Size = new Size(155, 48);
+            ContextMenuSclad.Size = new Size(181, 92);
             // 
             // StripMenuAddSclad
             // 
             StripMenuAddSclad.Name = "StripMenuAddSclad";
-            StripMenuAddSclad.Size = new Size(154, 22);
+            StripMenuAddSclad.Size = new Size(180, 22);
             StripMenuAddSclad.Text = "Добавить";
             StripMenuAddSclad.Click += StripMenuAddSclad_Click;
             // 
             // StripMenuRedactSclad
             // 
             StripMenuRedactSclad.Name = "StripMenuRedactSclad";
-            StripMenuRedactSclad.Size = new Size(154, 22);
+            StripMenuRedactSclad.Size = new Size(180, 22);
             StripMenuRedactSclad.Text = "Редактировать";
             StripMenuRedactSclad.Click += StripMenuRedactSclad_Click;
             // 
@@ -491,40 +492,6 @@
             TbShift.Visible = false;
             TbShift.CellMouseDown += TbShift_CellMouseDown;
             // 
-            // ContextMenuShift
-            // 
-            ContextMenuShift.Items.AddRange(new ToolStripItem[] { StripMenuAdd, StripMenuRedact, StripMenuDelete });
-            ContextMenuShift.Name = "ContextMenuShift";
-            ContextMenuShift.RenderStyle.ArrowColor = Color.FromArgb(151, 143, 255);
-            ContextMenuShift.RenderStyle.BorderColor = Color.Gainsboro;
-            ContextMenuShift.RenderStyle.ColorTable = null;
-            ContextMenuShift.RenderStyle.RoundedEdges = true;
-            ContextMenuShift.RenderStyle.SelectionArrowColor = Color.White;
-            ContextMenuShift.RenderStyle.SelectionBackColor = Color.FromArgb(100, 88, 255);
-            ContextMenuShift.RenderStyle.SelectionForeColor = Color.White;
-            ContextMenuShift.RenderStyle.SeparatorColor = Color.Gainsboro;
-            ContextMenuShift.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            ContextMenuShift.Size = new Size(164, 70);
-            // 
-            // StripMenuAdd
-            // 
-            StripMenuAdd.Name = "StripMenuAdd";
-            StripMenuAdd.Size = new Size(163, 22);
-            StripMenuAdd.Text = "Добавление";
-            StripMenuAdd.Click += StripMenuAdd_Click;
-            // 
-            // StripMenuRedact
-            // 
-            StripMenuRedact.Name = "StripMenuRedact";
-            StripMenuRedact.Size = new Size(163, 22);
-            StripMenuRedact.Text = "Редактирование";
-            // 
-            // StripMenuDelete
-            // 
-            StripMenuDelete.Name = "StripMenuDelete";
-            StripMenuDelete.Size = new Size(163, 22);
-            StripMenuDelete.Text = "Удалить";
-            // 
             // Id_Grahy
             // 
             Id_Grahy.DataPropertyName = "Id_Grahy";
@@ -597,6 +564,47 @@
             Cause_change.Name = "Cause_change";
             Cause_change.ReadOnly = true;
             // 
+            // ContextMenuShift
+            // 
+            ContextMenuShift.Items.AddRange(new ToolStripItem[] { StripMenuAdd, StripMenuRedact, StripMenuDelete });
+            ContextMenuShift.Name = "ContextMenuShift";
+            ContextMenuShift.RenderStyle.ArrowColor = Color.FromArgb(151, 143, 255);
+            ContextMenuShift.RenderStyle.BorderColor = Color.Gainsboro;
+            ContextMenuShift.RenderStyle.ColorTable = null;
+            ContextMenuShift.RenderStyle.RoundedEdges = true;
+            ContextMenuShift.RenderStyle.SelectionArrowColor = Color.White;
+            ContextMenuShift.RenderStyle.SelectionBackColor = Color.FromArgb(100, 88, 255);
+            ContextMenuShift.RenderStyle.SelectionForeColor = Color.White;
+            ContextMenuShift.RenderStyle.SeparatorColor = Color.Gainsboro;
+            ContextMenuShift.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            ContextMenuShift.Size = new Size(164, 70);
+            // 
+            // StripMenuAdd
+            // 
+            StripMenuAdd.Name = "StripMenuAdd";
+            StripMenuAdd.Size = new Size(163, 22);
+            StripMenuAdd.Text = "Добавление";
+            StripMenuAdd.Click += StripMenuAdd_Click;
+            // 
+            // StripMenuRedact
+            // 
+            StripMenuRedact.Name = "StripMenuRedact";
+            StripMenuRedact.Size = new Size(163, 22);
+            StripMenuRedact.Text = "Редактирование";
+            // 
+            // StripMenuDelete
+            // 
+            StripMenuDelete.Name = "StripMenuDelete";
+            StripMenuDelete.Size = new Size(163, 22);
+            StripMenuDelete.Text = "Удалить";
+            // 
+            // StripMenuDleteSclad
+            // 
+            StripMenuDleteSclad.Name = "StripMenuDleteSclad";
+            StripMenuDleteSclad.Size = new Size(180, 22);
+            StripMenuDleteSclad.Text = "toolStripMenuItem1";
+            StripMenuDleteSclad.Click += StripMenuDleteSclad_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -664,5 +672,6 @@
         private DataGridViewTextBoxColumn Body_name;
         private DataGridViewTextBoxColumn Floor_number;
         private DataGridViewTextBoxColumn Cause_change;
+        private ToolStripMenuItem StripMenuDleteSclad;
     }
 }
