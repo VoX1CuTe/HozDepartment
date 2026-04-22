@@ -153,22 +153,31 @@ namespace HozDepartment
         {
             if (e.Button == MouseButtons.Right)
             {
+                activeTable = TbSclad;
                 var hit = TbSclad.HitTest(e.X, e.Y);
 
-                if (hit.RowIndex == -1)
+                if (hit.RowIndex >= 0)
                 {
-                    activeTable = TbSclad;
-                    clickedEmptySpace = true;
-                    ContextMenuSclad.Show(TbSclad, e.Location);
+                    TbSclad.ClearSelection();
+                    TbSclad.Rows[hit.RowIndex].Selected = true;
 
-                    if (hit.RowIndex == -1)
-                    {
-                        TbSclad.ClearSelection();
+                    TbSclad.CurrentCell = TbSclad.Rows[hit.RowIndex].Cells[hit.ColumnIndex];
 
-                        StripMenuRedactSclad.Visible = false;
-                        StripMenuDleteSclad.Visible = false;
-                    }
+                    StripMenuRedactSclad.Visible = true;
+                    StripMenuDleteSclad.Visible = true;
+                    StripMenuAddSclad.Visible = true;
                 }
+                else
+                {
+                    TbSclad.ClearSelection();
+
+                    StripMenuRedactSclad.Visible = false;
+                    StripMenuDleteSclad.Visible = false;
+
+                    StripMenuAddSclad.Visible = true;
+                }
+
+                ContextMenuSclad.Show(TbSclad, e.Location);
             }
         }
 
@@ -235,7 +244,7 @@ namespace HozDepartment
 
         private void StripMenuRedactSclad_Click(object sender, EventArgs e)
         {
-            if (activeTable == TbSclad)
+            if (activeTable == TbSclad || clickedEmptySpace)
             {
 
                 using (ReadactAndAddSclad readactAndAddSclad = new ReadactAndAddSclad(connString))
@@ -309,7 +318,7 @@ namespace HozDepartment
 
         private void StripMenuDleteSclad_Click(object sender, EventArgs e)
         {
-            if (activeTable == TbSclad)
+            if (activeTable == TbSclad || clickedEmptySpace)
             {
                 using (MySqlConnection conn = new MySqlConnection(this.connString))
                 {
@@ -415,21 +424,29 @@ namespace HozDepartment
         {
             if (e.Button == MouseButtons.Right)
             {
+                activeTable = TbShift;
                 var hit = TbShift.HitTest(e.X, e.Y);
 
-                if (hit.RowIndex == -1)
+                if (hit.RowIndex >= 0)
                 {
-                    activeTable = TbShift;
-                    clickedEmptySpace = true;
+                    TbShift.ClearSelection();
+                    TbShift.Rows[hit.RowIndex].Selected = true;
+
+                    TbShift.CurrentCell = TbShift.Rows[hit.RowIndex].Cells[hit.ColumnIndex];
+
+                    StripMenuRedact.Visible = true;
+                    StripMenuDelete.Visible = true;
+
                     ContextMenuShift.Show(TbShift, e.Location);
+                }
+                else
+                {
+                    TbShift.ClearSelection();
 
-                    if (hit.RowIndex == -1)
-                    {
-                        TbShift.ClearSelection();
+                    StripMenuRedact.Visible = false;
+                    StripMenuDelete.Visible = false;
 
-                        StripMenuRedact.Visible = false;
-                        StripMenuDelete.Visible = false;
-                    }
+                    ContextMenuShift.Show(TbShift, e.Location);
                 }
             }
         }
@@ -520,7 +537,7 @@ namespace HozDepartment
 
         private void StripMenuRedact_Click(object sender, EventArgs e)
         {
-            if (activeTable == TbShift)
+            if (activeTable == TbShift || clickedEmptySpaceShift)
             {
                 using (RedactAndAddShift readactAndAddShift = new RedactAndAddShift(connString))
                 {
@@ -596,7 +613,7 @@ namespace HozDepartment
 
         private void StripMenuDelete_Click(object sender, EventArgs e)
         {
-            if (activeTable == TbShift)
+            if (activeTable == TbShift || clickedEmptySpaceShift)
             {
                 using (MySqlConnection conn = new MySqlConnection(this.connString))
                 {
