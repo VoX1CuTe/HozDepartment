@@ -70,8 +70,13 @@
             ContextMenuSclad = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             StripMenuAddSclad = new ToolStripMenuItem();
             StripMenuRedactSclad = new ToolStripMenuItem();
+            StripMenuDleteSclad = new ToolStripMenuItem();
             TbShift = new Guna.UI2.WinForms.Guna2DataGridView();
             Id_Grahy = new DataGridViewTextBoxColumn();
+            Id_Floor = new DataGridViewTextBoxColumn();
+            Id_Body = new DataGridViewTextBoxColumn();
+            Id_Place = new DataGridViewTextBoxColumn();
+            Id_Employeee = new DataGridViewTextBoxColumn();
             Id_Tvm_Smena = new DataGridViewTextBoxColumn();
             FIO_Shift = new DataGridViewTextBoxColumn();
             Date_of_shift = new DataGridViewTextBoxColumn();
@@ -85,7 +90,6 @@
             StripMenuAdd = new ToolStripMenuItem();
             StripMenuRedact = new ToolStripMenuItem();
             StripMenuDelete = new ToolStripMenuItem();
-            StripMenuDleteSclad = new ToolStripMenuItem();
             PanelToolbar.SuspendLayout();
             PanelButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TbSclad).BeginInit();
@@ -287,6 +291,7 @@
             TbSclad.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             TbSclad.Visible = false;
             TbSclad.CellMouseClick += TbSclad_CellMouseClick;
+            TbSclad.MouseDown += TbSclad_MouseDown;
             // 
             // Id_Inventory
             // 
@@ -404,21 +409,28 @@
             ContextMenuSclad.RenderStyle.SelectionForeColor = Color.White;
             ContextMenuSclad.RenderStyle.SeparatorColor = Color.Gainsboro;
             ContextMenuSclad.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            ContextMenuSclad.Size = new Size(181, 92);
+            ContextMenuSclad.Size = new Size(155, 70);
             // 
             // StripMenuAddSclad
             // 
             StripMenuAddSclad.Name = "StripMenuAddSclad";
-            StripMenuAddSclad.Size = new Size(180, 22);
+            StripMenuAddSclad.Size = new Size(154, 22);
             StripMenuAddSclad.Text = "Добавить";
             StripMenuAddSclad.Click += StripMenuAddSclad_Click;
             // 
             // StripMenuRedactSclad
             // 
             StripMenuRedactSclad.Name = "StripMenuRedactSclad";
-            StripMenuRedactSclad.Size = new Size(180, 22);
+            StripMenuRedactSclad.Size = new Size(154, 22);
             StripMenuRedactSclad.Text = "Редактировать";
             StripMenuRedactSclad.Click += StripMenuRedactSclad_Click;
+            // 
+            // StripMenuDleteSclad
+            // 
+            StripMenuDleteSclad.Name = "StripMenuDleteSclad";
+            StripMenuDleteSclad.Size = new Size(154, 22);
+            StripMenuDleteSclad.Text = "Удаление";
+            StripMenuDleteSclad.Click += StripMenuDleteSclad_Click;
             // 
             // TbShift
             // 
@@ -442,7 +454,7 @@
             TbShift.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             TbShift.ColumnHeadersHeight = 20;
             TbShift.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            TbShift.Columns.AddRange(new DataGridViewColumn[] { Id_Grahy, Id_Tvm_Smena, FIO_Shift, Date_of_shift, Change_name, TimeWork, Schedule_assignment_date, Body_name, Floor_number, Cause_change });
+            TbShift.Columns.AddRange(new DataGridViewColumn[] { Id_Grahy, Id_Floor, Id_Body, Id_Place, Id_Employeee, Id_Tvm_Smena, FIO_Shift, Date_of_shift, Change_name, TimeWork, Schedule_assignment_date, Body_name, Floor_number, Cause_change });
             dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = Color.FromArgb(230, 230, 230);
             dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
@@ -500,6 +512,38 @@
             Id_Grahy.ReadOnly = true;
             Id_Grahy.Visible = false;
             // 
+            // Id_Floor
+            // 
+            Id_Floor.DataPropertyName = "Id_Floor";
+            Id_Floor.HeaderText = "Id_Floor";
+            Id_Floor.Name = "Id_Floor";
+            Id_Floor.ReadOnly = true;
+            Id_Floor.Visible = false;
+            // 
+            // Id_Body
+            // 
+            Id_Body.DataPropertyName = "Id_Body";
+            Id_Body.HeaderText = "Id_Body";
+            Id_Body.Name = "Id_Body";
+            Id_Body.ReadOnly = true;
+            Id_Body.Visible = false;
+            // 
+            // Id_Place
+            // 
+            Id_Place.DataPropertyName = "Id_Place";
+            Id_Place.HeaderText = "Id_Place";
+            Id_Place.Name = "Id_Place";
+            Id_Place.ReadOnly = true;
+            Id_Place.Visible = false;
+            // 
+            // Id_Employeee
+            // 
+            Id_Employeee.DataPropertyName = "Id_Employee";
+            Id_Employeee.HeaderText = "Id_Employee";
+            Id_Employeee.Name = "Id_Employeee";
+            Id_Employeee.ReadOnly = true;
+            Id_Employeee.Visible = false;
+            // 
             // Id_Tvm_Smena
             // 
             Id_Tvm_Smena.DataPropertyName = "Id_Tvm_Smena";
@@ -518,7 +562,7 @@
             // Date_of_shift
             // 
             Date_of_shift.DataPropertyName = "Date_of_shift";
-            Date_of_shift.HeaderText = "Дата назначения смены";
+            Date_of_shift.HeaderText = "Дата выхода в смену";
             Date_of_shift.Name = "Date_of_shift";
             Date_of_shift.ReadOnly = true;
             // 
@@ -591,19 +635,14 @@
             StripMenuRedact.Name = "StripMenuRedact";
             StripMenuRedact.Size = new Size(163, 22);
             StripMenuRedact.Text = "Редактирование";
+            StripMenuRedact.Click += StripMenuRedact_Click;
             // 
             // StripMenuDelete
             // 
             StripMenuDelete.Name = "StripMenuDelete";
             StripMenuDelete.Size = new Size(163, 22);
             StripMenuDelete.Text = "Удалить";
-            // 
-            // StripMenuDleteSclad
-            // 
-            StripMenuDleteSclad.Name = "StripMenuDleteSclad";
-            StripMenuDleteSclad.Size = new Size(180, 22);
-            StripMenuDleteSclad.Text = "toolStripMenuItem1";
-            StripMenuDleteSclad.Click += StripMenuDleteSclad_Click;
+            StripMenuDelete.Click += StripMenuDelete_Click;
             // 
             // MainForm
             // 
@@ -662,7 +701,12 @@
         private ToolStripMenuItem StripMenuAdd;
         private ToolStripMenuItem StripMenuRedact;
         private ToolStripMenuItem StripMenuDelete;
+        private ToolStripMenuItem StripMenuDleteSclad;
         private DataGridViewTextBoxColumn Id_Grahy;
+        private DataGridViewTextBoxColumn Id_Floor;
+        private DataGridViewTextBoxColumn Id_Body;
+        private DataGridViewTextBoxColumn Id_Place;
+        private DataGridViewTextBoxColumn Id_Employeee;
         private DataGridViewTextBoxColumn Id_Tvm_Smena;
         private DataGridViewTextBoxColumn FIO_Shift;
         private DataGridViewTextBoxColumn Date_of_shift;
@@ -672,6 +716,5 @@
         private DataGridViewTextBoxColumn Body_name;
         private DataGridViewTextBoxColumn Floor_number;
         private DataGridViewTextBoxColumn Cause_change;
-        private ToolStripMenuItem StripMenuDleteSclad;
     }
 }

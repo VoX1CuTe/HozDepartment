@@ -111,9 +111,9 @@
             guna2HtmlLabel4.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             guna2HtmlLabel4.Location = new Point(21, 60);
             guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            guna2HtmlLabel4.Size = new Size(172, 22);
+            guna2HtmlLabel4.Size = new Size(157, 22);
             guna2HtmlLabel4.TabIndex = 25;
-            guna2HtmlLabel4.Text = "Дата назначения смены";
+            guna2HtmlLabel4.Text = "Дата выхода на смену";
             // 
             // guna2HtmlLabel1
             // 
