@@ -170,7 +170,6 @@ namespace HozDepartment
                     }
                 }
             }
-            
         }
 
         private void StripMenuAddSclad_Click(object sender, EventArgs e)
@@ -349,7 +348,7 @@ namespace HozDepartment
                             MessageBox.Show("Ошибка: " + ex.Message);
                         }
                     }
-                        
+
                     fillTableSclad();
                 }
             }
@@ -411,10 +410,33 @@ namespace HozDepartment
                 ContextMenuShift.Show(TbShift, e.Location);
             }
         }
+        private bool clickedEmptySpaceShift;
+        private void TbShift_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var hit = TbShift.HitTest(e.X, e.Y);
+
+                if (hit.RowIndex == -1)
+                {
+                    activeTable = TbShift;
+                    clickedEmptySpace = true;
+                    ContextMenuShift.Show(TbShift, e.Location);
+
+                    if (hit.RowIndex == -1)
+                    {
+                        TbShift.ClearSelection();
+
+                        StripMenuRedact.Visible = false;
+                        StripMenuDelete.Visible = false;
+                    }
+                }
+            }
+        }
 
         private void StripMenuAdd_Click(object sender, EventArgs e)
         {
-            if (activeTable == TbShift)
+            if (activeTable == TbShift || clickedEmptySpaceShift)
             {
                 using (RedactAndAddShift readactAndAddShift = new RedactAndAddShift(connString))
                 {
@@ -574,7 +596,17 @@ namespace HozDepartment
 
         private void StripMenuDelete_Click(object sender, EventArgs e)
         {
+            if (activeTable == TbShift)
+            {
+                using (MySqlConnection conn = new MySqlConnection(this.connString))
+                {
+                    conn.Open();
+                    using (MySqlTransaction transaction = conn.BeginTransaction())
+                    {
 
+                    }
+                }
+            }
         }
     }
 }

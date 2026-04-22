@@ -503,6 +503,7 @@
             TbShift.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             TbShift.Visible = false;
             TbShift.CellMouseDown += TbShift_CellMouseDown;
+            TbShift.MouseDown += TbShift_MouseDown;
             // 
             // Id_Grahy
             // 
