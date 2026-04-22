@@ -603,8 +603,31 @@ namespace HozDepartment
                     conn.Open();
                     using (MySqlTransaction transaction = conn.BeginTransaction())
                     {
+                        int Id_Grahy = Convert.ToInt32(TbShift.CurrentRow.Cells["Id_Grahy"].Value);
+                        string sqlDeleteTheActualShift = "DELETE FROM The_actual_shift WHERE Id_Grahy = @Id_Grahy";
+                        using (MySqlCommand cmd = new MySqlCommand(sqlDeleteTheActualShift, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@Id_Grahy", Id_Grahy);
+                            cmd.ExecuteNonQuery();
+                        }
 
+                        string sqlDeletePlannedScheduló = "DELETE FROM Planned_scheduló WHERE Id_Grahy = @Id_Grahy";
+                        using (MySqlCommand cmd = new MySqlCommand(sqlDeletePlannedScheduló, conn, transaction)) 
+                        {
+                            cmd.Parameters.AddWithValue("@Id_Grahy", Id_Grahy);
+                            cmd.ExecuteNonQuery(); 
+                        }
+
+                        string sqlPlace = "DELETE FROM Place_work WHERE Id_Place = @Id_Place";
+                        int Id_Place = Convert.ToInt32(TbShift.CurrentRow.Cells["Id_Place"].Value);
+                        using (MySqlCommand cmd = new MySqlCommand(sqlPlace, conn, transaction))
+                        {
+                            cmd.Parameters.AddWithValue("@Id_Place", Id_Place);
+                            cmd.ExecuteNonQuery();
+                        }
+                        transaction.Commit();
                     }
+                    fillTabelShift();
                 }
             }
         }
