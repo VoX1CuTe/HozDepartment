@@ -856,7 +856,13 @@ namespace HozDepartment
 
         private void TextSearchStaff_TextChanged(object sender, EventArgs e)
         {
-          
+            if (TbUser.DataSource is DataTable dt)
+            {
+                dt.DefaultView.RowFilter = string.Format("Staff_FIO LIKE '%{0}%'", TextSearchStaff.Text);
+                dt.DefaultView.RowFilter = string.Format("Post LIKE '%{0}%'", TextSearchStaff.Text);
+                dt.DefaultView.RowFilter = string.Format("Phone_number LIKE '%{0}%'", TextSearchStaff.Text);
+                dt.DefaultView.RowFilter = string.Format("Type_graphy LIKE '%{0}%'", TextSearchStaff.Text);
+            }
         }
     }
 }
