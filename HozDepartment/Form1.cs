@@ -1,3 +1,4 @@
+using Guna.UI2.WinForms;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Asn1.Ocsp;
 using Org.BouncyCastle.Tls.Crypto;
@@ -862,6 +863,59 @@ namespace HozDepartment
                 dt.DefaultView.RowFilter = string.Format("Post LIKE '%{0}%'", TextSearchStaff.Text);
                 dt.DefaultView.RowFilter = string.Format("Phone_number LIKE '%{0}%'", TextSearchStaff.Text);
                 dt.DefaultView.RowFilter = string.Format("Type_graphy LIKE '%{0}%'", TextSearchStaff.Text);
+            }
+        }
+
+        private void CbFilterStaff_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (TbUser.DataSource is DataTable dt)
+            {
+                string selected = CbFilterStaff.SelectedItem.ToString();
+                DataView dv = dt.DefaultView;
+
+                switch (selected)
+                {
+                    case "Сбросить всё":
+                        dv.RowFilter = "";
+                        dv.Sort = "";
+                        break;
+
+                    case "Пол (А-Я)":
+                        dv.RowFilter = "";
+                        dv.Sort = "Pol ASC";
+                        break;
+
+                    case "Пол (Я-А)":
+                        dv.RowFilter = "";
+                        dv.Sort = "Pol DESC";
+                        break;
+
+                    case "Должность (А-Я)":
+                        dv.RowFilter = "";
+                        dv.Sort = "Post ASC";
+                        break;
+
+                    case "Должность (Я-А)":
+                        dv.RowFilter = "";
+                        dv.Sort = "Post DESC";
+                        break;
+
+                    case "Дата приема (Новые)":
+                        dv.RowFilter = "";
+                        dv.Sort = "Acceptance_date DESC";
+                        break;
+
+                    case "Дата приема (Старый)":
+                        dv.RowFilter = "";
+                        dv.Sort = "Acceptance_date ASC";
+                        break;
+
+                    default:
+
+                        dv.RowFilter = string.Format("Post = '{0}'", selected);
+                        dv.Sort = "";
+                        break;
+                }
             }
         }
     }
