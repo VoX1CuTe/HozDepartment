@@ -247,14 +247,18 @@
             TbSclad.AllowUserToAddRows = false;
             TbSclad.AllowUserToDeleteRows = false;
             TbSclad.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(230, 230, 230);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(220, 240, 200);
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             TbSclad.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            TbSclad.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             TbSclad.BackgroundColor = Color.LightGoldenrodYellow;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            TbSclad.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+            TbSclad.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle2.BackColor = Color.Silver;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle2.ForeColor = Color.Black;
@@ -273,8 +277,8 @@
             dataGridViewCellStyle3.SelectionForeColor = Color.Black;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             TbSclad.DefaultCellStyle = dataGridViewCellStyle3;
-            TbSclad.GridColor = Color.FromArgb(231, 229, 255);
-            TbSclad.Location = new Point(0, 133);
+            TbSclad.GridColor = Color.Black;
+            TbSclad.Location = new Point(0, 132);
             TbSclad.Name = "TbSclad";
             TbSclad.ReadOnly = true;
             TbSclad.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -288,7 +292,7 @@
             TbSclad.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             TbSclad.RowHeadersVisible = false;
             TbSclad.RowTemplate.Height = 30;
-            TbSclad.Size = new Size(1304, 314);
+            TbSclad.Size = new Size(1304, 259);
             TbSclad.TabIndex = 4;
             TbSclad.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             TbSclad.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -296,16 +300,16 @@
             TbSclad.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
             TbSclad.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
             TbSclad.ThemeStyle.BackColor = Color.LightGoldenrodYellow;
-            TbSclad.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            TbSclad.ThemeStyle.GridColor = Color.Black;
             TbSclad.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
-            TbSclad.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            TbSclad.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.Single;
             TbSclad.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
             TbSclad.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             TbSclad.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             TbSclad.ThemeStyle.HeaderStyle.Height = 20;
             TbSclad.ThemeStyle.ReadOnly = true;
             TbSclad.ThemeStyle.RowsStyle.BackColor = Color.White;
-            TbSclad.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            TbSclad.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.Single;
             TbSclad.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
             TbSclad.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
             TbSclad.ThemeStyle.RowsStyle.Height = 30;
@@ -413,10 +417,12 @@
             // 
             // FIO
             // 
+            FIO.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             FIO.DataPropertyName = "FIO";
             FIO.HeaderText = "Ф.И.О";
             FIO.Name = "FIO";
             FIO.ReadOnly = true;
+            FIO.Width = 64;
             // 
             // ContextMenuSclad
             // 
@@ -465,8 +471,11 @@
             dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(220, 240, 200);
             dataGridViewCellStyle5.SelectionForeColor = Color.Black;
             TbShift.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            TbShift.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             TbShift.BackgroundColor = Color.LightGoldenrodYellow;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            TbShift.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+            TbShift.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = Color.Silver;
             dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle6.ForeColor = Color.Black;
@@ -485,8 +494,8 @@
             dataGridViewCellStyle7.SelectionForeColor = Color.Black;
             dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
             TbShift.DefaultCellStyle = dataGridViewCellStyle7;
-            TbShift.GridColor = Color.FromArgb(231, 229, 255);
-            TbShift.Location = new Point(0, 133);
+            TbShift.GridColor = Color.Black;
+            TbShift.Location = new Point(0, 132);
             TbShift.Name = "TbShift";
             TbShift.ReadOnly = true;
             TbShift.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -500,7 +509,7 @@
             TbShift.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             TbShift.RowHeadersVisible = false;
             TbShift.RowTemplate.Height = 30;
-            TbShift.Size = new Size(1304, 314);
+            TbShift.Size = new Size(1304, 255);
             TbShift.TabIndex = 5;
             TbShift.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             TbShift.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -508,16 +517,16 @@
             TbShift.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
             TbShift.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
             TbShift.ThemeStyle.BackColor = Color.LightGoldenrodYellow;
-            TbShift.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            TbShift.ThemeStyle.GridColor = Color.Black;
             TbShift.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
-            TbShift.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            TbShift.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.Single;
             TbShift.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
-            TbShift.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            TbShift.ThemeStyle.HeaderStyle.ForeColor = Color.Black;
             TbShift.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             TbShift.ThemeStyle.HeaderStyle.Height = 20;
             TbShift.ThemeStyle.ReadOnly = true;
-            TbShift.ThemeStyle.RowsStyle.BackColor = Color.White;
-            TbShift.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            TbShift.ThemeStyle.RowsStyle.BackColor = Color.Black;
+            TbShift.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.Single;
             TbShift.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
             TbShift.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
             TbShift.ThemeStyle.RowsStyle.Height = 30;
@@ -577,10 +586,12 @@
             // 
             // FIO_Shift
             // 
+            FIO_Shift.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             FIO_Shift.DataPropertyName = "FIO_Shift";
             FIO_Shift.HeaderText = "Ф.И.О";
             FIO_Shift.Name = "FIO_Shift";
             FIO_Shift.ReadOnly = true;
+            FIO_Shift.Width = 64;
             // 
             // Date_of_shift
             // 
@@ -678,14 +689,17 @@
             dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(220, 240, 200);
             dataGridViewCellStyle9.SelectionForeColor = Color.Black;
             TbUser.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            TbUser.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             TbUser.BackgroundColor = Color.LightGoldenrodYellow;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            TbUser.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+            TbUser.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle10.BackColor = Color.Silver;
             dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle10.ForeColor = Color.Black;
             dataGridViewCellStyle10.SelectionBackColor = Color.Silver;
             dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
             TbUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             TbUser.ColumnHeadersHeight = 20;
             TbUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
@@ -694,12 +708,13 @@
             dataGridViewCellStyle11.BackColor = Color.FromArgb(230, 230, 230);
             dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle11.ForeColor = Color.Black;
+            dataGridViewCellStyle11.Padding = new Padding(10, 0, 0, 0);
             dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(220, 240, 200);
             dataGridViewCellStyle11.SelectionForeColor = Color.Black;
             dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
             TbUser.DefaultCellStyle = dataGridViewCellStyle11;
-            TbUser.GridColor = Color.FromArgb(231, 229, 255);
-            TbUser.Location = new Point(0, 133);
+            TbUser.GridColor = Color.Black;
+            TbUser.Location = new Point(0, 132);
             TbUser.Name = "TbUser";
             TbUser.ReadOnly = true;
             TbUser.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -713,7 +728,7 @@
             TbUser.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             TbUser.RowHeadersVisible = false;
             TbUser.RowTemplate.Height = 30;
-            TbUser.Size = new Size(1304, 314);
+            TbUser.Size = new Size(1304, 260);
             TbUser.TabIndex = 6;
             TbUser.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             TbUser.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -721,16 +736,16 @@
             TbUser.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
             TbUser.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
             TbUser.ThemeStyle.BackColor = Color.LightGoldenrodYellow;
-            TbUser.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            TbUser.ThemeStyle.GridColor = Color.Black;
             TbUser.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
-            TbUser.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            TbUser.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.Single;
             TbUser.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
             TbUser.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             TbUser.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             TbUser.ThemeStyle.HeaderStyle.Height = 20;
             TbUser.ThemeStyle.ReadOnly = true;
-            TbUser.ThemeStyle.RowsStyle.BackColor = Color.White;
-            TbUser.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            TbUser.ThemeStyle.RowsStyle.BackColor = Color.Black;
+            TbUser.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.Single;
             TbUser.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
             TbUser.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
             TbUser.ThemeStyle.RowsStyle.Height = 30;
@@ -750,10 +765,12 @@
             // 
             // Staff_FIO
             // 
+            Staff_FIO.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             Staff_FIO.DataPropertyName = "Staff_FIO";
             Staff_FIO.HeaderText = "Ф.И.О";
             Staff_FIO.Name = "Staff_FIO";
             Staff_FIO.ReadOnly = true;
+            Staff_FIO.Width = 74;
             // 
             // Birthday
             // 
@@ -824,26 +841,26 @@
             ContextMenuStaff.RenderStyle.SelectionForeColor = Color.White;
             ContextMenuStaff.RenderStyle.SeparatorColor = Color.Gainsboro;
             ContextMenuStaff.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            ContextMenuStaff.Size = new Size(181, 92);
+            ContextMenuStaff.Size = new Size(164, 70);
             // 
             // StripMenuAddStaff
             // 
             StripMenuAddStaff.Name = "StripMenuAddStaff";
-            StripMenuAddStaff.Size = new Size(180, 22);
+            StripMenuAddStaff.Size = new Size(163, 22);
             StripMenuAddStaff.Text = "Добавление";
             StripMenuAddStaff.Click += StripMenuAddStaff_Click;
             // 
             // StripMenuRedactStaff
             // 
             StripMenuRedactStaff.Name = "StripMenuRedactStaff";
-            StripMenuRedactStaff.Size = new Size(180, 22);
+            StripMenuRedactStaff.Size = new Size(163, 22);
             StripMenuRedactStaff.Text = "Редактирование";
             StripMenuRedactStaff.Click += StripMenuRedactStaff_Click;
             // 
             // StripMenuDeleteStaff
             // 
             StripMenuDeleteStaff.Name = "StripMenuDeleteStaff";
-            StripMenuDeleteStaff.Size = new Size(180, 22);
+            StripMenuDeleteStaff.Size = new Size(163, 22);
             StripMenuDeleteStaff.Text = "Удалить";
             StripMenuDeleteStaff.Click += StripMenuDeleteStaff_Click;
             // 
@@ -852,12 +869,12 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(220, 240, 200);
-            ClientSize = new Size(1304, 445);
-            Controls.Add(TbUser);
-            Controls.Add(TbShift);
+            ClientSize = new Size(1304, 391);
             Controls.Add(TbSclad);
+            Controls.Add(TbShift);
             Controls.Add(PanelButton);
             Controls.Add(PanelToolbar);
+            Controls.Add(TbUser);
             FormBorderStyle = FormBorderStyle.None;
             Name = "MainForm";
             Text = "Главное окно";
@@ -888,26 +905,27 @@
         private Guna.UI2.WinForms.Guna2ContextMenuStrip ContextMenuSclad;
         private ToolStripMenuItem StripMenuAddSclad;
         private ToolStripMenuItem StripMenuRedactSclad;
-        private DataGridViewTextBoxColumn Id_Inventory;
-        private DataGridViewTextBoxColumn Id_Category;
-        private DataGridViewTextBoxColumn Id_Entrance;
-        private DataGridViewTextBoxColumn Id_Issue;
-        private DataGridViewTextBoxColumn Id_Employee;
-        private DataGridViewTextBoxColumn Inventory_Name;
-        private DataGridViewTextBoxColumn Category_name;
-        private DataGridViewTextBoxColumn Unit_Measurements;
-        private DataGridViewTextBoxColumn Entrance_Quantity;
-        private DataGridViewTextBoxColumn Access_Date;
-        private DataGridViewTextBoxColumn Payout_Quantity;
-        private DataGridViewTextBoxColumn Release_date;
-        private DataGridViewTextBoxColumn Return_date;
-        private DataGridViewTextBoxColumn FIO;
         private Guna.UI2.WinForms.Guna2DataGridView TbShift;
         private Guna.UI2.WinForms.Guna2ContextMenuStrip ContextMenuShift;
         private ToolStripMenuItem StripMenuAdd;
         private ToolStripMenuItem StripMenuRedact;
         private ToolStripMenuItem StripMenuDelete;
         private ToolStripMenuItem StripMenuDleteSclad;
+        private Guna.UI2.WinForms.Guna2DataGridView TbUser;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip ContextMenuStaff;
+        private ToolStripMenuItem StripMenuAddStaff;
+        private ToolStripMenuItem StripMenuRedactStaff;
+        private ToolStripMenuItem StripMenuDeleteStaff;
+        private DataGridViewTextBoxColumn Id_Employye;
+        private DataGridViewTextBoxColumn Staff_FIO;
+        private DataGridViewTextBoxColumn Birthday;
+        private DataGridViewTextBoxColumn Pol;
+        private DataGridViewTextBoxColumn Number_Pass;
+        private DataGridViewTextBoxColumn Seria_Pass;
+        private DataGridViewTextBoxColumn Phone_number;
+        private DataGridViewTextBoxColumn Acceptance_date;
+        private DataGridViewTextBoxColumn Post;
+        private DataGridViewTextBoxColumn Type_graphy;
         private DataGridViewTextBoxColumn Id_Grahy;
         private DataGridViewTextBoxColumn Id_Floor;
         private DataGridViewTextBoxColumn Id_Body;
@@ -922,20 +940,19 @@
         private DataGridViewTextBoxColumn Body_name;
         private DataGridViewTextBoxColumn Floor_number;
         private DataGridViewTextBoxColumn Cause_change;
-        private Guna.UI2.WinForms.Guna2DataGridView TbUser;
-        private DataGridViewTextBoxColumn Id_Employye;
-        private DataGridViewTextBoxColumn Staff_FIO;
-        private DataGridViewTextBoxColumn Birthday;
-        private DataGridViewTextBoxColumn Pol;
-        private DataGridViewTextBoxColumn Number_Pass;
-        private DataGridViewTextBoxColumn Seria_Pass;
-        private DataGridViewTextBoxColumn Phone_number;
-        private DataGridViewTextBoxColumn Acceptance_date;
-        private DataGridViewTextBoxColumn Post;
-        private DataGridViewTextBoxColumn Type_graphy;
-        private Guna.UI2.WinForms.Guna2ContextMenuStrip ContextMenuStaff;
-        private ToolStripMenuItem StripMenuAddStaff;
-        private ToolStripMenuItem StripMenuRedactStaff;
-        private ToolStripMenuItem StripMenuDeleteStaff;
+        private DataGridViewTextBoxColumn Id_Inventory;
+        private DataGridViewTextBoxColumn Id_Category;
+        private DataGridViewTextBoxColumn Id_Entrance;
+        private DataGridViewTextBoxColumn Id_Issue;
+        private DataGridViewTextBoxColumn Id_Employee;
+        private DataGridViewTextBoxColumn Inventory_Name;
+        private DataGridViewTextBoxColumn Category_name;
+        private DataGridViewTextBoxColumn Unit_Measurements;
+        private DataGridViewTextBoxColumn Entrance_Quantity;
+        private DataGridViewTextBoxColumn Access_Date;
+        private DataGridViewTextBoxColumn Payout_Quantity;
+        private DataGridViewTextBoxColumn Release_date;
+        private DataGridViewTextBoxColumn Return_date;
+        private DataGridViewTextBoxColumn FIO;
     }
 }
