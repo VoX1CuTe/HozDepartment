@@ -560,6 +560,10 @@ namespace HozDepartment
             {
                 using (RedactAndAddShift readactAndAddShift = new RedactAndAddShift(connString))
                 {
+                    readactAndAddShift.DtNzGraf.Value = Convert.ToDateTime(TbShift.CurrentRow.Cells["Schedule_assignment_date"].Value);
+                    readactAndAddShift.DtShift.Value = Convert.ToDateTime(TbShift.CurrentRow.Cells["Date_of_shift"].Value);
+                    readactAndAddShift.TbPrichIzmen.Text = TbShift.CurrentRow.Cells["Cause_change"].Value.ToString();
+
                     if (readactAndAddShift.ShowDialog() == DialogResult.OK)
                     {
 
@@ -839,7 +843,7 @@ namespace HozDepartment
                     int Id_Employee = Convert.ToInt32(TbUser.CurrentRow.Cells["Id_Employye"].Value);
                     string sqlDeleteStaff = "DELETE FROM Staff WHERE Id_Employee = @Id_Employee";
 
-                    using (MySqlCommand cmd = new MySqlCommand(sqlDeleteStaff, conn)) 
+                    using (MySqlCommand cmd = new MySqlCommand(sqlDeleteStaff, conn))
                     {
                         cmd.Parameters.AddWithValue("@Id_Employee", Id_Employee);
                         cmd.ExecuteNonQuery();
@@ -848,6 +852,11 @@ namespace HozDepartment
             }
 
             fillTableStaff();
+        }
+
+        private void TextSearchStaff_TextChanged(object sender, EventArgs e)
+        {
+          
         }
     }
 }
