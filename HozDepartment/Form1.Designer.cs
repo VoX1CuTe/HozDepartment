@@ -44,12 +44,16 @@
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             PanelToolbar = new Panel();
             LogoName = new Guna.UI2.WinForms.Guna2HtmlLabel();
             UserLb = new Guna.UI2.WinForms.Guna2HtmlLabel();
             PanelButton = new Panel();
             BtRedactUser = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
+            BtStaff = new Guna.UI2.WinForms.Guna2Button();
             BtShift = new Guna.UI2.WinForms.Guna2Button();
             Sclad = new Guna.UI2.WinForms.Guna2Button();
             TbSclad = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -90,12 +94,29 @@
             StripMenuAdd = new ToolStripMenuItem();
             StripMenuRedact = new ToolStripMenuItem();
             StripMenuDelete = new ToolStripMenuItem();
+            TbUser = new Guna.UI2.WinForms.Guna2DataGridView();
+            Id_Employye = new DataGridViewTextBoxColumn();
+            Staff_FIO = new DataGridViewTextBoxColumn();
+            Birthday = new DataGridViewTextBoxColumn();
+            Pol = new DataGridViewTextBoxColumn();
+            Number_Pass = new DataGridViewTextBoxColumn();
+            Seria_Pass = new DataGridViewTextBoxColumn();
+            Phone_number = new DataGridViewTextBoxColumn();
+            Acceptance_date = new DataGridViewTextBoxColumn();
+            Post = new DataGridViewTextBoxColumn();
+            Type_graphy = new DataGridViewTextBoxColumn();
+            ContextMenuStaff = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            StripMenuAddStaff = new ToolStripMenuItem();
+            StripMenuRedactStaff = new ToolStripMenuItem();
+            StripMenuDeleteStaff = new ToolStripMenuItem();
             PanelToolbar.SuspendLayout();
             PanelButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TbSclad).BeginInit();
             ContextMenuSclad.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TbShift).BeginInit();
             ContextMenuShift.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)TbUser).BeginInit();
+            ContextMenuStaff.SuspendLayout();
             SuspendLayout();
             // 
             // PanelToolbar
@@ -132,7 +153,7 @@
             // 
             PanelButton.BackColor = Color.LightGoldenrodYellow;
             PanelButton.Controls.Add(BtRedactUser);
-            PanelButton.Controls.Add(guna2Button5);
+            PanelButton.Controls.Add(BtStaff);
             PanelButton.Controls.Add(BtShift);
             PanelButton.Controls.Add(Sclad);
             PanelButton.Dock = DockStyle.Top;
@@ -161,24 +182,25 @@
             BtRedactUser.Text = "О пользователя";
             BtRedactUser.Click += BtRedactUser_Click;
             // 
-            // guna2Button5
+            // BtStaff
             // 
-            guna2Button5.BorderRadius = 15;
-            guna2Button5.CustomizableEdges = customizableEdges3;
-            guna2Button5.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button5.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button5.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button5.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button5.FillColor = Color.FromArgb(253, 253, 130);
-            guna2Button5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            guna2Button5.ForeColor = Color.Black;
-            guna2Button5.ImageSize = new Size(35, 35);
-            guna2Button5.Location = new Point(12, 6);
-            guna2Button5.Name = "guna2Button5";
-            guna2Button5.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2Button5.Size = new Size(315, 59);
-            guna2Button5.TabIndex = 7;
-            guna2Button5.Text = "Работники";
+            BtStaff.BorderRadius = 15;
+            BtStaff.CustomizableEdges = customizableEdges3;
+            BtStaff.DisabledState.BorderColor = Color.DarkGray;
+            BtStaff.DisabledState.CustomBorderColor = Color.DarkGray;
+            BtStaff.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            BtStaff.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            BtStaff.FillColor = Color.FromArgb(253, 253, 130);
+            BtStaff.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            BtStaff.ForeColor = Color.Black;
+            BtStaff.ImageSize = new Size(35, 35);
+            BtStaff.Location = new Point(12, 6);
+            BtStaff.Name = "BtStaff";
+            BtStaff.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            BtStaff.Size = new Size(315, 59);
+            BtStaff.TabIndex = 7;
+            BtStaff.Text = "Работники";
+            BtStaff.Click += BtStaff_Click;
             // 
             // BtShift
             // 
@@ -502,7 +524,7 @@
             TbShift.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             TbShift.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             TbShift.Visible = false;
-            TbShift.CellMouseDown += TbShift_CellMouseDown;
+            TbShift.CellMouseClick += TbShift_CellMouseClick;
             TbShift.MouseDown += TbShift_MouseDown;
             // 
             // Id_Grahy
@@ -645,12 +667,193 @@
             StripMenuDelete.Text = "Удалить";
             StripMenuDelete.Click += StripMenuDelete_Click;
             // 
+            // TbUser
+            // 
+            TbUser.AllowUserToAddRows = false;
+            TbUser.AllowUserToDeleteRows = false;
+            TbUser.AllowUserToResizeRows = false;
+            dataGridViewCellStyle9.BackColor = Color.FromArgb(230, 230, 230);
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle9.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(220, 240, 200);
+            dataGridViewCellStyle9.SelectionForeColor = Color.Black;
+            TbUser.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            TbUser.BackgroundColor = Color.LightGoldenrodYellow;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = Color.Silver;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle10.ForeColor = Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            TbUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            TbUser.ColumnHeadersHeight = 20;
+            TbUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            TbUser.Columns.AddRange(new DataGridViewColumn[] { Id_Employye, Staff_FIO, Birthday, Pol, Number_Pass, Seria_Pass, Phone_number, Acceptance_date, Post, Type_graphy });
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = Color.FromArgb(230, 230, 230);
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle11.ForeColor = Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(220, 240, 200);
+            dataGridViewCellStyle11.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+            TbUser.DefaultCellStyle = dataGridViewCellStyle11;
+            TbUser.GridColor = Color.FromArgb(231, 229, 255);
+            TbUser.Location = new Point(0, 133);
+            TbUser.Name = "TbUser";
+            TbUser.ReadOnly = true;
+            TbUser.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = Color.FromArgb(230, 230, 230);
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle12.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(230, 230, 230);
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
+            TbUser.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            TbUser.RowHeadersVisible = false;
+            TbUser.RowTemplate.Height = 30;
+            TbUser.Size = new Size(1304, 314);
+            TbUser.TabIndex = 6;
+            TbUser.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            TbUser.ThemeStyle.AlternatingRowsStyle.Font = null;
+            TbUser.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
+            TbUser.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
+            TbUser.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
+            TbUser.ThemeStyle.BackColor = Color.LightGoldenrodYellow;
+            TbUser.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            TbUser.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
+            TbUser.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            TbUser.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
+            TbUser.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            TbUser.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            TbUser.ThemeStyle.HeaderStyle.Height = 20;
+            TbUser.ThemeStyle.ReadOnly = true;
+            TbUser.ThemeStyle.RowsStyle.BackColor = Color.White;
+            TbUser.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            TbUser.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
+            TbUser.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
+            TbUser.ThemeStyle.RowsStyle.Height = 30;
+            TbUser.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            TbUser.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            TbUser.Visible = false;
+            TbUser.CellMouseClick += TbUser_CellMouseClick;
+            TbUser.MouseDown += TbUser_MouseDown;
+            // 
+            // Id_Employye
+            // 
+            Id_Employye.DataPropertyName = "Id_Employee";
+            Id_Employye.HeaderText = "id";
+            Id_Employye.Name = "Id_Employye";
+            Id_Employye.ReadOnly = true;
+            Id_Employye.Visible = false;
+            // 
+            // Staff_FIO
+            // 
+            Staff_FIO.DataPropertyName = "Staff_FIO";
+            Staff_FIO.HeaderText = "Ф.И.О";
+            Staff_FIO.Name = "Staff_FIO";
+            Staff_FIO.ReadOnly = true;
+            // 
+            // Birthday
+            // 
+            Birthday.DataPropertyName = "Birthday";
+            Birthday.HeaderText = "День рождения";
+            Birthday.Name = "Birthday";
+            Birthday.ReadOnly = true;
+            // 
+            // Pol
+            // 
+            Pol.DataPropertyName = "Pol";
+            Pol.HeaderText = "Пол";
+            Pol.Name = "Pol";
+            Pol.ReadOnly = true;
+            // 
+            // Number_Pass
+            // 
+            Number_Pass.DataPropertyName = "Number_Pass";
+            Number_Pass.HeaderText = "Номер паспорта";
+            Number_Pass.Name = "Number_Pass";
+            Number_Pass.ReadOnly = true;
+            // 
+            // Seria_Pass
+            // 
+            Seria_Pass.DataPropertyName = "Seria_Pass";
+            Seria_Pass.HeaderText = "Серия паспорта";
+            Seria_Pass.Name = "Seria_Pass";
+            Seria_Pass.ReadOnly = true;
+            // 
+            // Phone_number
+            // 
+            Phone_number.DataPropertyName = "Phone_number";
+            Phone_number.HeaderText = "Номер телефона";
+            Phone_number.Name = "Phone_number";
+            Phone_number.ReadOnly = true;
+            // 
+            // Acceptance_date
+            // 
+            Acceptance_date.DataPropertyName = "Acceptance_date";
+            Acceptance_date.HeaderText = "Дата приема на работу";
+            Acceptance_date.Name = "Acceptance_date";
+            Acceptance_date.ReadOnly = true;
+            // 
+            // Post
+            // 
+            Post.DataPropertyName = "Post";
+            Post.HeaderText = "Должность";
+            Post.Name = "Post";
+            Post.ReadOnly = true;
+            // 
+            // Type_graphy
+            // 
+            Type_graphy.DataPropertyName = "Type_graphy";
+            Type_graphy.HeaderText = "Тип графика";
+            Type_graphy.Name = "Type_graphy";
+            Type_graphy.ReadOnly = true;
+            // 
+            // ContextMenuStaff
+            // 
+            ContextMenuStaff.Items.AddRange(new ToolStripItem[] { StripMenuAddStaff, StripMenuRedactStaff, StripMenuDeleteStaff });
+            ContextMenuStaff.Name = "ContextMenuStaff";
+            ContextMenuStaff.RenderStyle.ArrowColor = Color.FromArgb(151, 143, 255);
+            ContextMenuStaff.RenderStyle.BorderColor = Color.Gainsboro;
+            ContextMenuStaff.RenderStyle.ColorTable = null;
+            ContextMenuStaff.RenderStyle.RoundedEdges = true;
+            ContextMenuStaff.RenderStyle.SelectionArrowColor = Color.White;
+            ContextMenuStaff.RenderStyle.SelectionBackColor = Color.FromArgb(100, 88, 255);
+            ContextMenuStaff.RenderStyle.SelectionForeColor = Color.White;
+            ContextMenuStaff.RenderStyle.SeparatorColor = Color.Gainsboro;
+            ContextMenuStaff.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            ContextMenuStaff.Size = new Size(181, 92);
+            // 
+            // StripMenuAddStaff
+            // 
+            StripMenuAddStaff.Name = "StripMenuAddStaff";
+            StripMenuAddStaff.Size = new Size(180, 22);
+            StripMenuAddStaff.Text = "Добавление";
+            StripMenuAddStaff.Click += StripMenuAddStaff_Click;
+            // 
+            // StripMenuRedactStaff
+            // 
+            StripMenuRedactStaff.Name = "StripMenuRedactStaff";
+            StripMenuRedactStaff.Size = new Size(180, 22);
+            StripMenuRedactStaff.Text = "Редактирование";
+            StripMenuRedactStaff.Click += StripMenuRedactStaff_Click;
+            // 
+            // StripMenuDeleteStaff
+            // 
+            StripMenuDeleteStaff.Name = "StripMenuDeleteStaff";
+            StripMenuDeleteStaff.Size = new Size(180, 22);
+            StripMenuDeleteStaff.Text = "Удалить";
+            StripMenuDeleteStaff.Click += StripMenuDeleteStaff_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(220, 240, 200);
             ClientSize = new Size(1304, 445);
+            Controls.Add(TbUser);
             Controls.Add(TbShift);
             Controls.Add(TbSclad);
             Controls.Add(PanelButton);
@@ -666,6 +869,8 @@
             ContextMenuSclad.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)TbShift).EndInit();
             ContextMenuShift.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)TbUser).EndInit();
+            ContextMenuStaff.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -675,7 +880,7 @@
         private Panel PanelButton;
         private Guna.UI2.WinForms.Guna2Button BtShift;
         private Guna.UI2.WinForms.Guna2Button Sclad;
-        private Guna.UI2.WinForms.Guna2Button guna2Button5;
+        private Guna.UI2.WinForms.Guna2Button BtStaff;
         private Guna.UI2.WinForms.Guna2Button BtRedactUser;
         private Guna.UI2.WinForms.Guna2HtmlLabel LogoName;
         private Guna.UI2.WinForms.Guna2HtmlLabel UserLb;
@@ -717,5 +922,20 @@
         private DataGridViewTextBoxColumn Body_name;
         private DataGridViewTextBoxColumn Floor_number;
         private DataGridViewTextBoxColumn Cause_change;
+        private Guna.UI2.WinForms.Guna2DataGridView TbUser;
+        private DataGridViewTextBoxColumn Id_Employye;
+        private DataGridViewTextBoxColumn Staff_FIO;
+        private DataGridViewTextBoxColumn Birthday;
+        private DataGridViewTextBoxColumn Pol;
+        private DataGridViewTextBoxColumn Number_Pass;
+        private DataGridViewTextBoxColumn Seria_Pass;
+        private DataGridViewTextBoxColumn Phone_number;
+        private DataGridViewTextBoxColumn Acceptance_date;
+        private DataGridViewTextBoxColumn Post;
+        private DataGridViewTextBoxColumn Type_graphy;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip ContextMenuStaff;
+        private ToolStripMenuItem StripMenuAddStaff;
+        private ToolStripMenuItem StripMenuRedactStaff;
+        private ToolStripMenuItem StripMenuDeleteStaff;
     }
 }
