@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Transactions;
 using System.Windows.Forms;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace HozDepartment
 {
@@ -84,6 +85,7 @@ namespace HozDepartment
                     }
 
                     TbUser.Visible = true;
+                    BtSeal.Visible = false;
 
                     fillTableStaff();
                     fillTableSclad();
@@ -142,6 +144,7 @@ namespace HozDepartment
 
             TbShift.Visible = false;
             TbUser.Visible = false;
+            BtSeal.Visible = false;
 
             fillTableSclad();
         }
@@ -432,6 +435,7 @@ namespace HozDepartment
 
             TbSclad.Visible = false;
             TbUser.Visible = false;
+            BtSeal.Visible = true;
 
             fillTabelShift();
         }
@@ -744,6 +748,7 @@ namespace HozDepartment
         {
             TbSclad.Visible = false;
             TbShift.Visible = false;
+            BtSeal.Visible = false;
 
             TbUser.Visible = true;
         }
@@ -965,6 +970,97 @@ namespace HozDepartment
                     }
                 }
             }
+        }
+
+        private void BtSeal_Click(object sender, EventArgs e)
+        {
+
+            if (TbShift.DataSource is DataTable dt)
+            {
+                DialogResult result = MessageBox.Show(
+                    "Ðàñïå÷àòàòü ãðàôèê çà áëèæàéøèå 2 íåäåëè?\n\n(Íàæìèòå 'Íåò', ÷òîáû ðàñïå÷àòàòü âåñü ãðàôèê)",
+                    "Âûáîð ïåðèîäà",
+                    MessageBoxButtons.YesNoCancel,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.Cancel) return;
+
+                string reportTitle = "ÏÎËÍÛÉ ÃÐÀÔÈÊ ÑÌÅÍ";
+
+                if (result == DialogResult.Yes)
+                {
+                    DateTime today = DateTime.Now.Date;
+                    DateTime end = today.AddDays(14);
+
+                    dt.DefaultView.RowFilter = string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                        "Date_of_shift >= #{0:MM/dd/yyyy}# AND Date_of_shift <= #{1:MM/dd/yyyy}#",today, end); ;
+
+                    reportTitle = "ÃÐÀÔÈÊ ÑÌÅÍ ÍÀ 2 ÍÅÄÅËÈ";
+                }
+                else
+                {
+                    dt.DefaultView.RowFilter = "";
+                }
+
+                TbShift.Refresh();
+                ExportToExcel(TbShift, reportTitle);
+
+                dt.DefaultView.RowFilter = "";
+            }
+        }
+
+        private void ExportToExcel(DataGridView dgv, string periodName)
+        {
+            Excel.Application excelApp = new Excel.Application();
+            excelApp.Workbooks.Add();
+            Excel._Worksheet sheet = excelApp.ActiveSheet;
+
+            sheet.Cells[1, 1] = periodName;
+            sheet.Range["A1", "H1"].Merge();
+            sheet.Range["A1"].Font.Size = 14;
+            sheet.Range["A1"].Font.Bold = true;
+            sheet.Range["A1"].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+            int excelCol = 1;
+            for (int j = 0; j < dgv.Columns.Count; j++)
+            {
+                if (dgv.Columns[j].Visible)
+                {
+                    sheet.Cells[3, excelCol] = dgv.Columns[j].HeaderText;
+                    sheet.Cells[3, excelCol].Font.Bold = true;
+                    sheet.Cells[3, excelCol].Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                    excelCol++;
+                }
+            }
+
+            DataTable dt = (DataTable)dgv.DataSource;
+            DataView dv = dt.DefaultView;
+
+            int excelRow = 4;
+            for (int i = 0; i < dv.Count; i++)
+            {
+                excelCol = 1;
+                for (int j = 0; j < dgv.Columns.Count; j++)
+                {
+                    if (dgv.Columns[j].Visible)
+                    {
+                        string columnName = dgv.Columns[j].DataPropertyName;
+
+                        if (!string.IsNullOrEmpty(columnName))
+                        {
+                            object val = dv[i][columnName];
+                            sheet.Cells[excelRow, excelCol] = val?.ToString() ?? "";
+                        }
+
+                        sheet.Cells[excelRow, excelCol].Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                        excelCol++;
+                    }
+                }
+                excelRow++;
+            }
+
+            sheet.Columns.AutoFit();
+            excelApp.Visible = true;
         }
     }
 }

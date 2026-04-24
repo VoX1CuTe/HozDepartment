@@ -923,6 +923,7 @@
             BtSeal.Size = new Size(85, 34);
             BtSeal.TabIndex = 9;
             BtSeal.Text = "Печать";
+            BtSeal.Click += BtSeal_Click;
             // 
             // BtnBackup
             // 
