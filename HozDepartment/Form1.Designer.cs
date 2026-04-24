@@ -54,6 +54,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             PanelToolbar = new Panel();
             LogoName = new Guna.UI2.WinForms.Guna2HtmlLabel();
             UserLb = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -76,7 +80,7 @@
             Payout_Quantity = new DataGridViewTextBoxColumn();
             Release_date = new DataGridViewTextBoxColumn();
             Return_date = new DataGridViewTextBoxColumn();
-            FIO = new DataGridViewTextBoxColumn();
+            Сотрудник = new DataGridViewTextBoxColumn();
             ContextMenuSclad = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             StripMenuAddSclad = new ToolStripMenuItem();
             StripMenuRedactSclad = new ToolStripMenuItem();
@@ -95,7 +99,7 @@
             Schedule_assignment_date = new DataGridViewTextBoxColumn();
             Body_name = new DataGridViewTextBoxColumn();
             Floor_number = new DataGridViewTextBoxColumn();
-            Cause_change = new DataGridViewTextBoxColumn();
+            Fact_Shifts = new DataGridViewTextBoxColumn();
             ContextMenuShift = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             StripMenuAdd = new ToolStripMenuItem();
             StripMenuRedact = new ToolStripMenuItem();
@@ -119,6 +123,9 @@
             CbFilterStaff = new Guna.UI2.WinForms.Guna2ComboBox();
             BtSeal = new Guna.UI2.WinForms.Guna2Button();
             BtnBackup = new Guna.UI2.WinForms.Guna2Button();
+            TextSearchShift = new TextBox();
+            CbFilterShift = new Guna.UI2.WinForms.Guna2ComboBox();
+            guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             PanelToolbar.SuspendLayout();
             PanelButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TbSclad).BeginInit();
@@ -278,7 +285,7 @@
             TbSclad.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             TbSclad.ColumnHeadersHeight = 20;
             TbSclad.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            TbSclad.Columns.AddRange(new DataGridViewColumn[] { Id_Inventory, Id_Category, Id_Entrance, Id_Issue, Id_Employee, Inventory_Name, Category_name, Unit_Measurements, Entrance_Quantity, Access_Date, Payout_Quantity, Release_date, Return_date, FIO });
+            TbSclad.Columns.AddRange(new DataGridViewColumn[] { Id_Inventory, Id_Category, Id_Entrance, Id_Issue, Id_Employee, Inventory_Name, Category_name, Unit_Measurements, Entrance_Quantity, Access_Date, Payout_Quantity, Release_date, Return_date, Сотрудник });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(230, 230, 230);
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -288,7 +295,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             TbSclad.DefaultCellStyle = dataGridViewCellStyle3;
             TbSclad.GridColor = Color.Black;
-            TbSclad.Location = new Point(0, 144);
+            TbSclad.Location = new Point(0, 241);
             TbSclad.Name = "TbSclad";
             TbSclad.ReadOnly = true;
             TbSclad.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -425,14 +432,14 @@
             Return_date.Name = "Return_date";
             Return_date.ReadOnly = true;
             // 
-            // FIO
+            // Сотрудник
             // 
-            FIO.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            FIO.DataPropertyName = "FIO";
-            FIO.HeaderText = "Ф.И.О";
-            FIO.Name = "FIO";
-            FIO.ReadOnly = true;
-            FIO.Width = 64;
+            Сотрудник.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Сотрудник.DataPropertyName = "FIO";
+            Сотрудник.HeaderText = "Ф.И.О";
+            Сотрудник.Name = "Сотрудник";
+            Сотрудник.ReadOnly = true;
+            Сотрудник.Width = 64;
             // 
             // ContextMenuSclad
             // 
@@ -495,7 +502,7 @@
             TbShift.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             TbShift.ColumnHeadersHeight = 20;
             TbShift.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            TbShift.Columns.AddRange(new DataGridViewColumn[] { Id_Grahy, Id_Floor, Id_Body, Id_Place, Id_Employeee, Id_Tvm_Smena, FIO_Shift, Date_of_shift, Change_name, TimeWork, Schedule_assignment_date, Body_name, Floor_number, Cause_change });
+            TbShift.Columns.AddRange(new DataGridViewColumn[] { Id_Grahy, Id_Floor, Id_Body, Id_Place, Id_Employeee, Id_Tvm_Smena, FIO_Shift, Date_of_shift, Change_name, TimeWork, Schedule_assignment_date, Body_name, Floor_number, Fact_Shifts });
             dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = Color.FromArgb(230, 230, 230);
             dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
@@ -598,15 +605,15 @@
             // 
             FIO_Shift.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             FIO_Shift.DataPropertyName = "FIO_Shift";
-            FIO_Shift.HeaderText = "Ф.И.О";
+            FIO_Shift.HeaderText = "Сотрудник";
             FIO_Shift.Name = "FIO_Shift";
             FIO_Shift.ReadOnly = true;
-            FIO_Shift.Width = 64;
+            FIO_Shift.Width = 90;
             // 
             // Date_of_shift
             // 
             Date_of_shift.DataPropertyName = "Date_of_shift";
-            Date_of_shift.HeaderText = "Дата выхода в смену";
+            Date_of_shift.HeaderText = "Дата выхода на смену";
             Date_of_shift.Name = "Date_of_shift";
             Date_of_shift.ReadOnly = true;
             // 
@@ -645,12 +652,12 @@
             Floor_number.Name = "Floor_number";
             Floor_number.ReadOnly = true;
             // 
-            // Cause_change
+            // Fact_Shifts
             // 
-            Cause_change.DataPropertyName = "Cause_change";
-            Cause_change.HeaderText = "Причина изменений";
-            Cause_change.Name = "Cause_change";
-            Cause_change.ReadOnly = true;
+            Fact_Shifts.DataPropertyName = "Fact_Shifts";
+            Fact_Shifts.HeaderText = "Отработана смена";
+            Fact_Shifts.Name = "Fact_Shifts";
+            Fact_Shifts.ReadOnly = true;
             // 
             // ContextMenuShift
             // 
@@ -724,7 +731,7 @@
             dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
             TbUser.DefaultCellStyle = dataGridViewCellStyle11;
             TbUser.GridColor = Color.Black;
-            TbUser.Location = new Point(0, 144);
+            TbUser.Location = new Point(-12, 308);
             TbUser.Name = "TbUser";
             TbUser.ReadOnly = true;
             TbUser.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -834,7 +841,7 @@
             // Type_graphy
             // 
             Type_graphy.DataPropertyName = "Type_graphy";
-            Type_graphy.HeaderText = "Тип графика";
+            Type_graphy.HeaderText = "Тип смены";
             Type_graphy.Name = "Type_graphy";
             Type_graphy.ReadOnly = true;
             // 
@@ -945,12 +952,67 @@
             BtnBackup.Text = "Резервная копия";
             BtnBackup.Click += BtnBackup_Click;
             // 
+            // TextSearchShift
+            // 
+            TextSearchShift.Location = new Point(44, 109);
+            TextSearchShift.Multiline = true;
+            TextSearchShift.Name = "TextSearchShift";
+            TextSearchShift.Size = new Size(283, 29);
+            TextSearchShift.TabIndex = 83;
+            TextSearchShift.TextChanged += TextSearchShift_TextChanged;
+            // 
+            // CbFilterShift
+            // 
+            CbFilterShift.BackColor = Color.FromArgb(253, 253, 150);
+            CbFilterShift.BorderColor = Color.FromArgb(253, 253, 150);
+            CbFilterShift.CustomizableEdges = customizableEdges15;
+            CbFilterShift.DrawMode = DrawMode.OwnerDrawFixed;
+            CbFilterShift.DropDownStyle = ComboBoxStyle.DropDownList;
+            CbFilterShift.DropDownWidth = 140;
+            CbFilterShift.FillColor = Color.FromArgb(253, 253, 150);
+            CbFilterShift.FocusedColor = Color.FromArgb(94, 148, 255);
+            CbFilterShift.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            CbFilterShift.Font = new Font("Segoe UI", 10F);
+            CbFilterShift.ForeColor = Color.Black;
+            CbFilterShift.ItemHeight = 23;
+            CbFilterShift.Items.AddRange(new object[] { "Сбросить всё", "Отработана смена (от +)", "Отработана смена (от -)", "Номер этажа (от большего)", "Номер этажа (от меньшего)" });
+            CbFilterShift.Location = new Point(368, 109);
+            CbFilterShift.Name = "CbFilterShift";
+            CbFilterShift.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            CbFilterShift.Size = new Size(183, 29);
+            CbFilterShift.TabIndex = 84;
+            CbFilterShift.SelectedIndexChanged += CbFilterShift_SelectedIndexChanged;
+            // 
+            // guna2ComboBox1
+            // 
+            guna2ComboBox1.BackColor = Color.FromArgb(253, 253, 150);
+            guna2ComboBox1.BorderColor = Color.FromArgb(253, 253, 150);
+            guna2ComboBox1.CustomizableEdges = customizableEdges17;
+            guna2ComboBox1.DrawMode = DrawMode.OwnerDrawFixed;
+            guna2ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            guna2ComboBox1.DropDownWidth = 140;
+            guna2ComboBox1.FillColor = Color.FromArgb(253, 253, 150);
+            guna2ComboBox1.FocusedColor = Color.FromArgb(94, 148, 255);
+            guna2ComboBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            guna2ComboBox1.Font = new Font("Segoe UI", 10F);
+            guna2ComboBox1.ForeColor = Color.Black;
+            guna2ComboBox1.ItemHeight = 23;
+            guna2ComboBox1.Items.AddRange(new object[] { "Сбросить всё", "Корпус (А-Я)", "Корпус (Я-А)", "Отработана смена (от +)", "Отработана смена (от -)", "Номер этажа (от большего)", "Номер этажа (от меньшего)" });
+            guna2ComboBox1.Location = new Point(606, 109);
+            guna2ComboBox1.Name = "guna2ComboBox1";
+            guna2ComboBox1.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            guna2ComboBox1.Size = new Size(183, 29);
+            guna2ComboBox1.TabIndex = 85;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(220, 240, 200);
             ClientSize = new Size(1304, 391);
+            Controls.Add(guna2ComboBox1);
+            Controls.Add(CbFilterShift);
+            Controls.Add(TextSearchShift);
             Controls.Add(BtnBackup);
             Controls.Add(BtSeal);
             Controls.Add(TextSearchStaff);
@@ -1001,6 +1063,11 @@
         private ToolStripMenuItem StripMenuAddStaff;
         private ToolStripMenuItem StripMenuRedactStaff;
         private ToolStripMenuItem StripMenuDeleteStaff;
+        private DataGridViewTextBoxColumn Cause_change;
+        public TextBox TextSearchStaff;
+        public Guna.UI2.WinForms.Guna2ComboBox CbFilterStaff;
+        private Guna.UI2.WinForms.Guna2Button BtSeal;
+        private Guna.UI2.WinForms.Guna2Button BtnBackup;
         private DataGridViewTextBoxColumn Id_Employye;
         private DataGridViewTextBoxColumn Staff_FIO;
         private DataGridViewTextBoxColumn Birthday;
@@ -1011,20 +1078,7 @@
         private DataGridViewTextBoxColumn Acceptance_date;
         private DataGridViewTextBoxColumn Post;
         private DataGridViewTextBoxColumn Type_graphy;
-        private DataGridViewTextBoxColumn Id_Grahy;
-        private DataGridViewTextBoxColumn Id_Floor;
-        private DataGridViewTextBoxColumn Id_Body;
-        private DataGridViewTextBoxColumn Id_Place;
-        private DataGridViewTextBoxColumn Id_Employeee;
-        private DataGridViewTextBoxColumn Id_Tvm_Smena;
-        private DataGridViewTextBoxColumn FIO_Shift;
-        private DataGridViewTextBoxColumn Date_of_shift;
-        private DataGridViewTextBoxColumn Change_name;
-        private DataGridViewTextBoxColumn TimeWork;
-        private DataGridViewTextBoxColumn Schedule_assignment_date;
-        private DataGridViewTextBoxColumn Body_name;
-        private DataGridViewTextBoxColumn Floor_number;
-        private DataGridViewTextBoxColumn Cause_change;
+        public TextBox TextSearchShift;
         private DataGridViewTextBoxColumn Id_Inventory;
         private DataGridViewTextBoxColumn Id_Category;
         private DataGridViewTextBoxColumn Id_Entrance;
@@ -1038,10 +1092,22 @@
         private DataGridViewTextBoxColumn Payout_Quantity;
         private DataGridViewTextBoxColumn Release_date;
         private DataGridViewTextBoxColumn Return_date;
-        private DataGridViewTextBoxColumn FIO;
-        public TextBox TextSearchStaff;
-        public Guna.UI2.WinForms.Guna2ComboBox CbFilterStaff;
-        private Guna.UI2.WinForms.Guna2Button BtSeal;
-        private Guna.UI2.WinForms.Guna2Button BtnBackup;
+        private DataGridViewTextBoxColumn Сотрудник;
+        public Guna.UI2.WinForms.Guna2ComboBox CbFilterShift;
+        private DataGridViewTextBoxColumn Id_Grahy;
+        private DataGridViewTextBoxColumn Id_Floor;
+        private DataGridViewTextBoxColumn Id_Body;
+        private DataGridViewTextBoxColumn Id_Place;
+        private DataGridViewTextBoxColumn Id_Employeee;
+        private DataGridViewTextBoxColumn Id_Tvm_Smena;
+        private DataGridViewTextBoxColumn FIO_Shift;
+        private DataGridViewTextBoxColumn Date_of_shift;
+        private DataGridViewTextBoxColumn Change_name;
+        private DataGridViewTextBoxColumn TimeWork;
+        private DataGridViewTextBoxColumn Schedule_assignment_date;
+        private DataGridViewTextBoxColumn Body_name;
+        private DataGridViewTextBoxColumn Floor_number;
+        private DataGridViewTextBoxColumn Fact_Shifts;
+        public Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
     }
 }

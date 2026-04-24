@@ -84,8 +84,12 @@ namespace HozDepartment
                         BtRedactUser.Visible = false;
                     }
 
+                    TextSearchStaff.Visible = true;
+                    CbFilterStaff.Visible = true;
                     TbUser.Visible = true;
+
                     BtSeal.Visible = false;
+                    CbFilterShift.Visible = false;
 
                     fillTableStaff();
                     fillTableSclad();
@@ -97,7 +101,6 @@ namespace HozDepartment
                 MessageBox.Show("Не удалось подключиться к серверу");
             }
         }
-
 
         private void BtRedactUser_Click(object sender, EventArgs e)
         {
@@ -145,6 +148,9 @@ namespace HozDepartment
             TbShift.Visible = false;
             TbUser.Visible = false;
             BtSeal.Visible = false;
+            TextSearchStaff.Visible = false;
+            CbFilterStaff.Visible = false;
+            CbFilterShift.Visible = false;
 
             fillTableSclad();
         }
@@ -395,7 +401,7 @@ namespace HozDepartment
                 ps.Schedule_assignment_date,
                 b.Body_name,
                 f.Floor_number,
-                ash.Cause_change,
+                ash.Fact_Shifts,
     
                 ash.Id_Grahy,
                 st.Id_Employee,
@@ -432,10 +438,14 @@ namespace HozDepartment
         private void BtShift_Click(object sender, EventArgs e)
         {
             TbShift.Visible = true;
+            BtSeal.Visible = true;
+            CbFilterShift.Visible = true;
 
             TbSclad.Visible = false;
             TbUser.Visible = false;
-            BtSeal.Visible = true;
+            TextSearchStaff.Visible = false;
+            CbFilterStaff.Visible = false;
+
 
             fillTabelShift();
         }
@@ -544,8 +554,8 @@ namespace HozDepartment
                                     idPlannedGrahy = cmd.LastInsertedId;
                                 }
                                 // 4 The_actual_shift
-                                string sqlAddShiftTheActualShift = @"INSERT INTO The_actual_shift (Id_Grahy, Id_Place, `Id_ Type_of_Substitution`, Date_of_shift, Cause_change) 
-                                    VALUES (@Id_Grahy, @Id_Place, @Id_Type_of_Substitution, @Date_of_shift, @Cause_change)";
+                                string sqlAddShiftTheActualShift = @"INSERT INTO The_actual_shift (Id_Grahy, Id_Place, `Id_ Type_of_Substitution`, Date_of_shift, Fact_Shifts) 
+                                    VALUES (@Id_Grahy, @Id_Place, @Id_Type_of_Substitution, @Date_of_shift, @Fact_Shifts)";
 
                                 using (MySqlCommand cmd = new MySqlCommand(sqlAddShiftTheActualShift, conn, trancaction))
                                 {
@@ -553,7 +563,7 @@ namespace HozDepartment
                                     cmd.Parameters.AddWithValue("@Id_Grahy", idPlannedGrahy);
                                     cmd.Parameters.AddWithValue("@Id_Place", idPlace);
                                     cmd.Parameters.AddWithValue("@Date_of_shift", readactAndAddShift.DtShift.Value);
-                                    cmd.Parameters.AddWithValue("@Cause_change", readactAndAddShift.TbPrichIzmen.Text);
+                                    cmd.Parameters.AddWithValue("@Fact_Shifts", readactAndAddShift.TbPrichIzmen.Text);
                                     cmd.ExecuteNonQuery();
                                 }
                                 trancaction.Commit();
@@ -575,7 +585,7 @@ namespace HozDepartment
                 {
                     readactAndAddShift.DtNzGraf.Value = Convert.ToDateTime(TbShift.CurrentRow.Cells["Schedule_assignment_date"].Value);
                     readactAndAddShift.DtShift.Value = Convert.ToDateTime(TbShift.CurrentRow.Cells["Date_of_shift"].Value);
-                    readactAndAddShift.TbPrichIzmen.Text = TbShift.CurrentRow.Cells["Cause_change"].Value.ToString();
+                    readactAndAddShift.TbPrichIzmen.Text = TbShift.CurrentRow.Cells["Fact_Shifts"].Value.ToString();
 
                     if (readactAndAddShift.ShowDialog() == DialogResult.OK)
                     {
@@ -626,7 +636,7 @@ namespace HozDepartment
                                 }
 
                                 string sqlRedactTheActualShift = @"UPDATE The_actual_shift SET Id_Place = @Id_Place,`Id_ Type_of_Substitution` = @Id_Type_of_Substitution, Date_of_shift = @Date_of_shift, 
-                                    Cause_change = @Cause_change WHERE Id_Grahy = @Id_Grahy;";
+                                    Fact_Shifts = @Fact_Shifts WHERE Id_Grahy = @Id_Grahy;";
 
                                 using (MySqlCommand cmd = new MySqlCommand(sqlRedactTheActualShift, conn, trancaction))
                                 {
@@ -634,7 +644,7 @@ namespace HozDepartment
                                     cmd.Parameters.AddWithValue("@Id_Place", Id_Place);
                                     cmd.Parameters.AddWithValue("@Id_Type_of_Substitution", Id_ShiftType);
                                     cmd.Parameters.AddWithValue("@Date_of_shift", readactAndAddShift.DtShift.Value);
-                                    cmd.Parameters.AddWithValue("@Cause_change", readactAndAddShift.TbPrichIzmen.Text);
+                                    cmd.Parameters.AddWithValue("@Fact_Shifts", readactAndAddShift.TbPrichIzmen.Text);
                                     cmd.ExecuteNonQuery();
                                 }
                                 trancaction.Commit();
@@ -746,11 +756,14 @@ namespace HozDepartment
 
         private void BtStaff_Click(object sender, EventArgs e)
         {
+            TbUser.Visible = true;
+            TextSearchStaff.Visible = true;
+            CbFilterStaff.Visible = true;
+
             TbSclad.Visible = false;
             TbShift.Visible = false;
             BtSeal.Visible = false;
-
-            TbUser.Visible = true;
+            CbFilterShift.Visible = false;
         }
 
         private void StripMenuAddStaff_Click(object sender, EventArgs e)
@@ -993,7 +1006,7 @@ namespace HozDepartment
                     DateTime end = today.AddDays(14);
 
                     dt.DefaultView.RowFilter = string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                        "Date_of_shift >= #{0:MM/dd/yyyy}# AND Date_of_shift <= #{1:MM/dd/yyyy}#",today, end); ;
+                        "Date_of_shift >= #{0:MM/dd/yyyy}# AND Date_of_shift <= #{1:MM/dd/yyyy}#", today, end); ;
 
                     reportTitle = "ГРАФИК СМЕН НА 2 НЕДЕЛИ";
                 }
@@ -1061,6 +1074,59 @@ namespace HozDepartment
 
             sheet.Columns.AutoFit();
             excelApp.Visible = true;
+        }
+
+        private void TextSearchShift_TextChanged(object sender, EventArgs e)
+        {
+            if (TbShift.DataSource is DataTable dt)
+            {
+                dt.DefaultView.RowFilter = string.Format("FIO_Shift LIKE '%{0}%'", TextSearchShift.Text);
+                dt.DefaultView.RowFilter = string.Format("Body_name LIKE '%{0}%'", TextSearchShift.Text);
+                dt.DefaultView.RowFilter = string.Format("Change_name LIKE '%{0}%'", TextSearchShift.Text);
+            }
+        }
+
+        private void CbFilterShift_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (TbShift.DataSource is DataTable dt)
+            {
+                string selected = CbFilterShift.SelectedItem.ToString();
+                DataView dv = dt.DefaultView;
+
+                switch (selected)
+                {
+                    case "Сбросить всё":
+                        dv.RowFilter = "";
+                        dv.Sort = "";
+                        break;
+
+                    case "Отработана смена (от -)":
+                        dv.RowFilter = "";
+                        dv.Sort = "Fact_Shifts ASC";
+                        break;
+
+                    case "Отработана смена (от +)":
+                        dv.RowFilter = "";
+                        dv.Sort = "Fact_Shifts DESC";
+                        break;
+
+                    case "Номер этажа (от большего)":
+                        dv.RowFilter = "";
+                        dv.Sort = "Floor_number DESC";
+                        break;
+
+                    case "Номер этажа (от меньшего)":
+                        dv.RowFilter = "";
+                        dv.Sort = "Floor_number ASC";
+                        break;
+
+                    default:
+
+                        dv.RowFilter = string.Format("Post = '{0}'", selected);
+                        dv.Sort = "";
+                        break;
+                }
+            }
         }
     }
 }
