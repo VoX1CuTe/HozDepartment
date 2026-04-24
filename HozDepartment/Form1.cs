@@ -84,7 +84,10 @@ namespace HozDepartment
                     }
 
                     TbUser.Visible = true;
+
                     fillTableStaff();
+                    fillTableSclad();
+                    fillTabelShift();
                 }
             }
             catch (Exception ex)
@@ -405,6 +408,11 @@ namespace HozDepartment
                 LEFT JOIN Place_work pw ON pw.Id_Place = ash.Id_Place
                 LEFT JOIN Body b ON b.Id_Body = pw.Id_Body
                 LEFT JOIN Floor f ON f.Id_Floor = pw.Id_Floor;";
+
+            if (role == "User")
+            {
+                sqlShift += " WHERE ash.Date_of_shift BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 14 DAY)";
+            }
 
             using (MySqlConnection conn = new MySqlConnection(this.connString))
             {
