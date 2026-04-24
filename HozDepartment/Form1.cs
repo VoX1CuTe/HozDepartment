@@ -918,5 +918,45 @@ namespace HozDepartment
                 }
             }
         }
+
+        private void BtnBackup_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(connString))
+            {
+                MessageBox.Show("Ошибка: Данные подключения не загружены из config.ini");
+                return;
+            }
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "SQL Files (*.sql)|*.sql";
+            sfd.FileName = "data_HouseholdDepartment" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm");
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                using (MySqlConnection conn = new MySqlConnection(connString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        using (MySqlBackup mb = new MySqlBackup(cmd))
+                        {
+                            try
+                            {
+                                cmd.Connection = conn;
+                                conn.Open();
+
+                                mb.ExportToFile(sfd.FileName);
+
+                                conn.Close();
+                                MessageBox.Show("Резервная копия успешно создана!", "Успех");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Ошибка при создании копии: " + ex.Message);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -118,7 +118,7 @@
             TextSearchStaff = new TextBox();
             CbFilterStaff = new Guna.UI2.WinForms.Guna2ComboBox();
             BtSeal = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            BtnBackup = new Guna.UI2.WinForms.Guna2Button();
             PanelToolbar.SuspendLayout();
             PanelButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TbSclad).BeginInit();
@@ -924,24 +924,25 @@
             BtSeal.TabIndex = 9;
             BtSeal.Text = "Печать";
             // 
-            // guna2Button1
+            // BtnBackup
             // 
-            guna2Button1.BorderRadius = 5;
-            guna2Button1.CustomizableEdges = customizableEdges13;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.FillColor = Color.FromArgb(253, 253, 130);
-            guna2Button1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            guna2Button1.ForeColor = Color.Black;
-            guna2Button1.ImageSize = new Size(40, 40);
-            guna2Button1.Location = new Point(1028, 104);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            guna2Button1.Size = new Size(149, 34);
-            guna2Button1.TabIndex = 82;
-            guna2Button1.Text = "Резервная копия";
+            BtnBackup.BorderRadius = 5;
+            BtnBackup.CustomizableEdges = customizableEdges13;
+            BtnBackup.DisabledState.BorderColor = Color.DarkGray;
+            BtnBackup.DisabledState.CustomBorderColor = Color.DarkGray;
+            BtnBackup.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            BtnBackup.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            BtnBackup.FillColor = Color.FromArgb(253, 253, 130);
+            BtnBackup.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            BtnBackup.ForeColor = Color.Black;
+            BtnBackup.ImageSize = new Size(40, 40);
+            BtnBackup.Location = new Point(1029, 104);
+            BtnBackup.Name = "BtnBackup";
+            BtnBackup.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            BtnBackup.Size = new Size(149, 34);
+            BtnBackup.TabIndex = 82;
+            BtnBackup.Text = "Резервная копия";
+            BtnBackup.Click += BtnBackup_Click;
             // 
             // MainForm
             // 
@@ -949,7 +950,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(220, 240, 200);
             ClientSize = new Size(1304, 391);
-            Controls.Add(guna2Button1);
+            Controls.Add(BtnBackup);
             Controls.Add(BtSeal);
             Controls.Add(TextSearchStaff);
             Controls.Add(CbFilterStaff);
@@ -1040,6 +1041,6 @@
         public TextBox TextSearchStaff;
         public Guna.UI2.WinForms.Guna2ComboBox CbFilterStaff;
         private Guna.UI2.WinForms.Guna2Button BtSeal;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button BtnBackup;
     }
 }
