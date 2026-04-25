@@ -179,11 +179,24 @@ namespace HozDepartment
         {
             if (TbUserData == activeTable)
             {
-                string sqlAddUser = "INSERT INTO User (Login, Password, Role, FuelName) VALUES (@Login, @Password, @Role, @FuelName)";
-
                 using (MySqlConnection conn = new MySqlConnection(this.connString))
                 {
                     conn.Open();
+
+                    string sqlCheck = "SELECT COUNT(*) FROM User WHERE Login = @Login";
+                    using (MySqlCommand checkCmd = new MySqlCommand(sqlCheck, conn))
+                    {
+                        checkCmd.Parameters.AddWithValue("@Login", TbLogin.Text);
+                        int count = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+                        if (count > 0)
+                        {
+                            MessageBox.Show("Пользователь с таким логином уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return; 
+                        }
+                    }
+
+                    string sqlAddUser = "INSERT INTO User (Login, Password, Role, FuelName) VALUES (@Login, @Password, @Role, @FuelName)";
                     using (MySqlCommand cmd = new MySqlCommand(sqlAddUser, conn))
                     {
                         cmd.Parameters.AddWithValue("@Login", TbLogin.Text);
@@ -221,6 +234,20 @@ namespace HozDepartment
                 using (MySqlConnection conn = new MySqlConnection(this.connString))
                 {
                     conn.Open();
+
+                    string sqlCheck = "SELECT COUNT(*) FROM User WHERE Login = @Login";
+                    using (MySqlCommand checkCmd = new MySqlCommand(sqlCheck, conn))
+                    {
+                        checkCmd.Parameters.AddWithValue("@Login", TbLogin.Text);
+                        int count = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+                        if (count > 0)
+                        {
+                            MessageBox.Show("Пользователь с таким логином уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+
                     using (MySqlCommand cmd = new MySqlCommand(sqlUpdateUser, conn))
                     {
                         cmd.Parameters.AddWithValue("@Login", TbLogin.Text);
