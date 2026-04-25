@@ -219,46 +219,54 @@ namespace HozDepartment
                         using (MySqlConnection conn = new MySqlConnection(this.connString))
                         {
                             conn.Open();
-
-                            using (MySqlTransaction transaction = conn.BeginTransaction())
+                            try
                             {
 
-                                string sqlInventory = @"INSERT INTO Inventory (Id_Category, Name, Unit_Measurements) VALUES (@Id_Category, @Name, @Unit_Measurements)";
-
-                                using (MySqlCommand cmd = new MySqlCommand(sqlInventory, conn))
+                                using (MySqlTransaction transaction = conn.BeginTransaction())
                                 {
-                                    cmd.Parameters.AddWithValue("@Id_Category", idCategory);
-                                    cmd.Parameters.AddWithValue("@Name", readactAndAddSclad.TbNameInventory.Text);
-                                    cmd.Parameters.AddWithValue("@Unit_Measurements", readactAndAddSclad.CbUnitMeasurements.Text);
-                                    cmd.ExecuteNonQuery();
-                                    actualInventoryId = cmd.LastInsertedId;
-                                    finalInventoryId = cmd.LastInsertedId;
+
+                                    string sqlInventory = @"INSERT INTO Inventory (Id_Category, Name, Unit_Measurements) VALUES (@Id_Category, @Name, @Unit_Measurements)";
+
+                                    using (MySqlCommand cmd = new MySqlCommand(sqlInventory, conn))
+                                    {
+                                        cmd.Parameters.AddWithValue("@Id_Category", idCategory);
+                                        cmd.Parameters.AddWithValue("@Name", readactAndAddSclad.TbNameInventory.Text);
+                                        cmd.Parameters.AddWithValue("@Unit_Measurements", readactAndAddSclad.CbUnitMeasurements.Text);
+                                        cmd.ExecuteNonQuery();
+                                        actualInventoryId = cmd.LastInsertedId;
+                                        finalInventoryId = cmd.LastInsertedId;
+                                    }
+
+                                    string sqlEntrance = @"INSERT INTO Entrance (Id_Inventory, Access_Date, Quantity) VALUES (@Id_Inventory, @Access_Date, @Quantity)";
+
+                                    using (MySqlCommand cmd = new MySqlCommand(sqlEntrance, conn))
+                                    {
+                                        cmd.Parameters.AddWithValue("@Id_Inventory", actualInventoryId);
+                                        cmd.Parameters.AddWithValue("@Access_Date", readactAndAddSclad.DtEntranceSclad.Value);
+                                        cmd.Parameters.AddWithValue("@Quantity", readactAndAddSclad.TbInventorÌColl.Text);
+                                        cmd.ExecuteNonQuery();
+                                    }
+
+                                    string sqlPayout = @"INSERT INTO Payout_in_work (Id_Inventory, Id_Employee, Release_date, QuantityP, Return_date) VALUES (@Id_Inventory, @Id_Employee, @Release_date, @QuantityP, @Return_date)";
+
+                                    using (MySqlCommand cmd = new MySqlCommand(sqlPayout, conn))
+                                    {
+                                        cmd.Parameters.AddWithValue("@Id_Employee", idEmployee);
+                                        cmd.Parameters.AddWithValue("@Id_Inventory", actualInventoryId);
+                                        cmd.Parameters.AddWithValue("@Release_date", readactAndAddSclad.DtPuttingWork.Value);
+                                        cmd.Parameters.AddWithValue("@QuantityP", readactAndAddSclad.TbQualityInventory.Text);
+                                        cmd.Parameters.AddWithValue("@Return_date", readactAndAddSclad.DtReturnInventory.Value);
+                                        cmd.ExecuteNonQuery();
+                                    }
+                                    transaction.Commit();
                                 }
-
-                                string sqlEntrance = @"INSERT INTO Entrance (Id_Inventory, Access_Date, Quantity) VALUES (@Id_Inventory, @Access_Date, @Quantity)";
-
-                                using (MySqlCommand cmd = new MySqlCommand(sqlEntrance, conn))
-                                {
-                                    cmd.Parameters.AddWithValue("@Id_Inventory", actualInventoryId);
-                                    cmd.Parameters.AddWithValue("@Access_Date", readactAndAddSclad.DtEntranceSclad.Value);
-                                    cmd.Parameters.AddWithValue("@Quantity", readactAndAddSclad.TbInventorÌColl.Text);
-                                    cmd.ExecuteNonQuery();
-                                }
-
-                                string sqlPayout = @"INSERT INTO Payout_in_work (Id_Inventory, Id_Employee, Release_date, QuantityP, Return_date) VALUES (@Id_Inventory, @Id_Employee, @Release_date, @QuantityP, @Return_date)";
-
-                                using (MySqlCommand cmd = new MySqlCommand(sqlPayout, conn))
-                                {
-                                    cmd.Parameters.AddWithValue("@Id_Employee", idEmployee);
-                                    cmd.Parameters.AddWithValue("@Id_Inventory", actualInventoryId);
-                                    cmd.Parameters.AddWithValue("@Release_date", readactAndAddSclad.DtPuttingWork.Value);
-                                    cmd.Parameters.AddWithValue("@QuantityP", readactAndAddSclad.TbQualityInventory.Text);
-                                    cmd.Parameters.AddWithValue("@Return_date", readactAndAddSclad.DtReturnInventory.Value);
-                                    cmd.ExecuteNonQuery();
-                                }
-                                transaction.Commit();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Œ¯Ë·Í‡ ‰Ó·Ó‚ÎÂÌËˇ ËÌ‚ÂÌÚ‡ˇ!\n\nœÓ‰Ó·ÌÓÒÚË: " + ex.Message, "Œ¯Ë·Í‡", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
+
                     }
 
                     fillTableSclad();
@@ -297,47 +305,56 @@ namespace HozDepartment
 
                         using (MySqlConnection conn = new MySqlConnection(this.connString))
                         {
-                            conn.Open();
-
-                            using (MySqlTransaction transaction = conn.BeginTransaction())
+                            try
                             {
+                                conn.Open();
 
-                                string sqlRedactInventory = @"UPDATE Inventory SET Name = @Name, Unit_Measurements = @Unit_Measurements, Id_Category = @Id_Category WHERE Id_Inventory = @Id_Inventory";
-
-                                using (MySqlCommand cmd = new MySqlCommand(sqlRedactInventory, conn))
+                                using (MySqlTransaction transaction = conn.BeginTransaction())
                                 {
-                                    cmd.Parameters.AddWithValue("@Id_Inventory", Id_Inventory);
-                                    cmd.Parameters.AddWithValue("@Id_Category", Id_Category);
-                                    cmd.Parameters.AddWithValue("@Name", readactAndAddSclad.TbNameInventory.Text);
-                                    cmd.Parameters.AddWithValue("@Unit_Measurements", readactAndAddSclad.CbUnitMeasurements.Text);
-                                    cmd.ExecuteNonQuery();
+
+                                    string sqlRedactInventory = @"UPDATE Inventory SET Name = @Name, Unit_Measurements = @Unit_Measurements, Id_Category = @Id_Category WHERE Id_Inventory = @Id_Inventory";
+
+                                    using (MySqlCommand cmd = new MySqlCommand(sqlRedactInventory, conn))
+                                    {
+                                        cmd.Parameters.AddWithValue("@Id_Inventory", Id_Inventory);
+                                        cmd.Parameters.AddWithValue("@Id_Category", Id_Category);
+                                        cmd.Parameters.AddWithValue("@Name", readactAndAddSclad.TbNameInventory.Text);
+                                        cmd.Parameters.AddWithValue("@Unit_Measurements", readactAndAddSclad.CbUnitMeasurements.Text);
+                                        cmd.ExecuteNonQuery();
+                                    }
+
+                                    string sqlRedactEntrance = "UPDATE Entrance SET Access_Date = @Access_Date, Quantity = @Quantity WHERE Id_Entrance = @Id_Entrance";
+
+                                    using (MySqlCommand cmd = new MySqlCommand(sqlRedactEntrance, conn))
+                                    {
+                                        cmd.Parameters.AddWithValue("@Id_Entrance", Id_Entrance);
+                                        cmd.Parameters.AddWithValue("@Access_Date", readactAndAddSclad.DtEntranceSclad.Value);
+                                        cmd.Parameters.AddWithValue("@Quantity", readactAndAddSclad.TbInventorÌColl.Text);
+                                        cmd.ExecuteNonQuery();
+                                    }
+
+                                    string sqlRedactPayouInWork = "UPDATE Payout_in_work SET Id_Inventory = @Id_Inventory, Id_Employee = @Id_Employee, Release_date = @Release_date, QuantityP = @QuantityP, Return_date = @Return_date WHERE Id_Issue = @Id_Issue";
+
+                                    using (MySqlCommand cmd = new MySqlCommand(sqlRedactPayouInWork, conn))
+                                    {
+                                        cmd.Parameters.AddWithValue("@Id_Inventory", Id_Inventory);
+                                        cmd.Parameters.AddWithValue("@Id_Employee", Id_Employee);
+                                        cmd.Parameters.AddWithValue("@Release_date", readactAndAddSclad.DtPuttingWork.Value);
+                                        cmd.Parameters.AddWithValue("@QuantityP", readactAndAddSclad.TbQualityInventory.Text);
+                                        cmd.Parameters.AddWithValue("@Return_date", readactAndAddSclad.DtReturnInventory.Value);
+                                        cmd.Parameters.AddWithValue("@Id_Issue", Id_Issue);
+                                        cmd.ExecuteNonQuery();
+                                    }
+                                    transaction.Commit();
                                 }
-
-                                string sqlRedactEntrance = "UPDATE Entrance SET Access_Date = @Access_Date, Quantity = @Quantity WHERE Id_Entrance = @Id_Entrance";
-
-                                using (MySqlCommand cmd = new MySqlCommand(sqlRedactEntrance, conn))
-                                {
-                                    cmd.Parameters.AddWithValue("@Id_Entrance", Id_Entrance);
-                                    cmd.Parameters.AddWithValue("@Access_Date", readactAndAddSclad.DtEntranceSclad.Value);
-                                    cmd.Parameters.AddWithValue("@Quantity", readactAndAddSclad.TbInventorÌColl.Text);
-                                    cmd.ExecuteNonQuery();
-                                }
-
-                                string sqlRedactPayouInWork = "UPDATE Payout_in_work SET Id_Inventory = @Id_Inventory, Id_Employee = @Id_Employee, Release_date = @Release_date, QuantityP = @QuantityP, Return_date = @Return_date WHERE Id_Issue = @Id_Issue";
-
-                                using (MySqlCommand cmd = new MySqlCommand(sqlRedactPayouInWork, conn))
-                                {
-                                    cmd.Parameters.AddWithValue("@Id_Inventory", Id_Inventory);
-                                    cmd.Parameters.AddWithValue("@Id_Employee", Id_Employee);
-                                    cmd.Parameters.AddWithValue("@Release_date", readactAndAddSclad.DtPuttingWork.Value);
-                                    cmd.Parameters.AddWithValue("@QuantityP", readactAndAddSclad.TbQualityInventory.Text);
-                                    cmd.Parameters.AddWithValue("@Return_date", readactAndAddSclad.DtReturnInventory.Value);
-                                    cmd.Parameters.AddWithValue("@Id_Issue", Id_Issue);
-                                    cmd.ExecuteNonQuery();
-                                }
-                                transaction.Commit();
                             }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Œ¯Ë·Í‡ Â‰‡ÍÚËÓ‚‡ÌËˇ ËÌ‚ÂÌÚ‡ˇ!\n\nœÓ‰Ó·ÌÓÒÚË: " + ex.Message, "Œ¯Ë·Í‡", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
                         }
+                            
                     }
 
                     fillTableSclad();
@@ -351,13 +368,14 @@ namespace HozDepartment
             {
                 using (MySqlConnection conn = new MySqlConnection(this.connString))
                 {
-                    int idInv = Convert.ToInt32(TbSclad.CurrentRow.Cells["Id_Inventory"].Value);
-                    conn.Open();
-
-                    using (MySqlTransaction trancaction = conn.BeginTransaction())
+                    try
                     {
-                        try
+                        int idInv = Convert.ToInt32(TbSclad.CurrentRow.Cells["Id_Inventory"].Value);
+                        conn.Open();
+
+                        using (MySqlTransaction trancaction = conn.BeginTransaction())
                         {
+
                             string sqlDeletePayoutInWork = "DELETE FROM Payout_in_work WHERE Id_Inventory = @id";
                             using (MySqlCommand cmd = new MySqlCommand(sqlDeletePayoutInWork, conn, trancaction))
                             {
@@ -381,11 +399,10 @@ namespace HozDepartment
 
                             trancaction.Commit();
                         }
-                        catch (Exception ex)
-                        {
-                            trancaction.Rollback();
-                            MessageBox.Show("Œ¯Ë·Í‡: " + ex.Message);
-                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show("Œ¯Ë·Í‡ Û‰‡ÎÂÌËˇ ËÌ‚ÂÌÚ‡ˇ!\n\nœÓ‰Ó·ÌÓÒÚË: " + ex.Message, "Œ¯Ë·Í‡", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                     fillTableSclad();
@@ -422,7 +439,7 @@ namespace HozDepartment
 
             if (role == "User")
             {
-                sqlShift += " WHERE ash.Date_of_shift BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 14 DAY)"; // œÓÔ‡‚ËÚ¸ Ó¯Ë·ÍÛ ÔË ‚ıÓ‰Â ‚˚ÎÂÚ!!!!
+                sqlShift += " WHERE ash.Date_of_shift BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 14 DAY)";
             }
 
             using (MySqlConnection conn = new MySqlConnection(this.connString))
@@ -513,62 +530,69 @@ namespace HozDepartment
 
                         using (MySqlConnection conn = new MySqlConnection(this.connString))
                         {
-                            conn.Open();
-
-                            // 19  Ú‡ÌÁ‡ÍˆËˇ
-                            using (MySqlTransaction trancaction = conn.BeginTransaction())
+                            try
                             {
-                                // 1 Place_work
+                                conn.Open();
 
-                                string sqlPlace = @"INSERT INTO Place_work (Id_Body, Id_Floor) VALUES (@Id_Body, @Id_Floor) ";
-                                using (MySqlCommand cmd = new MySqlCommand(sqlPlace, conn, trancaction))
+                                // 19  Ú‡ÌÁ‡ÍˆËˇ
+                                using (MySqlTransaction trancaction = conn.BeginTransaction())
                                 {
-                                    cmd.Parameters.AddWithValue("@Id_Body", idBody);
-                                    cmd.Parameters.AddWithValue("@Id_Floor", idFloor);
-                                    cmd.ExecuteNonQuery();
-                                    idPlace = cmd.LastInsertedId;
-                                }
+                                    // 1 Place_work
 
-                                // 2 Shift_type
-                                if (readactAndAddShift.CbTypeSmena.SelectedValue is DataRowView drv)
-                                {
-                                    idShiftType = Convert.ToInt64(drv["Id_Tvm_Smena"]);
-                                }
-                                else
-                                {
-                                    idShiftType = Convert.ToInt64(readactAndAddShift.CbTypeSmena.SelectedValue);
-                                }
+                                    string sqlPlace = @"INSERT INTO Place_work (Id_Body, Id_Floor) VALUES (@Id_Body, @Id_Floor) ";
+                                    using (MySqlCommand cmd = new MySqlCommand(sqlPlace, conn, trancaction))
+                                    {
+                                        cmd.Parameters.AddWithValue("@Id_Body", idBody);
+                                        cmd.Parameters.AddWithValue("@Id_Floor", idFloor);
+                                        cmd.ExecuteNonQuery();
+                                        idPlace = cmd.LastInsertedId;
+                                    }
 
-                                if (idShiftType <= 0)
-                                {
-                                    return;
-                                }
+                                    // 2 Shift_type
+                                    if (readactAndAddShift.CbTypeSmena.SelectedValue is DataRowView drv)
+                                    {
+                                        idShiftType = Convert.ToInt64(drv["Id_Tvm_Smena"]);
+                                    }
+                                    else
+                                    {
+                                        idShiftType = Convert.ToInt64(readactAndAddShift.CbTypeSmena.SelectedValue);
+                                    }
 
-                                // 3 Planned_schedulÛ
-                                string sqlAddShiftPlannedSchedulÛ = @"INSERT INTO Planned_schedulÛ (Id_Employee,Schedule_assignment_date) VALUES (@Id_Employee,@Schedule_assignment_date)";
+                                    if (idShiftType <= 0)
+                                    {
+                                        return;
+                                    }
 
-                                using (MySqlCommand cmd = new MySqlCommand(sqlAddShiftPlannedSchedulÛ, conn, trancaction))
-                                {
+                                    // 3 Planned_schedulÛ
+                                    string sqlAddShiftPlannedSchedulÛ = @"INSERT INTO Planned_schedulÛ (Id_Employee,Schedule_assignment_date) VALUES (@Id_Employee,@Schedule_assignment_date)";
 
-                                    cmd.Parameters.AddWithValue("@Id_Employee", idEmployee);
-                                    cmd.Parameters.AddWithValue("@Schedule_assignment_date", readactAndAddShift.DtNzGraf.Value);
-                                    cmd.ExecuteNonQuery();
-                                    idPlannedGrahy = cmd.LastInsertedId;
-                                }
-                                // 4 The_actual_shift
-                                string sqlAddShiftTheActualShift = @"INSERT INTO The_actual_shift (Id_Grahy, Id_Place, `Id_ Type_of_Substitution`, Date_of_shift, Fact_Shifts) 
+                                    using (MySqlCommand cmd = new MySqlCommand(sqlAddShiftPlannedSchedulÛ, conn, trancaction))
+                                    {
+
+                                        cmd.Parameters.AddWithValue("@Id_Employee", idEmployee);
+                                        cmd.Parameters.AddWithValue("@Schedule_assignment_date", readactAndAddShift.DtNzGraf.Value);
+                                        cmd.ExecuteNonQuery();
+                                        idPlannedGrahy = cmd.LastInsertedId;
+                                    }
+                                    // 4 The_actual_shift
+                                    string sqlAddShiftTheActualShift = @"INSERT INTO The_actual_shift (Id_Grahy, Id_Place, `Id_ Type_of_Substitution`, Date_of_shift, Fact_Shifts) 
                                     VALUES (@Id_Grahy, @Id_Place, @Id_Type_of_Substitution, @Date_of_shift, @Fact_Shifts)";
 
-                                using (MySqlCommand cmd = new MySqlCommand(sqlAddShiftTheActualShift, conn, trancaction))
-                                {
-                                    cmd.Parameters.AddWithValue("@Id_Type_of_Substitution", idShiftType);
-                                    cmd.Parameters.AddWithValue("@Id_Grahy", idPlannedGrahy);
-                                    cmd.Parameters.AddWithValue("@Id_Place", idPlace);
-                                    cmd.Parameters.AddWithValue("@Date_of_shift", readactAndAddShift.DtShift.Value);
-                                    cmd.Parameters.AddWithValue("@Fact_Shifts", readactAndAddShift.TbPrichIzmen.Text);
-                                    cmd.ExecuteNonQuery();
+                                    using (MySqlCommand cmd = new MySqlCommand(sqlAddShiftTheActualShift, conn, trancaction))
+                                    {
+                                        cmd.Parameters.AddWithValue("@Id_Type_of_Substitution", idShiftType);
+                                        cmd.Parameters.AddWithValue("@Id_Grahy", idPlannedGrahy);
+                                        cmd.Parameters.AddWithValue("@Id_Place", idPlace);
+                                        cmd.Parameters.AddWithValue("@Date_of_shift", readactAndAddShift.DtShift.Value);
+                                        cmd.Parameters.AddWithValue("@Fact_Shifts", readactAndAddShift.TbPrichIzmen.Text);
+                                        cmd.ExecuteNonQuery();
+                                    }
+                                    trancaction.Commit();
                                 }
-                                trancaction.Commit();
+                            }
+                            catch(Exception ex) 
+                            {
+                                MessageBox.Show("Œ¯Ë·Í‡ ‰Ó·Ó‚ÎÂÌËˇ ÒÏÂÌ˚!\n\nœÓ‰Ó·ÌÓÒÚË: " + ex.Message, "Œ¯Ë·Í‡", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
 
                             fillTabelShift();
@@ -613,43 +637,50 @@ namespace HozDepartment
 
                         using (MySqlConnection conn = new MySqlConnection(this.connString))
                         {
-                            conn.Open();
-
-                            using (MySqlTransaction trancaction = conn.BeginTransaction())
+                            try
                             {
-                                string sqlRedactPlaceAdd = @"UPDATE Place_work SET Id_Body = @Id_Body, Id_Floor=@Id_Floor WHERE Id_Place = @Id_Place";
+                                conn.Open();
 
-                                using (MySqlCommand cmd = new MySqlCommand(sqlRedactPlaceAdd, conn, trancaction))
+                                using (MySqlTransaction trancaction = conn.BeginTransaction())
                                 {
-                                    cmd.Parameters.AddWithValue("@Id_Place", Id_Place);
-                                    cmd.Parameters.AddWithValue("@Id_Body", Id_Body);
-                                    cmd.Parameters.AddWithValue("@Id_Floor", Id_Floor);
-                                    cmd.ExecuteNonQuery();
-                                }
+                                    string sqlRedactPlaceAdd = @"UPDATE Place_work SET Id_Body = @Id_Body, Id_Floor=@Id_Floor WHERE Id_Place = @Id_Place";
 
-                                string sqlRedactPlannedSchedulÛ = @"UPDATE Planned_schedulÛ SET Id_Employee = @Id_Employee, Schedule_assignment_date = @Schedule_assignment_date WHERE Id_Grahy = @Id_Grahy";
+                                    using (MySqlCommand cmd = new MySqlCommand(sqlRedactPlaceAdd, conn, trancaction))
+                                    {
+                                        cmd.Parameters.AddWithValue("@Id_Place", Id_Place);
+                                        cmd.Parameters.AddWithValue("@Id_Body", Id_Body);
+                                        cmd.Parameters.AddWithValue("@Id_Floor", Id_Floor);
+                                        cmd.ExecuteNonQuery();
+                                    }
 
-                                using (MySqlCommand cmd = new MySqlCommand(sqlRedactPlannedSchedulÛ, conn, trancaction))
-                                {
-                                    cmd.Parameters.AddWithValue("@Id_Grahy", Id_Grahy);
-                                    cmd.Parameters.AddWithValue("@Id_Employee", Id_Employee);
-                                    cmd.Parameters.AddWithValue("@Schedule_assignment_date", readactAndAddShift.DtNzGraf.Value);
-                                    cmd.ExecuteNonQuery();
-                                }
+                                    string sqlRedactPlannedSchedulÛ = @"UPDATE Planned_schedulÛ SET Id_Employee = @Id_Employee, Schedule_assignment_date = @Schedule_assignment_date WHERE Id_Grahy = @Id_Grahy";
 
-                                string sqlRedactTheActualShift = @"UPDATE The_actual_shift SET Id_Place = @Id_Place,`Id_ Type_of_Substitution` = @Id_Type_of_Substitution, Date_of_shift = @Date_of_shift, 
+                                    using (MySqlCommand cmd = new MySqlCommand(sqlRedactPlannedSchedulÛ, conn, trancaction))
+                                    {
+                                        cmd.Parameters.AddWithValue("@Id_Grahy", Id_Grahy);
+                                        cmd.Parameters.AddWithValue("@Id_Employee", Id_Employee);
+                                        cmd.Parameters.AddWithValue("@Schedule_assignment_date", readactAndAddShift.DtNzGraf.Value);
+                                        cmd.ExecuteNonQuery();
+                                    }
+
+                                    string sqlRedactTheActualShift = @"UPDATE The_actual_shift SET Id_Place = @Id_Place,`Id_ Type_of_Substitution` = @Id_Type_of_Substitution, Date_of_shift = @Date_of_shift, 
                                     Fact_Shifts = @Fact_Shifts WHERE Id_Grahy = @Id_Grahy;";
 
-                                using (MySqlCommand cmd = new MySqlCommand(sqlRedactTheActualShift, conn, trancaction))
-                                {
-                                    cmd.Parameters.AddWithValue("@Id_Grahy", Id_Grahy);
-                                    cmd.Parameters.AddWithValue("@Id_Place", Id_Place);
-                                    cmd.Parameters.AddWithValue("@Id_Type_of_Substitution", Id_ShiftType);
-                                    cmd.Parameters.AddWithValue("@Date_of_shift", readactAndAddShift.DtShift.Value);
-                                    cmd.Parameters.AddWithValue("@Fact_Shifts", readactAndAddShift.TbPrichIzmen.Text);
-                                    cmd.ExecuteNonQuery();
+                                    using (MySqlCommand cmd = new MySqlCommand(sqlRedactTheActualShift, conn, trancaction))
+                                    {
+                                        cmd.Parameters.AddWithValue("@Id_Grahy", Id_Grahy);
+                                        cmd.Parameters.AddWithValue("@Id_Place", Id_Place);
+                                        cmd.Parameters.AddWithValue("@Id_Type_of_Substitution", Id_ShiftType);
+                                        cmd.Parameters.AddWithValue("@Date_of_shift", readactAndAddShift.DtShift.Value);
+                                        cmd.Parameters.AddWithValue("@Fact_Shifts", readactAndAddShift.TbPrichIzmen.Text);
+                                        cmd.ExecuteNonQuery();
+                                    }
+                                    trancaction.Commit();
                                 }
-                                trancaction.Commit();
+                            }
+                            catch (Exception ex) 
+                            {
+                                MessageBox.Show("Œ¯Ë·Í‡ Â‰‡ÍÚËÓ‚‡ÌËˇ ÒÏÂÌ˚!\n\nœÓ‰Ó·ÌÓÒÚË: " + ex.Message, "Œ¯Ë·Í‡", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
 
                             fillTabelShift();
@@ -665,32 +696,39 @@ namespace HozDepartment
             {
                 using (MySqlConnection conn = new MySqlConnection(this.connString))
                 {
-                    conn.Open();
-                    using (MySqlTransaction transaction = conn.BeginTransaction())
+                    try
                     {
-                        int Id_Grahy = Convert.ToInt32(TbShift.CurrentRow.Cells["Id_Grahy"].Value);
-                        string sqlDeleteTheActualShift = "DELETE FROM The_actual_shift WHERE Id_Grahy = @Id_Grahy";
-                        using (MySqlCommand cmd = new MySqlCommand(sqlDeleteTheActualShift, conn, transaction))
+                        conn.Open();
+                        using (MySqlTransaction transaction = conn.BeginTransaction())
                         {
-                            cmd.Parameters.AddWithValue("@Id_Grahy", Id_Grahy);
-                            cmd.ExecuteNonQuery();
-                        }
+                            int Id_Grahy = Convert.ToInt32(TbShift.CurrentRow.Cells["Id_Grahy"].Value);
+                            string sqlDeleteTheActualShift = "DELETE FROM The_actual_shift WHERE Id_Grahy = @Id_Grahy";
+                            using (MySqlCommand cmd = new MySqlCommand(sqlDeleteTheActualShift, conn, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@Id_Grahy", Id_Grahy);
+                                cmd.ExecuteNonQuery();
+                            }
 
-                        string sqlDeletePlannedSchedulÛ = "DELETE FROM Planned_schedulÛ WHERE Id_Grahy = @Id_Grahy";
-                        using (MySqlCommand cmd = new MySqlCommand(sqlDeletePlannedSchedulÛ, conn, transaction))
-                        {
-                            cmd.Parameters.AddWithValue("@Id_Grahy", Id_Grahy);
-                            cmd.ExecuteNonQuery();
-                        }
+                            string sqlDeletePlannedSchedulÛ = "DELETE FROM Planned_schedulÛ WHERE Id_Grahy = @Id_Grahy";
+                            using (MySqlCommand cmd = new MySqlCommand(sqlDeletePlannedSchedulÛ, conn, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@Id_Grahy", Id_Grahy);
+                                cmd.ExecuteNonQuery();
+                            }
 
-                        string sqlPlace = "DELETE FROM Place_work WHERE Id_Place = @Id_Place";
-                        int Id_Place = Convert.ToInt32(TbShift.CurrentRow.Cells["Id_Place"].Value);
-                        using (MySqlCommand cmd = new MySqlCommand(sqlPlace, conn, transaction))
-                        {
-                            cmd.Parameters.AddWithValue("@Id_Place", Id_Place);
-                            cmd.ExecuteNonQuery();
+                            string sqlPlace = "DELETE FROM Place_work WHERE Id_Place = @Id_Place";
+                            int Id_Place = Convert.ToInt32(TbShift.CurrentRow.Cells["Id_Place"].Value);
+                            using (MySqlCommand cmd = new MySqlCommand(sqlPlace, conn, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@Id_Place", Id_Place);
+                                cmd.ExecuteNonQuery();
+                            }
+                            transaction.Commit();
                         }
-                        transaction.Commit();
+                    }
+                    catch (Exception ex) 
+                    {
+                        MessageBox.Show("Œ¯Ë·Í‡ Û‰‡ÎÂÌËˇ ÒÏÂÌ˚!\n\nœÓ‰Ó·ÌÓÒÚË: " + ex.Message, "Œ¯Ë·Í‡", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     fillTabelShift();
                 }
@@ -779,23 +817,30 @@ namespace HozDepartment
                     {
                         using (MySqlConnection conn = new MySqlConnection(connString))
                         {
-                            string selectedPol = readactAndAddUser.rbMale.Checked ? readactAndAddUser.rbMale.Text : readactAndAddUser.rbFemale.Text;
-                            conn.Open();
-                            using (MySqlCommand cmd = new MySqlCommand("AddEmployee", conn))
+                            try
                             {
-                                cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                                cmd.Parameters.AddWithValue("p_Post", readactAndAddUser.TextPost.Text);
-                                cmd.Parameters.AddWithValue("p_Type_graphy", readactAndAddUser.TextTypeGraphy.Text);
-                                cmd.Parameters.AddWithValue("p_Acceptance_date", readactAndAddUser.CalendarAcceptanceDate.SelectionStart);
-                                cmd.Parameters.AddWithValue("p_Birthday", readactAndAddUser.CalendarBirthday.SelectionStart);
-                                cmd.Parameters.AddWithValue("p_Surname", readactAndAddUser.TextSurname.Text);
-                                cmd.Parameters.AddWithValue("p_Name", readactAndAddUser.TextName.Text);
-                                cmd.Parameters.AddWithValue("p_Middle_name", readactAndAddUser.TextMiddleName.Text);
-                                cmd.Parameters.AddWithValue("p_Seria_Pass", readactAndAddUser.TextSeriaPass.Text);
-                                cmd.Parameters.AddWithValue("p_Number_Pass", readactAndAddUser.TextNumberPass.Text);
-                                cmd.Parameters.AddWithValue("p_Pol", selectedPol);
-                                cmd.Parameters.AddWithValue("p_Phone_number", readactAndAddUser.TextPhone.Text);
-                                cmd.ExecuteNonQuery();
+                                string selectedPol = readactAndAddUser.rbMale.Checked ? readactAndAddUser.rbMale.Text : readactAndAddUser.rbFemale.Text;
+                                conn.Open();
+                                using (MySqlCommand cmd = new MySqlCommand("AddEmployee", conn))
+                                {
+                                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                                    cmd.Parameters.AddWithValue("p_Post", readactAndAddUser.TextPost.Text);
+                                    cmd.Parameters.AddWithValue("p_Type_graphy", readactAndAddUser.TextTypeGraphy.Text);
+                                    cmd.Parameters.AddWithValue("p_Acceptance_date", readactAndAddUser.CalendarAcceptanceDate.SelectionStart);
+                                    cmd.Parameters.AddWithValue("p_Birthday", readactAndAddUser.CalendarBirthday.SelectionStart);
+                                    cmd.Parameters.AddWithValue("p_Surname", readactAndAddUser.TextSurname.Text);
+                                    cmd.Parameters.AddWithValue("p_Name", readactAndAddUser.TextName.Text);
+                                    cmd.Parameters.AddWithValue("p_Middle_name", readactAndAddUser.TextMiddleName.Text);
+                                    cmd.Parameters.AddWithValue("p_Seria_Pass", readactAndAddUser.TextSeriaPass.Text);
+                                    cmd.Parameters.AddWithValue("p_Number_Pass", readactAndAddUser.TextNumberPass.Text);
+                                    cmd.Parameters.AddWithValue("p_Pol", selectedPol);
+                                    cmd.Parameters.AddWithValue("p_Phone_number", readactAndAddUser.TextPhone.Text);
+                                    cmd.ExecuteNonQuery();
+                                }
+                            }
+                            catch (Exception ex) 
+                            {
+                                MessageBox.Show("Œ¯Ë·Í‡ ‰Ó·Ó‚ÎÂÌËˇ ÒÓÚÛ‰ÌËÍ‡!\n\nœÓ‰Ó·ÌÓÒÚË: " + ex.Message, "Œ¯Ë·Í‡", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                             fillTableStaff();
                         }
@@ -832,29 +877,36 @@ namespace HozDepartment
                     {
                         using (MySqlConnection conn = new MySqlConnection(connString))
                         {
-                            conn.Open();
-                            string selectedPol = readactAndAddUser.rbMale.Checked ? readactAndAddUser.rbMale.Text : readactAndAddUser.rbFemale.Text;
+                            try
+                            {
+                                conn.Open();
+                                string selectedPol = readactAndAddUser.rbMale.Checked ? readactAndAddUser.rbMale.Text : readactAndAddUser.rbFemale.Text;
 
-                            string sqlRedactStaff = @"UPDATE Staff SET Post = @Post, Type_graphy = @Type_graphy, Acceptance_date = @Acceptance_date, Birthday = @Birthday, Phone_number = @Phone_number,
+                                string sqlRedactStaff = @"UPDATE Staff SET Post = @Post, Type_graphy = @Type_graphy, Acceptance_date = @Acceptance_date, Birthday = @Birthday, Phone_number = @Phone_number,
                                 Surname = @Surname, Name = @Name, Middle_name = @Middle_name, Pol = @Pol, Seria_Pass = @Seria_Pass, Number_Pass = @Number_Pass WHERE Id_Employee = @Id_Employee";
 
-                            using (MySqlCommand cmd = new MySqlCommand(sqlRedactStaff, conn))
-                            {
-                                cmd.Parameters.AddWithValue("@Id_Employee", Id_Employee);
-                                cmd.Parameters.AddWithValue("@Post", readactAndAddUser.TextPost.Text);
-                                cmd.Parameters.AddWithValue("@Type_graphy", readactAndAddUser.TextTypeGraphy.Text);
-                                cmd.Parameters.AddWithValue("@Acceptance_date", readactAndAddUser.CalendarAcceptanceDate.SelectionStart);
-                                cmd.Parameters.AddWithValue("@Birthday", readactAndAddUser.CalendarBirthday.SelectionStart);
-                                cmd.Parameters.AddWithValue("@Surname", readactAndAddUser.TextSurname.Text);
-                                cmd.Parameters.AddWithValue("@Name", readactAndAddUser.TextName.Text);
-                                cmd.Parameters.AddWithValue("@Middle_name", readactAndAddUser.TextMiddleName.Text);
-                                cmd.Parameters.AddWithValue("@Seria_Pass", readactAndAddUser.TextSeriaPass.Text);
-                                cmd.Parameters.AddWithValue("@Number_Pass", readactAndAddUser.TextNumberPass.Text);
-                                cmd.Parameters.AddWithValue("@Pol", selectedPol);
-                                cmd.Parameters.AddWithValue("@Phone_number", readactAndAddUser.TextPhone.Text);
-                                cmd.ExecuteNonQuery();
+                                using (MySqlCommand cmd = new MySqlCommand(sqlRedactStaff, conn))
+                                {
+                                    cmd.Parameters.AddWithValue("@Id_Employee", Id_Employee);
+                                    cmd.Parameters.AddWithValue("@Post", readactAndAddUser.TextPost.Text);
+                                    cmd.Parameters.AddWithValue("@Type_graphy", readactAndAddUser.TextTypeGraphy.Text);
+                                    cmd.Parameters.AddWithValue("@Acceptance_date", readactAndAddUser.CalendarAcceptanceDate.SelectionStart);
+                                    cmd.Parameters.AddWithValue("@Birthday", readactAndAddUser.CalendarBirthday.SelectionStart);
+                                    cmd.Parameters.AddWithValue("@Surname", readactAndAddUser.TextSurname.Text);
+                                    cmd.Parameters.AddWithValue("@Name", readactAndAddUser.TextName.Text);
+                                    cmd.Parameters.AddWithValue("@Middle_name", readactAndAddUser.TextMiddleName.Text);
+                                    cmd.Parameters.AddWithValue("@Seria_Pass", readactAndAddUser.TextSeriaPass.Text);
+                                    cmd.Parameters.AddWithValue("@Number_Pass", readactAndAddUser.TextNumberPass.Text);
+                                    cmd.Parameters.AddWithValue("@Pol", selectedPol);
+                                    cmd.Parameters.AddWithValue("@Phone_number", readactAndAddUser.TextPhone.Text);
+                                    cmd.ExecuteNonQuery();
+                                }
+                                fillTableStaff();
                             }
-                            fillTableStaff();
+                            catch(Exception ex)
+                            {
+                                MessageBox.Show("Œ¯Ë·Í‡ Â‰‡ÍÚËÓ‚‡ÌËˇ ÒÓÚÛ‰ÌËÍ‡!\n\nœÓ‰Ó·ÌÓÒÚË: " + ex.Message,"Œ¯Ë·Í‡", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
@@ -867,17 +919,26 @@ namespace HozDepartment
             {
                 using (MySqlConnection conn = new MySqlConnection(connString))
                 {
-                    conn.Open();
-
-                    int Id_Employee = Convert.ToInt32(TbUser.CurrentRow.Cells["Id_Employye"].Value);
-                    string sqlDeleteStaff = "DELETE FROM Staff WHERE Id_Employee = @Id_Employee";
-
-                    using (MySqlCommand cmd = new MySqlCommand(sqlDeleteStaff, conn))
+                    try
                     {
-                        cmd.Parameters.AddWithValue("@Id_Employee", Id_Employee);
-                        cmd.ExecuteNonQuery();
+                        conn.Open();
+
+                        int Id_Employee = Convert.ToInt32(TbUser.CurrentRow.Cells["Id_Employye"].Value);
+                        string sqlDeleteStaff = "DELETE FROM Staff WHERE Id_Employee = @Id_Employee";
+
+                        using (MySqlCommand cmd = new MySqlCommand(sqlDeleteStaff, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@Id_Employee", Id_Employee);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception ex) 
+                    {
+                        MessageBox.Show("Œ¯Ë·Í‡ Û‰‡ÎÂÌËˇ ÒÓÚÛ‰ÌËÍ‡!\n\nœÓ‰Ó·ÌÓÒÚË: " + ex.Message, "Œ¯Ë·Í‡", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
                 }
+
             }
 
             fillTableStaff();
