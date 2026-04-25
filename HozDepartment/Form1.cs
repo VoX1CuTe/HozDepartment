@@ -78,11 +78,12 @@ namespace HozDepartment
                         BtRedactUser.Visible = false;
                     }
 
-                    else if (role == "User")
+                    if (role == "User")
                     {
                         UserLb.Text = $"Роль: {FuelName}";
                         BtRedactUser.Visible = false;
                     }
+
 
                     TextSearchStaff.Visible = true;
                     CbFilterStaff.Visible = true;
@@ -184,6 +185,7 @@ namespace HozDepartment
                     StripMenuDleteSclad.Visible = true;
                     StripMenuAddSclad.Visible = true;
                 }
+
                 else
                 {
                     TbSclad.ClearSelection();
@@ -416,11 +418,11 @@ namespace HozDepartment
                 LEFT JOIN Shift_type sh ON sh.Id_Tvm_Smena = ash.`Id_ Type_of_Substitution`
                 LEFT JOIN Place_work pw ON pw.Id_Place = ash.Id_Place
                 LEFT JOIN Body b ON b.Id_Body = pw.Id_Body
-                LEFT JOIN Floor f ON f.Id_Floor = pw.Id_Floor;";
+                LEFT JOIN Floor f ON f.Id_Floor = pw.Id_Floor";
 
             if (role == "User")
             {
-                sqlShift += " WHERE ash.Date_of_shift BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 14 DAY)";
+                sqlShift += " WHERE ash.Date_of_shift BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 14 DAY)"; // Поправить ошибку при входе вылет!!!!
             }
 
             using (MySqlConnection conn = new MySqlConnection(this.connString))
@@ -1126,6 +1128,67 @@ namespace HozDepartment
                         dv.Sort = "";
                         break;
                 }
+            }
+        }
+
+        private void CbFilterSclad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (TbSclad.DataSource is DataTable dt)
+            {
+                string selected = CbFilterSclad.SelectedItem.ToString();
+                DataView dv = dt.DefaultView;
+
+                switch (selected)
+                {
+                    case "Сбросить всё":
+                        dv.RowFilter = "";
+                        dv.Sort = "";
+                        break;
+
+                    case "Категории (А-Я)":
+                        dv.RowFilter = "";
+                        dv.Sort = "Category_name ASC";
+                        break;
+
+                    case "Категории (Я-А)":
+                        dv.RowFilter = "";
+                        dv.Sort = "Category_name DESC";
+                        break;
+
+                    case "Кол-во поступлений (от большего)":
+                        dv.RowFilter = "";
+                        dv.Sort = "Entrance_Quantity DESC";
+                        break;
+
+                    case "Кол-во поступлений (от меньшего)":
+                        dv.RowFilter = "";
+                        dv.Sort = "Entrance_Quantity ASC";
+                        break;
+
+                    case "Выдано в работу (от большего)":
+                        dv.RowFilter = "";
+                        dv.Sort = "Payout_Quantity DESC";
+                        break;
+
+                    case "Выдано в работу (от меньшего)":
+                        dv.RowFilter = "";
+                        dv.Sort = "Payout_Quantity ASC";
+                        break;
+
+                    default:
+                        dv.RowFilter = string.Format("Body_name = '{0}'", selected);
+                        dv.Sort = "";
+                        break;
+                }
+            }
+        }
+
+        private void TextSearchSclad_TextChanged(object sender, EventArgs e)
+        {
+            if (TbSclad.DataSource is DataTable dt)
+            {
+                dt.DefaultView.RowFilter = string.Format("FIO LIKE '%{0}%'", TextSearchSclad.Text);
+                dt.DefaultView.RowFilter = string.Format("Inventory_Name LIKE '%{0}%'", TextSearchSclad.Text);
             }
         }
     }

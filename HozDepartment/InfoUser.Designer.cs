@@ -53,10 +53,11 @@
             StripMenuDelete = new ToolStripMenuItem();
             CbRole = new ComboBox();
             TbUserData = new Guna.UI2.WinForms.Guna2DataGridView();
+            TextSearchUser = new TextBox();
             id = new DataGridViewTextBoxColumn();
-            Role = new DataGridViewTextBoxColumn();
             Login = new DataGridViewTextBoxColumn();
             Password = new DataGridViewTextBoxColumn();
+            Role = new DataGridViewTextBoxColumn();
             FuelName = new DataGridViewTextBoxColumn();
             PanelToolbar.SuspendLayout();
             ContextMenuStrip.SuspendLayout();
@@ -262,7 +263,7 @@
             TbUserData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             TbUserData.ColumnHeadersHeight = 20;
             TbUserData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            TbUserData.Columns.AddRange(new DataGridViewColumn[] { id, Role, Login, Password, FuelName });
+            TbUserData.Columns.AddRange(new DataGridViewColumn[] { id, Login, Password, Role, FuelName });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(230, 230, 230);
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -273,7 +274,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             TbUserData.DefaultCellStyle = dataGridViewCellStyle3;
             TbUserData.GridColor = Color.Black;
-            TbUserData.Location = new Point(12, 69);
+            TbUserData.Location = new Point(12, 57);
             TbUserData.Name = "TbUserData";
             TbUserData.ReadOnly = true;
             TbUserData.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -287,7 +288,7 @@
             TbUserData.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             TbUserData.RowHeadersVisible = false;
             TbUserData.RowTemplate.Height = 30;
-            TbUserData.Size = new Size(597, 196);
+            TbUserData.Size = new Size(597, 208);
             TbUserData.TabIndex = 15;
             TbUserData.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             TbUserData.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -312,6 +313,15 @@
             TbUserData.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             TbUserData.CellMouseDown += TbUserData_CellMouseDown_1;
             // 
+            // TextSearchUser
+            // 
+            TextSearchUser.Location = new Point(150, 31);
+            TextSearchUser.Multiline = true;
+            TextSearchUser.Name = "TextSearchUser";
+            TextSearchUser.Size = new Size(283, 23);
+            TextSearchUser.TabIndex = 84;
+            TextSearchUser.TextChanged += TextSearchUser_TextChanged;
+            // 
             // id
             // 
             id.DataPropertyName = "id";
@@ -319,13 +329,6 @@
             id.Name = "id";
             id.ReadOnly = true;
             id.Visible = false;
-            // 
-            // Role
-            // 
-            Role.DataPropertyName = "Role";
-            Role.HeaderText = "Роль";
-            Role.Name = "Role";
-            Role.ReadOnly = true;
             // 
             // Login
             // 
@@ -341,6 +344,13 @@
             Password.Name = "Password";
             Password.ReadOnly = true;
             // 
+            // Role
+            // 
+            Role.DataPropertyName = "Role";
+            Role.HeaderText = "Роль";
+            Role.Name = "Role";
+            Role.ReadOnly = true;
+            // 
             // FuelName
             // 
             FuelName.DataPropertyName = "FuelName";
@@ -354,6 +364,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
             ClientSize = new Size(1019, 277);
+            Controls.Add(TextSearchUser);
             Controls.Add(TbUserData);
             Controls.Add(CbRole);
             Controls.Add(BtCancel);
@@ -397,9 +408,10 @@
         private ComboBox CbRole;
         private Guna.UI2.WinForms.Guna2DataGridView TbUserData;
         private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn Role;
         private DataGridViewTextBoxColumn Login;
         private DataGridViewTextBoxColumn Password;
+        private DataGridViewTextBoxColumn Role;
         private DataGridViewTextBoxColumn FuelName;
+        public TextBox TextSearchUser;
     }
 }

@@ -125,7 +125,8 @@
             BtnBackup = new Guna.UI2.WinForms.Guna2Button();
             TextSearchShift = new TextBox();
             CbFilterShift = new Guna.UI2.WinForms.Guna2ComboBox();
-            guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
+            CbFilterSclad = new Guna.UI2.WinForms.Guna2ComboBox();
+            TextSearchSclad = new TextBox();
             PanelToolbar.SuspendLayout();
             PanelButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TbSclad).BeginInit();
@@ -264,7 +265,6 @@
             TbSclad.AllowUserToAddRows = false;
             TbSclad.AllowUserToDeleteRows = false;
             TbSclad.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(230, 230, 230);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
@@ -295,7 +295,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             TbSclad.DefaultCellStyle = dataGridViewCellStyle3;
             TbSclad.GridColor = Color.Black;
-            TbSclad.Location = new Point(0, 241);
+            TbSclad.Location = new Point(0, 144);
             TbSclad.Name = "TbSclad";
             TbSclad.ReadOnly = true;
             TbSclad.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -309,7 +309,7 @@
             TbSclad.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             TbSclad.RowHeadersVisible = false;
             TbSclad.RowTemplate.Height = 30;
-            TbSclad.Size = new Size(1304, 248);
+            TbSclad.Size = new Size(1304, 229);
             TbSclad.TabIndex = 4;
             TbSclad.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             TbSclad.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -526,7 +526,7 @@
             TbShift.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             TbShift.RowHeadersVisible = false;
             TbShift.RowTemplate.Height = 30;
-            TbShift.Size = new Size(1304, 243);
+            TbShift.Size = new Size(1304, 229);
             TbShift.TabIndex = 5;
             TbShift.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             TbShift.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -731,7 +731,7 @@
             dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
             TbUser.DefaultCellStyle = dataGridViewCellStyle11;
             TbUser.GridColor = Color.Black;
-            TbUser.Location = new Point(0, 300);
+            TbUser.Location = new Point(0, 144);
             TbUser.Name = "TbUser";
             TbUser.ReadOnly = true;
             TbUser.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -745,7 +745,7 @@
             TbUser.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             TbUser.RowHeadersVisible = false;
             TbUser.RowTemplate.Height = 30;
-            TbUser.Size = new Size(1304, 248);
+            TbUser.Size = new Size(1304, 229);
             TbUser.TabIndex = 6;
             TbUser.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             TbUser.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -983,34 +983,46 @@
             CbFilterShift.TabIndex = 84;
             CbFilterShift.SelectedIndexChanged += CbFilterShift_SelectedIndexChanged;
             // 
-            // guna2ComboBox1
+            // CbFilterSclad
             // 
-            guna2ComboBox1.BackColor = Color.FromArgb(253, 253, 150);
-            guna2ComboBox1.BorderColor = Color.FromArgb(253, 253, 150);
-            guna2ComboBox1.CustomizableEdges = customizableEdges17;
-            guna2ComboBox1.DrawMode = DrawMode.OwnerDrawFixed;
-            guna2ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            guna2ComboBox1.DropDownWidth = 140;
-            guna2ComboBox1.FillColor = Color.FromArgb(253, 253, 150);
-            guna2ComboBox1.FocusedColor = Color.FromArgb(94, 148, 255);
-            guna2ComboBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2ComboBox1.Font = new Font("Segoe UI", 10F);
-            guna2ComboBox1.ForeColor = Color.Black;
-            guna2ComboBox1.ItemHeight = 23;
-            guna2ComboBox1.Items.AddRange(new object[] { "Сбросить всё", "Корпус (А-Я)", "Корпус (Я-А)", "Отработана смена (от +)", "Отработана смена (от -)", "Номер этажа (от большего)", "Номер этажа (от меньшего)" });
-            guna2ComboBox1.Location = new Point(606, 109);
-            guna2ComboBox1.Name = "guna2ComboBox1";
-            guna2ComboBox1.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            guna2ComboBox1.Size = new Size(183, 29);
-            guna2ComboBox1.TabIndex = 85;
+            CbFilterSclad.BackColor = Color.FromArgb(253, 253, 150);
+            CbFilterSclad.BorderColor = Color.FromArgb(253, 253, 150);
+            CbFilterSclad.CustomizableEdges = customizableEdges17;
+            CbFilterSclad.DrawMode = DrawMode.OwnerDrawFixed;
+            CbFilterSclad.DropDownStyle = ComboBoxStyle.DropDownList;
+            CbFilterSclad.DropDownWidth = 140;
+            CbFilterSclad.FillColor = Color.FromArgb(253, 253, 150);
+            CbFilterSclad.FocusedColor = Color.FromArgb(94, 148, 255);
+            CbFilterSclad.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            CbFilterSclad.Font = new Font("Segoe UI", 10F);
+            CbFilterSclad.ForeColor = Color.Black;
+            CbFilterSclad.ItemHeight = 23;
+            CbFilterSclad.Items.AddRange(new object[] { "Сбросить всё", "Категории (А-Я)", "Категории (Я-А)", "Кол-во поступлений (от большего)", "Кол-во поступлений (от меньшего)", "Выдано в работу (от большего)", "Выдано в работу (от меньшего)" });
+            CbFilterSclad.Location = new Point(368, 109);
+            CbFilterSclad.Name = "CbFilterSclad";
+            CbFilterSclad.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            CbFilterSclad.Size = new Size(183, 29);
+            CbFilterSclad.TabIndex = 85;
+            CbFilterSclad.SelectedIndexChanged += CbFilterSclad_SelectedIndexChanged;
+            // 
+            // TextSearchSclad
+            // 
+            TextSearchSclad.Location = new Point(44, 109);
+            TextSearchSclad.Multiline = true;
+            TextSearchSclad.Name = "TextSearchSclad";
+            TextSearchSclad.Size = new Size(283, 29);
+            TextSearchSclad.TabIndex = 86;
+            TextSearchSclad.TextChanged += TextSearchSclad_TextChanged;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(220, 240, 200);
-            ClientSize = new Size(1304, 391);
-            Controls.Add(guna2ComboBox1);
+            ClientSize = new Size(1304, 374);
+            Controls.Add(TextSearchSclad);
+            Controls.Add(TbSclad);
+            Controls.Add(CbFilterSclad);
             Controls.Add(CbFilterShift);
             Controls.Add(TextSearchShift);
             Controls.Add(BtnBackup);
@@ -1020,7 +1032,6 @@
             Controls.Add(PanelButton);
             Controls.Add(PanelToolbar);
             Controls.Add(TbUser);
-            Controls.Add(TbSclad);
             Controls.Add(TbShift);
             FormBorderStyle = FormBorderStyle.None;
             Name = "MainForm";
@@ -1108,6 +1119,7 @@
         private DataGridViewTextBoxColumn Body_name;
         private DataGridViewTextBoxColumn Floor_number;
         private DataGridViewTextBoxColumn Fact_Shifts;
-        public Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
+        public Guna.UI2.WinForms.Guna2ComboBox CbFilterSclad;
+        public TextBox TextSearchSclad;
     }
 }

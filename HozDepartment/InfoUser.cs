@@ -181,32 +181,39 @@ namespace HozDepartment
             {
                 using (MySqlConnection conn = new MySqlConnection(this.connString))
                 {
-                    conn.Open();
-
-                    string sqlCheck = "SELECT COUNT(*) FROM User WHERE Login = @Login";
-                    using (MySqlCommand checkCmd = new MySqlCommand(sqlCheck, conn))
+                    try
                     {
-                        checkCmd.Parameters.AddWithValue("@Login", TbLogin.Text);
-                        int count = Convert.ToInt32(checkCmd.ExecuteScalar());
+                        conn.Open();
 
-                        if (count > 0)
+                        string sqlCheck = "SELECT COUNT(*) FROM User WHERE Login = @Login";
+                        using (MySqlCommand checkCmd = new MySqlCommand(sqlCheck, conn))
                         {
-                            MessageBox.Show("Пользователь с таким логином уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return; 
+                            checkCmd.Parameters.AddWithValue("@Login", TbLogin.Text);
+                            int count = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+                            if (count > 0)
+                            {
+                                MessageBox.Show("Пользователь с таким логином уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
-                    }
 
-                    string sqlAddUser = "INSERT INTO User (Login, Password, Role, FuelName) VALUES (@Login, @Password, @Role, @FuelName)";
-                    using (MySqlCommand cmd = new MySqlCommand(sqlAddUser, conn))
+                        string sqlAddUser = "INSERT INTO User (Login, Password, Role, FuelName) VALUES (@Login, @Password, @Role, @FuelName)";
+                        using (MySqlCommand cmd = new MySqlCommand(sqlAddUser, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@Login", TbLogin.Text);
+                            cmd.Parameters.AddWithValue("@Password", TbPassword.Text);
+                            cmd.Parameters.AddWithValue("@Role", CbRole.Text);
+                            cmd.Parameters.AddWithValue("@FuelName", TbUserName.Text);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        fillTableInfoUser();
+                    }
+                    catch (Exception ex) 
                     {
-                        cmd.Parameters.AddWithValue("@Login", TbLogin.Text);
-                        cmd.Parameters.AddWithValue("@Password", TbPassword.Text);
-                        cmd.Parameters.AddWithValue("@Role", CbRole.Text);
-                        cmd.Parameters.AddWithValue("@FuelName", TbUserName.Text);
-                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Ошибка добавления пользователя!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
-                    fillTableInfoUser();
                 }
 
                 Size = new Size(619, 277);
@@ -226,6 +233,7 @@ namespace HozDepartment
 
             else if (TbUserData == activeTable)
             {
+                
                 int id = Convert.ToInt32(TbUserData.CurrentRow.Cells["id"].Value);
 
 
@@ -233,32 +241,39 @@ namespace HozDepartment
 
                 using (MySqlConnection conn = new MySqlConnection(this.connString))
                 {
-                    conn.Open();
-
-                    string sqlCheck = "SELECT COUNT(*) FROM User WHERE Login = @Login";
-                    using (MySqlCommand checkCmd = new MySqlCommand(sqlCheck, conn))
+                    try
                     {
-                        checkCmd.Parameters.AddWithValue("@Login", TbLogin.Text);
-                        int count = Convert.ToInt32(checkCmd.ExecuteScalar());
+                        conn.Open();
 
-                        if (count > 0)
+                        string sqlCheck = "SELECT COUNT(*) FROM User WHERE Login = @Login";
+                        using (MySqlCommand checkCmd = new MySqlCommand(sqlCheck, conn))
                         {
-                            MessageBox.Show("Пользователь с таким логином уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                    }
+                            checkCmd.Parameters.AddWithValue("@Login", TbLogin.Text);
+                            int count = Convert.ToInt32(checkCmd.ExecuteScalar());
 
-                    using (MySqlCommand cmd = new MySqlCommand(sqlUpdateUser, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@Login", TbLogin.Text);
-                        cmd.Parameters.AddWithValue("@Password", TbPassword.Text);
-                        cmd.Parameters.AddWithValue("@Role", CbRole.Text);
-                        cmd.Parameters.AddWithValue("@FuelName", TbUserName.Text);
-                        cmd.Parameters.AddWithValue("@Id", id);
-                        cmd.ExecuteNonQuery();
+                            if (count > 0)
+                            {
+                                MessageBox.Show("Пользователь с таким логином уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+
+                        using (MySqlCommand cmd = new MySqlCommand(sqlUpdateUser, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@Login", TbLogin.Text);
+                            cmd.Parameters.AddWithValue("@Password", TbPassword.Text);
+                            cmd.Parameters.AddWithValue("@Role", CbRole.Text);
+                            cmd.Parameters.AddWithValue("@FuelName", TbUserName.Text);
+                            cmd.Parameters.AddWithValue("@Id", id);
+                            cmd.ExecuteNonQuery();
+                        }
+                        fillTableInfoUser();
                     }
-                    fillTableInfoUser();
-                }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Не удалось отредактировать пользователя!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }                                  
 
                 if (TbLogin.Text == "")
                 {
@@ -298,24 +313,48 @@ namespace HozDepartment
 
         private void StripMenuDelete_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(TbUserData.CurrentRow.Cells["id"].Value);
-            using (MySqlConnection conn = new MySqlConnection(this.connString))
-            {
-                conn.Open();
-                string sqlDeleteUser = "DELETE FROM User WHERE id = @id";
-                using (MySqlCommand cmd = new MySqlCommand(sqlDeleteUser, conn))
-                {
-                    cmd.Parameters.AddWithValue("@id", id);
-                    cmd.ExecuteNonQuery();
-                }
+            DialogResult result = MessageBox.Show(
+                "Вы уверены, что хотите безвозвратно удалить этого пользователя?",
+                "Подтверждение удаления",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
 
-                fillTableInfoUser();
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    int id = Convert.ToInt32(TbUserData.CurrentRow.Cells["id"].Value);
+                    using (MySqlConnection conn = new MySqlConnection(this.connString))
+                    {
+                        conn.Open();
+                        string sqlDeleteUser = "DELETE FROM User WHERE id = @id";
+                        using (MySqlCommand cmd = new MySqlCommand(sqlDeleteUser, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@id", id);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        fillTableInfoUser();
+                        MessageBox.Show("Пользователь был успешно удалён!", "Готово", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex) 
+                {
+                    MessageBox.Show("Не удалось удалить пользователя!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
         private void BtCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void TextSearchUser_TextChanged(object sender, EventArgs e)
+        {
+            if (TbUserData.DataSource is DataTable dt)
+            {
+                dt.DefaultView.RowFilter = string.Format("Login LIKE '%{0}%'", TextSearchUser.Text);
+                dt.DefaultView.RowFilter = string.Format("FuelName '%{0}%'", TextSearchUser.Text);
+            }
         }
     }
 }
