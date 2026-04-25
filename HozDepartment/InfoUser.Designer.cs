@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             PanelToolbar = new Panel();
             guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             TbLogin = new TextBox();
@@ -46,20 +47,20 @@
             LbUserName = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btSave = new Guna.UI2.WinForms.Guna2Button();
             BtCancel = new Guna.UI2.WinForms.Guna2Button();
+            ContextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            StripMenuAdd = new ToolStripMenuItem();
+            StripMenuRedact = new ToolStripMenuItem();
+            StripMenuDelete = new ToolStripMenuItem();
+            CbRole = new ComboBox();
             TbUserData = new Guna.UI2.WinForms.Guna2DataGridView();
             id = new DataGridViewTextBoxColumn();
             Role = new DataGridViewTextBoxColumn();
             Login = new DataGridViewTextBoxColumn();
             Password = new DataGridViewTextBoxColumn();
             FuelName = new DataGridViewTextBoxColumn();
-            ContextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
-            StripMenuAdd = new ToolStripMenuItem();
-            StripMenuRedact = new ToolStripMenuItem();
-            StripMenuDelete = new ToolStripMenuItem();
-            CbRole = new ComboBox();
             PanelToolbar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)TbUserData).BeginInit();
             ContextMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)TbUserData).BeginInit();
             SuspendLayout();
             // 
             // PanelToolbar
@@ -153,7 +154,7 @@
             // btSave
             // 
             btSave.BorderRadius = 10;
-            btSave.CustomizableEdges = customizableEdges5;
+            btSave.CustomizableEdges = customizableEdges1;
             btSave.DisabledState.BorderColor = Color.DarkGray;
             btSave.DisabledState.CustomBorderColor = Color.DarkGray;
             btSave.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -163,7 +164,7 @@
             btSave.ForeColor = Color.Black;
             btSave.Location = new Point(628, 241);
             btSave.Name = "btSave";
-            btSave.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btSave.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btSave.Size = new Size(145, 24);
             btSave.TabIndex = 11;
             btSave.Text = "Сохранить";
@@ -173,7 +174,7 @@
             // BtCancel
             // 
             BtCancel.BorderRadius = 10;
-            BtCancel.CustomizableEdges = customizableEdges7;
+            BtCancel.CustomizableEdges = customizableEdges3;
             BtCancel.DisabledState.BorderColor = Color.DarkGray;
             BtCancel.DisabledState.CustomBorderColor = Color.DarkGray;
             BtCancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -183,65 +184,133 @@
             BtCancel.ForeColor = Color.Black;
             BtCancel.Location = new Point(861, 241);
             BtCancel.Name = "BtCancel";
-            BtCancel.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            BtCancel.ShadowDecoration.CustomizableEdges = customizableEdges4;
             BtCancel.Size = new Size(145, 24);
             BtCancel.TabIndex = 12;
             BtCancel.Text = "Отмена";
+            BtCancel.Click += BtCancel_Click;
+            // 
+            // ContextMenuStrip
+            // 
+            ContextMenuStrip.Items.AddRange(new ToolStripItem[] { StripMenuAdd, StripMenuRedact, StripMenuDelete });
+            ContextMenuStrip.Name = "ContextMenuStrip";
+            ContextMenuStrip.RenderMode = ToolStripRenderMode.Professional;
+            ContextMenuStrip.RenderStyle.ArrowColor = Color.FromArgb(151, 143, 255);
+            ContextMenuStrip.RenderStyle.BorderColor = Color.Gainsboro;
+            ContextMenuStrip.RenderStyle.ColorTable = null;
+            ContextMenuStrip.RenderStyle.RoundedEdges = true;
+            ContextMenuStrip.RenderStyle.SelectionArrowColor = Color.White;
+            ContextMenuStrip.RenderStyle.SelectionBackColor = Color.FromArgb(100, 88, 255);
+            ContextMenuStrip.RenderStyle.SelectionForeColor = Color.White;
+            ContextMenuStrip.RenderStyle.SeparatorColor = Color.Gainsboro;
+            ContextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            ContextMenuStrip.Size = new Size(164, 70);
+            // 
+            // StripMenuAdd
+            // 
+            StripMenuAdd.Name = "StripMenuAdd";
+            StripMenuAdd.Size = new Size(163, 22);
+            StripMenuAdd.Text = "Добавить";
+            StripMenuAdd.Click += StripMenuAdd_Click;
+            // 
+            // StripMenuRedact
+            // 
+            StripMenuRedact.Name = "StripMenuRedact";
+            StripMenuRedact.Size = new Size(163, 22);
+            StripMenuRedact.Text = "Редактирование";
+            StripMenuRedact.Click += StripMenuRedact_Click;
+            // 
+            // StripMenuDelete
+            // 
+            StripMenuDelete.Name = "StripMenuDelete";
+            StripMenuDelete.Size = new Size(163, 22);
+            StripMenuDelete.Text = "Удалить";
+            StripMenuDelete.Click += StripMenuDelete_Click;
+            // 
+            // CbRole
+            // 
+            CbRole.FormattingEnabled = true;
+            CbRole.Items.AddRange(new object[] { "Admin", "Manager", "User" });
+            CbRole.Location = new Point(767, 127);
+            CbRole.Name = "CbRole";
+            CbRole.Size = new Size(239, 23);
+            CbRole.TabIndex = 14;
+            CbRole.Visible = false;
             // 
             // TbUserData
             // 
             TbUserData.AllowUserToAddRows = false;
             TbUserData.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            TbUserData.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(100, 88, 255);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            TbUserData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            TbUserData.ColumnHeadersHeight = 17;
+            TbUserData.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(230, 230, 230);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(220, 240, 200);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            TbUserData.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            TbUserData.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            TbUserData.BackgroundColor = Color.LightGoldenrodYellow;
+            TbUserData.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+            TbUserData.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.Silver;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            TbUserData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            TbUserData.ColumnHeadersHeight = 20;
             TbUserData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             TbUserData.Columns.AddRange(new DataGridViewColumn[] { id, Role, Login, Password, FuelName });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            TbUserData.DefaultCellStyle = dataGridViewCellStyle6;
-            TbUserData.GridColor = Color.FromArgb(231, 229, 255);
-            TbUserData.Location = new Point(12, 44);
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(230, 230, 230);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.Padding = new Padding(10, 0, 0, 0);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(220, 240, 200);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            TbUserData.DefaultCellStyle = dataGridViewCellStyle3;
+            TbUserData.GridColor = Color.Black;
+            TbUserData.Location = new Point(12, 69);
             TbUserData.Name = "TbUserData";
             TbUserData.ReadOnly = true;
+            TbUserData.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(230, 230, 230);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(230, 230, 230);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            TbUserData.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             TbUserData.RowHeadersVisible = false;
-            TbUserData.Size = new Size(597, 222);
-            TbUserData.TabIndex = 13;
+            TbUserData.RowTemplate.Height = 30;
+            TbUserData.Size = new Size(597, 196);
+            TbUserData.TabIndex = 15;
             TbUserData.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             TbUserData.ThemeStyle.AlternatingRowsStyle.Font = null;
             TbUserData.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
             TbUserData.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
             TbUserData.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
-            TbUserData.ThemeStyle.BackColor = Color.White;
-            TbUserData.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            TbUserData.ThemeStyle.BackColor = Color.LightGoldenrodYellow;
+            TbUserData.ThemeStyle.GridColor = Color.Black;
             TbUserData.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
-            TbUserData.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            TbUserData.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.Single;
             TbUserData.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
             TbUserData.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             TbUserData.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            TbUserData.ThemeStyle.HeaderStyle.Height = 17;
+            TbUserData.ThemeStyle.HeaderStyle.Height = 20;
             TbUserData.ThemeStyle.ReadOnly = true;
-            TbUserData.ThemeStyle.RowsStyle.BackColor = Color.White;
-            TbUserData.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            TbUserData.ThemeStyle.RowsStyle.BackColor = Color.Black;
+            TbUserData.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.Single;
             TbUserData.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
             TbUserData.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            TbUserData.ThemeStyle.RowsStyle.Height = 25;
+            TbUserData.ThemeStyle.RowsStyle.Height = 30;
             TbUserData.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             TbUserData.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            TbUserData.CellMouseDown += TbUserData_CellMouseDown;
+            TbUserData.CellMouseDown += TbUserData_CellMouseDown_1;
             // 
             // id
             // 
@@ -279,61 +348,14 @@
             FuelName.Name = "FuelName";
             FuelName.ReadOnly = true;
             // 
-            // ContextMenuStrip
-            // 
-            ContextMenuStrip.Items.AddRange(new ToolStripItem[] { StripMenuAdd, StripMenuRedact, StripMenuDelete });
-            ContextMenuStrip.Name = "ContextMenuStrip";
-            ContextMenuStrip.RenderMode = ToolStripRenderMode.Professional;
-            ContextMenuStrip.RenderStyle.ArrowColor = Color.FromArgb(151, 143, 255);
-            ContextMenuStrip.RenderStyle.BorderColor = Color.Gainsboro;
-            ContextMenuStrip.RenderStyle.ColorTable = null;
-            ContextMenuStrip.RenderStyle.RoundedEdges = true;
-            ContextMenuStrip.RenderStyle.SelectionArrowColor = Color.White;
-            ContextMenuStrip.RenderStyle.SelectionBackColor = Color.FromArgb(100, 88, 255);
-            ContextMenuStrip.RenderStyle.SelectionForeColor = Color.White;
-            ContextMenuStrip.RenderStyle.SeparatorColor = Color.Gainsboro;
-            ContextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            ContextMenuStrip.Size = new Size(181, 92);
-            // 
-            // StripMenuAdd
-            // 
-            StripMenuAdd.Name = "StripMenuAdd";
-            StripMenuAdd.Size = new Size(180, 22);
-            StripMenuAdd.Text = "Добавить";
-            StripMenuAdd.Click += StripMenuAdd_Click;
-            // 
-            // StripMenuRedact
-            // 
-            StripMenuRedact.Name = "StripMenuRedact";
-            StripMenuRedact.Size = new Size(180, 22);
-            StripMenuRedact.Text = "Редактирование";
-            StripMenuRedact.Click += StripMenuRedact_Click;
-            // 
-            // StripMenuDelete
-            // 
-            StripMenuDelete.Name = "StripMenuDelete";
-            StripMenuDelete.Size = new Size(180, 22);
-            StripMenuDelete.Text = "Удалить";
-            StripMenuDelete.Click += StripMenuDelete_Click;
-            // 
-            // CbRole
-            // 
-            CbRole.FormattingEnabled = true;
-            CbRole.Items.AddRange(new object[] { "Admin", "Manager", "User" });
-            CbRole.Location = new Point(767, 127);
-            CbRole.Name = "CbRole";
-            CbRole.Size = new Size(239, 23);
-            CbRole.TabIndex = 14;
-            CbRole.Visible = false;
-            // 
             // InfoUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
             ClientSize = new Size(1019, 277);
-            Controls.Add(CbRole);
             Controls.Add(TbUserData);
+            Controls.Add(CbRole);
             Controls.Add(BtCancel);
             Controls.Add(LbLogin);
             Controls.Add(btSave);
@@ -350,18 +372,13 @@
             Load += InfoUser_Load;
             PanelToolbar.ResumeLayout(false);
             PanelToolbar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)TbUserData).EndInit();
             ContextMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)TbUserData).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn Role;
-        private DataGridViewTextBoxColumn Login;
-        private DataGridViewTextBoxColumn Password;
-        private DataGridViewTextBoxColumn FuelName;
         private ToolStripMenuItem StripMenuAdd;
         private ToolStripMenuItem StripMenuRedact;
         private ToolStripMenuItem StripMenuDelete;
@@ -372,12 +389,17 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel LbPassword;
         private Guna.UI2.WinForms.Guna2HtmlLabel LbRole;
         private Guna.UI2.WinForms.Guna2HtmlLabel LbUserName;
-        private Guna.UI2.WinForms.Guna2DataGridView TbUserData;
         private Panel PanelToolbar;
         private Guna.UI2.WinForms.Guna2Button btSave;
         private Guna.UI2.WinForms.Guna2Button BtCancel;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
         private Guna.UI2.WinForms.Guna2ContextMenuStrip ContextMenuStrip;
         private ComboBox CbRole;
+        private Guna.UI2.WinForms.Guna2DataGridView TbUserData;
+        private DataGridViewTextBoxColumn id;
+        private DataGridViewTextBoxColumn Role;
+        private DataGridViewTextBoxColumn Login;
+        private DataGridViewTextBoxColumn Password;
+        private DataGridViewTextBoxColumn FuelName;
     }
 }

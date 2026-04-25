@@ -731,7 +731,7 @@
             dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
             TbUser.DefaultCellStyle = dataGridViewCellStyle11;
             TbUser.GridColor = Color.Black;
-            TbUser.Location = new Point(-12, 308);
+            TbUser.Location = new Point(0, 300);
             TbUser.Name = "TbUser";
             TbUser.ReadOnly = true;
             TbUser.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;

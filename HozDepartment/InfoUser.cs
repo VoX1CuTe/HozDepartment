@@ -102,6 +102,16 @@ namespace HozDepartment
             }
         }
 
+        private DataGridView activeTable;
+        private void TbUserData_CellMouseDown_1(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+            {
+                activeTable = TbUserData;
+                ContextMenuStrip.Show(TbUserData, e.Location);
+            }
+        }
+
         private void ClearFields()
         {
             TbLogin.Clear();
@@ -167,7 +177,7 @@ namespace HozDepartment
 
         private void btSave_Click(object sender, EventArgs e)
         {
-            if (mode == FormMode.Add)
+            if (TbUserData == activeTable)
             {
                 string sqlAddUser = "INSERT INTO User (Login, Password, Role, FuelName) VALUES (@Login, @Password, @Role, @FuelName)";
 
@@ -201,7 +211,7 @@ namespace HozDepartment
                 btSave.Visible = false;
             }
 
-            else if (mode == FormMode.Edit)
+            else if (TbUserData == activeTable)
             {
                 int id = Convert.ToInt32(TbUserData.CurrentRow.Cells["id"].Value);
 
@@ -218,7 +228,7 @@ namespace HozDepartment
                         cmd.Parameters.AddWithValue("@Role", CbRole.Text);
                         cmd.Parameters.AddWithValue("@FuelName", TbUserName.Text);
                         cmd.Parameters.AddWithValue("@Id", id);
-                        cmd.ExecuteNonQuery();    
+                        cmd.ExecuteNonQuery();
                     }
                     fillTableInfoUser();
                 }
@@ -261,19 +271,24 @@ namespace HozDepartment
 
         private void StripMenuDelete_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(TbUserData.CurrentRow.Cells["id"].Value);   
+            int id = Convert.ToInt32(TbUserData.CurrentRow.Cells["id"].Value);
             using (MySqlConnection conn = new MySqlConnection(this.connString))
             {
-                conn.Open(); 
+                conn.Open();
                 string sqlDeleteUser = "DELETE FROM User WHERE id = @id";
                 using (MySqlCommand cmd = new MySqlCommand(sqlDeleteUser, conn))
                 {
                     cmd.Parameters.AddWithValue("@id", id);
-                    cmd.ExecuteNonQuery();       
+                    cmd.ExecuteNonQuery();
                 }
 
                 fillTableInfoUser();
             }
+        }
+
+        private void BtCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
         }
     }
 }
