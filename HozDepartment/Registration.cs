@@ -178,7 +178,19 @@ Password=";
             }
         }
 
-
+        public string HashPassword(string password)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password.Trim()));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2")); // Формат строчных букв
+                }
+                return builder.ToString();
+            }
+        }
 
         string role = "";
         string FuelName = "";
@@ -189,14 +201,8 @@ Password=";
                 try
                 {
                     // 1. Предварительная проверка на пустоту
-                    if (string.IsNullOrWhiteSpace(textLogin.Text))
-                    {
-                        MessageBox.Show("Введите логин!"); return;
-                    }
-                    if (string.IsNullOrWhiteSpace(textPassword.Text))
-                    {
-                        MessageBox.Show("Введите пароль!"); return;
-                    }
+                    if (string.IsNullOrWhiteSpace(textLogin.Text)) { MessageBox.Show("Введите логин!"); return; }
+                    if (string.IsNullOrWhiteSpace(textPassword.Text)) { MessageBox.Show("Введите пароль!"); return; }
 
                     conn.Open();
 
@@ -213,11 +219,13 @@ Password=";
                         }
                     }
 
+                    string hashedInput = HashPassword(textPassword.Text.Trim());
+
                     string sqlCheckPass = "SELECT Role, FuelName FROM User WHERE Login = @login AND Password = @pass";
                     using (var cmdPass = new MySqlCommand(sqlCheckPass, conn))
                     {
                         cmdPass.Parameters.AddWithValue("@login", textLogin.Text.Trim());
-                        cmdPass.Parameters.AddWithValue("@pass", textPassword.Text.Trim());
+                        cmdPass.Parameters.AddWithValue("@pass", hashedInput);
 
                         using (MySqlDataReader reader = cmdPass.ExecuteReader())
                         {
