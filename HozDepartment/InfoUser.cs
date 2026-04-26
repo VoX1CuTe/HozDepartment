@@ -327,7 +327,7 @@ namespace HozDepartment
                 btSave.Visible = false;
             }
         }
-
+        public static int CurrentUserId;
         private void StripMenuDelete_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
@@ -338,14 +338,28 @@ namespace HozDepartment
             {
                 try
                 {
-                    int id = Convert.ToInt32(TbUserData.CurrentRow.Cells["id"].Value);
+                    int selectedId = Convert.ToInt32(TbUserData.CurrentRow.Cells["id"].Value);
+
+                    if (selectedId == 24)
+                    {
+                        MessageBox.Show("Этого администратора невозможно удалить!", "Защита", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        return;
+                    }
+
+                    //ЗАЩИТА ОТ САМОУДАЛЕНИЯ
+                    if (selectedId == CurrentUserId)
+                    {
+                        MessageBox.Show("Вы не можете удалить самого себя!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     using (MySqlConnection conn = new MySqlConnection(this.connString))
                     {
                         conn.Open();
                         string sqlDeleteUser = "DELETE FROM User WHERE id = @id";
                         using (MySqlCommand cmd = new MySqlCommand(sqlDeleteUser, conn))
                         {
-                            cmd.Parameters.AddWithValue("@id", id);
+                            cmd.Parameters.AddWithValue("@id", selectedId);
                             cmd.ExecuteNonQuery();
                         }
 
@@ -353,7 +367,7 @@ namespace HozDepartment
                         MessageBox.Show("Пользователь был успешно удалён!", "Готово", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
                     MessageBox.Show("Не удалось удалить пользователя!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
