@@ -38,6 +38,7 @@
             btEnter = new Guna.UI2.WinForms.Guna2Button();
             PanelToolbar = new Panel();
             UserLb = new Label();
+            label4 = new Label();
             PanelToolbar.SuspendLayout();
             SuspendLayout();
             // 
@@ -57,7 +58,7 @@
             textLogin.BorderStyle = BorderStyle.FixedSingle;
             textLogin.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
             textLogin.ForeColor = Color.White;
-            textLogin.Location = new Point(70, 155);
+            textLogin.Location = new Point(71, 125);
             textLogin.Multiline = true;
             textLogin.Name = "textLogin";
             textLogin.Size = new Size(253, 23);
@@ -68,7 +69,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label2.Location = new Point(14, 155);
+            label2.Location = new Point(5, 128);
             label2.Name = "label2";
             label2.Size = new Size(52, 20);
             label2.TabIndex = 3;
@@ -78,7 +79,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label3.Location = new Point(4, 190);
+            label3.Location = new Point(5, 160);
             label3.Name = "label3";
             label3.Size = new Size(62, 20);
             label3.TabIndex = 4;
@@ -90,7 +91,7 @@
             textPassword.BorderStyle = BorderStyle.FixedSingle;
             textPassword.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
             textPassword.ForeColor = Color.White;
-            textPassword.Location = new Point(70, 190);
+            textPassword.Location = new Point(71, 160);
             textPassword.Multiline = true;
             textPassword.Name = "textPassword";
             textPassword.Size = new Size(253, 23);
@@ -108,10 +109,10 @@
             btEnter.FillColor = Color.FromArgb(253, 253, 150);
             btEnter.Font = new Font("Segoe UI", 9F);
             btEnter.ForeColor = Color.Black;
-            btEnter.Location = new Point(106, 221);
+            btEnter.Location = new Point(6, 212);
             btEnter.Name = "btEnter";
             btEnter.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            btEnter.Size = new Size(179, 24);
+            btEnter.Size = new Size(319, 24);
             btEnter.TabIndex = 6;
             btEnter.Text = "Войти";
             btEnter.Click += btEnter_Click;
@@ -124,7 +125,7 @@
             PanelToolbar.Dock = DockStyle.Top;
             PanelToolbar.Location = new Point(0, 0);
             PanelToolbar.Name = "PanelToolbar";
-            PanelToolbar.Size = new Size(371, 25);
+            PanelToolbar.Size = new Size(336, 25);
             PanelToolbar.TabIndex = 7;
             // 
             // UserLb
@@ -137,12 +138,23 @@
             UserLb.TabIndex = 3;
             UserLb.Text = "Пользователь";
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label4.ForeColor = Color.FromArgb(192, 0, 0);
+            label4.Location = new Point(12, 196);
+            label4.Name = "label4";
+            label4.Size = new Size(0, 13);
+            label4.TabIndex = 8;
+            // 
             // Registration
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
-            ClientSize = new Size(371, 248);
+            ClientSize = new Size(336, 248);
+            Controls.Add(label4);
             Controls.Add(PanelToolbar);
             Controls.Add(btEnter);
             Controls.Add(label2);
@@ -169,5 +181,6 @@
         private Guna.UI2.WinForms.Guna2Button btEnter;
         private Panel PanelToolbar;
         private Label UserLb;
+        private Label label4;
     }
 }

@@ -92,6 +92,8 @@ namespace HozDepartment
                     BtSeal.Visible = false;
                     CbFilterShift.Visible = false;
 
+                    BtnBackup.Location = new Point(1135, 104);
+
                     fillTableStaff();
                     fillTableSclad();
                     fillTabelShift();
@@ -152,6 +154,8 @@ namespace HozDepartment
             TextSearchStaff.Visible = false;
             CbFilterStaff.Visible = false;
             CbFilterShift.Visible = false;
+
+            BtnBackup.Location = new Point(1135, 104);
 
             fillTableSclad();
         }
@@ -464,6 +468,8 @@ namespace HozDepartment
             TbUser.Visible = false;
             TextSearchStaff.Visible = false;
             CbFilterStaff.Visible = false;
+
+            BtnBackup.Location = new Point(999, 104);
 
 
             fillTabelShift();
@@ -804,6 +810,8 @@ namespace HozDepartment
             TbShift.Visible = false;
             BtSeal.Visible = false;
             CbFilterShift.Visible = false;
+
+            BtnBackup.Location = new Point(1135, 104);
         }
 
         private void StripMenuAddStaff_Click(object sender, EventArgs e)

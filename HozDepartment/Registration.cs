@@ -214,7 +214,7 @@ Password=";
 
                         if (userExists == 0)
                         {
-                            MessageBox.Show("Пользователь с таким логином не найден", "Ошибка логина", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            label4.Text = "Пользователь с таким логином не найден";
                             return;
                         }
                     }
@@ -240,7 +240,7 @@ Password=";
                             }
                             else
                             {
-                                MessageBox.Show("Неверный пароль!", "Ошибка пароля", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                label4.Text = "Ошибка пароля";
                                 textPassword.Clear();
                                 textPassword.Focus();
                             }

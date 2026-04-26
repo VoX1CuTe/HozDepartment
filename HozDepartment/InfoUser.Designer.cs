@@ -36,6 +36,9 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfoUser));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             PanelToolbar = new Panel();
             guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             TbLogin = new TextBox();
@@ -53,15 +56,17 @@
             StripMenuDelete = new ToolStripMenuItem();
             CbRole = new ComboBox();
             TbUserData = new Guna.UI2.WinForms.Guna2DataGridView();
-            TextSearchUser = new TextBox();
             id = new DataGridViewTextBoxColumn();
             Login = new DataGridViewTextBoxColumn();
             Password = new DataGridViewTextBoxColumn();
             Role = new DataGridViewTextBoxColumn();
             FuelName = new DataGridViewTextBoxColumn();
+            TextSearchUser = new TextBox();
+            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             PanelToolbar.SuspendLayout();
             ContextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TbUserData).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             SuspendLayout();
             // 
             // PanelToolbar
@@ -313,15 +318,6 @@
             TbUserData.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             TbUserData.CellMouseDown += TbUserData_CellMouseDown_1;
             // 
-            // TextSearchUser
-            // 
-            TextSearchUser.Location = new Point(150, 31);
-            TextSearchUser.Multiline = true;
-            TextSearchUser.Name = "TextSearchUser";
-            TextSearchUser.Size = new Size(283, 23);
-            TextSearchUser.TabIndex = 84;
-            TextSearchUser.TextChanged += TextSearchUser_TextChanged;
-            // 
             // id
             // 
             id.DataPropertyName = "id";
@@ -358,12 +354,35 @@
             FuelName.Name = "FuelName";
             FuelName.ReadOnly = true;
             // 
+            // TextSearchUser
+            // 
+            TextSearchUser.Location = new Point(131, 31);
+            TextSearchUser.Multiline = true;
+            TextSearchUser.Name = "TextSearchUser";
+            TextSearchUser.Size = new Size(283, 23);
+            TextSearchUser.TabIndex = 84;
+            TextSearchUser.TextChanged += TextSearchUser_TextChanged;
+            // 
+            // guna2PictureBox1
+            // 
+            guna2PictureBox1.CustomizableEdges = customizableEdges5;
+            guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
+            guna2PictureBox1.ImageRotate = 0F;
+            guna2PictureBox1.Location = new Point(96, 31);
+            guna2PictureBox1.Name = "guna2PictureBox1";
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2PictureBox1.Size = new Size(29, 23);
+            guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            guna2PictureBox1.TabIndex = 88;
+            guna2PictureBox1.TabStop = false;
+            // 
             // InfoUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
             ClientSize = new Size(1019, 277);
+            Controls.Add(guna2PictureBox1);
             Controls.Add(TextSearchUser);
             Controls.Add(TbUserData);
             Controls.Add(CbRole);
@@ -385,6 +404,7 @@
             PanelToolbar.PerformLayout();
             ContextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)TbUserData).EndInit();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -413,5 +433,6 @@
         private DataGridViewTextBoxColumn Role;
         private DataGridViewTextBoxColumn FuelName;
         public TextBox TextSearchUser;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
     }
 }
