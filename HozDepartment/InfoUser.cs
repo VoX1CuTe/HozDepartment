@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -174,10 +175,24 @@ namespace HozDepartment
             TbUserName.Text = TbUserData.CurrentRow.Cells["FuelName"].Value.ToString();
 
         }
-
+        public string HashPassword(string password)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password.Trim()));
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2")); // Формат строчных букв
+                }
+                return builder.ToString();
+            }
+        }
         private void btSave_Click(object sender, EventArgs e)
         {
-            if (TbUserData == activeTable)
+            string hashedPassword = HashPassword(TbPassword.Text);
+
+            if (mode == FormMode.Add)
             {
                 using (MySqlConnection conn = new MySqlConnection(this.connString))
                 {
@@ -202,7 +217,7 @@ namespace HozDepartment
                         using (MySqlCommand cmd = new MySqlCommand(sqlAddUser, conn))
                         {
                             cmd.Parameters.AddWithValue("@Login", TbLogin.Text);
-                            cmd.Parameters.AddWithValue("@Password", TbPassword.Text);
+                            cmd.Parameters.AddWithValue("@Password", hashedPassword);
                             cmd.Parameters.AddWithValue("@Role", CbRole.Text);
                             cmd.Parameters.AddWithValue("@FuelName", TbUserName.Text);
                             cmd.ExecuteNonQuery();
@@ -231,11 +246,9 @@ namespace HozDepartment
                 btSave.Visible = false;
             }
 
-            else if (TbUserData == activeTable)
+            else if (mode == FormMode.Edit)
             {
-                
                 int id = Convert.ToInt32(TbUserData.CurrentRow.Cells["id"].Value);
-
 
                 string sqlUpdateUser = "UPDATE User SET Login = @Login, Password = @Password, Role = @Role, FuelName = @FuelName WHERE id = @Id";
 
@@ -245,35 +258,39 @@ namespace HozDepartment
                     {
                         conn.Open();
 
-                        string sqlCheck = "SELECT COUNT(*) FROM User WHERE Login = @Login";
+                        string sqlCheck = "SELECT COUNT(*) FROM User WHERE Login = @Login AND id != @Id";
                         using (MySqlCommand checkCmd = new MySqlCommand(sqlCheck, conn))
                         {
-                            checkCmd.Parameters.AddWithValue("@Login", TbLogin.Text);
+                            checkCmd.Parameters.AddWithValue("@Login", TbLogin.Text.Trim());
+                            checkCmd.Parameters.AddWithValue("@Id", id);
                             int count = Convert.ToInt32(checkCmd.ExecuteScalar());
 
                             if (count > 0)
                             {
-                                MessageBox.Show("Пользователь с таким логином уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Этот логин уже занят другим пользователем!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
                         }
 
                         using (MySqlCommand cmd = new MySqlCommand(sqlUpdateUser, conn))
                         {
-                            cmd.Parameters.AddWithValue("@Login", TbLogin.Text);
-                            cmd.Parameters.AddWithValue("@Password", TbPassword.Text);
+                            cmd.Parameters.AddWithValue("@Login", TbLogin.Text.Trim());
+                            cmd.Parameters.AddWithValue("@Password", hashedPassword);
                             cmd.Parameters.AddWithValue("@Role", CbRole.Text);
-                            cmd.Parameters.AddWithValue("@FuelName", TbUserName.Text);
+                            cmd.Parameters.AddWithValue("@FuelName", TbUserName.Text.Trim());
                             cmd.Parameters.AddWithValue("@Id", id);
                             cmd.ExecuteNonQuery();
                         }
+
                         fillTableInfoUser();
+                        MessageBox.Show("Данные пользователя обновлены!");
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Не удалось отредактировать пользователя!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Ошибка редактирования: " + ex.Message);
                     }
-                }                                  
+                }
+                                              
 
                 if (TbLogin.Text == "")
                 {
