@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -177,39 +178,70 @@ Password=";
             }
         }
 
+
+
         string role = "";
         string FuelName = "";
         private void btEnter_Click(object sender, EventArgs e)
         {
             using (MySqlConnection conn = new MySqlConnection(this.connString))
             {
-                conn.Open();
-                MessageBox.Show("Подключалась кнопка Вход");
-
-                string password = "";
-                string login = "";
-
-                string sqlRedact = "SELECT * FROM User WHERE Login = '" + textLogin.Text + "' AND Password = '" + textPassword.Text + "'";
-
-                using (var cmd = new MySqlCommand(sqlRedact, conn))
+                try
                 {
-                    MySqlDataReader reader = cmd.ExecuteReader();
-
-                    if (reader.Read())
+                    // 1. Предварительная проверка на пустоту
+                    if (string.IsNullOrWhiteSpace(textLogin.Text))
                     {
-                        role = reader["Role"].ToString();
-                        password = reader["Password"].ToString();
-                        login = reader["Login"].ToString();
-                        FuelName = reader["FuelName"].ToString();
-
-                        MainForm mainForm = new MainForm(role, FuelName);
-                        mainForm.Show();
-                        this.Hide();
+                        MessageBox.Show("Введите логин!"); return;
                     }
-                    else
+                    if (string.IsNullOrWhiteSpace(textPassword.Text))
                     {
-                        MessageBox.Show("Не верный логин или пароль");
+                        MessageBox.Show("Введите пароль!"); return;
                     }
+
+                    conn.Open();
+
+                    string sqlCheckLogin = "SELECT COUNT(*) FROM User WHERE Login = @login";
+                    using (var cmdLogin = new MySqlCommand(sqlCheckLogin, conn))
+                    {
+                        cmdLogin.Parameters.AddWithValue("@login", textLogin.Text.Trim());
+                        int userExists = Convert.ToInt32(cmdLogin.ExecuteScalar());
+
+                        if (userExists == 0)
+                        {
+                            MessageBox.Show("Пользователь с таким логином не найден", "Ошибка логина", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            return;
+                        }
+                    }
+
+                    string sqlCheckPass = "SELECT Role, FuelName FROM User WHERE Login = @login AND Password = @pass";
+                    using (var cmdPass = new MySqlCommand(sqlCheckPass, conn))
+                    {
+                        cmdPass.Parameters.AddWithValue("@login", textLogin.Text.Trim());
+                        cmdPass.Parameters.AddWithValue("@pass", textPassword.Text.Trim());
+
+                        using (MySqlDataReader reader = cmdPass.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string userRole = reader["Role"].ToString();
+                                string userName = reader["FuelName"].ToString();
+
+                                MainForm mainForm = new MainForm(userRole, userName);
+                                mainForm.Show();
+                                this.Hide();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Неверный пароль!", "Ошибка пароля", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                textPassword.Clear();
+                                textPassword.Focus();
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка: " + ex.Message);
                 }
             }
         }
