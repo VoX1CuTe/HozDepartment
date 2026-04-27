@@ -29,17 +29,23 @@
         private void InitializeComponent()
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfoUser));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfoUser));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             PanelToolbar = new Panel();
+            Pbcollapse = new Guna.UI2.WinForms.Guna2PictureBox();
+            PbClose = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             TbLogin = new TextBox();
             TbPassword = new TextBox();
@@ -64,6 +70,8 @@
             TextSearchUser = new TextBox();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             PanelToolbar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Pbcollapse).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PbClose).BeginInit();
             ContextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TbUserData).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
@@ -72,13 +80,43 @@
             // PanelToolbar
             // 
             PanelToolbar.BackColor = Color.FromArgb(253, 253, 150);
+            PanelToolbar.Controls.Add(Pbcollapse);
+            PanelToolbar.Controls.Add(PbClose);
             PanelToolbar.Controls.Add(guna2HtmlLabel5);
             PanelToolbar.Dock = DockStyle.Top;
             PanelToolbar.Location = new Point(0, 0);
             PanelToolbar.Name = "PanelToolbar";
-            PanelToolbar.Size = new Size(1019, 25);
+            PanelToolbar.Size = new Size(613, 25);
             PanelToolbar.TabIndex = 1;
             PanelToolbar.MouseDown += PanelToolbar_MouseDown;
+            // 
+            // Pbcollapse
+            // 
+            Pbcollapse.CustomizableEdges = customizableEdges1;
+            Pbcollapse.Image = (Image)resources.GetObject("Pbcollapse.Image");
+            Pbcollapse.ImageRotate = 0F;
+            Pbcollapse.Location = new Point(558, -1);
+            Pbcollapse.Name = "Pbcollapse";
+            Pbcollapse.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            Pbcollapse.Size = new Size(29, 23);
+            Pbcollapse.SizeMode = PictureBoxSizeMode.Zoom;
+            Pbcollapse.TabIndex = 96;
+            Pbcollapse.TabStop = false;
+            Pbcollapse.Click += Pbcollapse_Click;
+            // 
+            // PbClose
+            // 
+            PbClose.CustomizableEdges = customizableEdges3;
+            PbClose.Image = (Image)resources.GetObject("PbClose.Image");
+            PbClose.ImageRotate = 0F;
+            PbClose.Location = new Point(584, -2);
+            PbClose.Name = "PbClose";
+            PbClose.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            PbClose.Size = new Size(29, 24);
+            PbClose.SizeMode = PictureBoxSizeMode.Zoom;
+            PbClose.TabIndex = 95;
+            PbClose.TabStop = false;
+            PbClose.Click += PbClose_Click;
             // 
             // guna2HtmlLabel5
             // 
@@ -160,7 +198,7 @@
             // btSave
             // 
             btSave.BorderRadius = 10;
-            btSave.CustomizableEdges = customizableEdges1;
+            btSave.CustomizableEdges = customizableEdges5;
             btSave.DisabledState.BorderColor = Color.DarkGray;
             btSave.DisabledState.CustomBorderColor = Color.DarkGray;
             btSave.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -170,7 +208,7 @@
             btSave.ForeColor = Color.Black;
             btSave.Location = new Point(628, 241);
             btSave.Name = "btSave";
-            btSave.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btSave.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btSave.Size = new Size(145, 24);
             btSave.TabIndex = 11;
             btSave.Text = "Сохранить";
@@ -180,7 +218,7 @@
             // BtCancel
             // 
             BtCancel.BorderRadius = 10;
-            BtCancel.CustomizableEdges = customizableEdges3;
+            BtCancel.CustomizableEdges = customizableEdges7;
             BtCancel.DisabledState.BorderColor = Color.DarkGray;
             BtCancel.DisabledState.CustomBorderColor = Color.DarkGray;
             BtCancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -190,7 +228,7 @@
             BtCancel.ForeColor = Color.Black;
             BtCancel.Location = new Point(861, 241);
             BtCancel.Name = "BtCancel";
-            BtCancel.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            BtCancel.ShadowDecoration.CustomizableEdges = customizableEdges8;
             BtCancel.Size = new Size(145, 24);
             BtCancel.TabIndex = 12;
             BtCancel.Text = "Отмена";
@@ -365,12 +403,12 @@
             // 
             // guna2PictureBox1
             // 
-            guna2PictureBox1.CustomizableEdges = customizableEdges5;
+            guna2PictureBox1.CustomizableEdges = customizableEdges9;
             guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
             guna2PictureBox1.ImageRotate = 0F;
             guna2PictureBox1.Location = new Point(96, 31);
             guna2PictureBox1.Name = "guna2PictureBox1";
-            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2PictureBox1.Size = new Size(29, 23);
             guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox1.TabIndex = 88;
@@ -381,7 +419,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
-            ClientSize = new Size(1019, 277);
+            ClientSize = new Size(613, 277);
             Controls.Add(guna2PictureBox1);
             Controls.Add(TextSearchUser);
             Controls.Add(TbUserData);
@@ -402,6 +440,8 @@
             Load += InfoUser_Load;
             PanelToolbar.ResumeLayout(false);
             PanelToolbar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Pbcollapse).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PbClose).EndInit();
             ContextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)TbUserData).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
@@ -434,5 +474,7 @@
         private DataGridViewTextBoxColumn FuelName;
         public TextBox TextSearchUser;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2PictureBox Pbcollapse;
+        private Guna.UI2.WinForms.Guna2PictureBox PbClose;
     }
 }

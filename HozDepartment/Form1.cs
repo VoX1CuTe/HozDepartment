@@ -88,6 +88,7 @@ namespace HozDepartment
                     TextSearchStaff.Visible = true;
                     CbFilterStaff.Visible = true;
                     TbUser.Visible = true;
+                    TextSearchSclad.Visible = false;
 
                     BtSeal.Visible = false;
                     CbFilterShift.Visible = false;
@@ -147,6 +148,7 @@ namespace HozDepartment
         private void Sclad_Click(object sender, EventArgs e)
         {
             TbSclad.Visible = true;
+            TextSearchSclad.Visible = true;
 
             TbShift.Visible = false;
             TbUser.Visible = false;
@@ -293,7 +295,7 @@ namespace HozDepartment
                     readactAndAddSclad.DtReturnInventory.Value = Convert.ToDateTime(TbSclad.CurrentRow.Cells["Return_date"].Value);
                     readactAndAddSclad.TbQualityInventory.Text = TbSclad.CurrentRow.Cells["Payout_Quantity"].Value.ToString();
                     readactAndAddSclad.CbUnitMeasurements.Text = TbSclad.CurrentRow.Cells["Unit_Measurements"].Value.ToString();
-                    readactAndAddSclad.CbEmployee.Text = TbSclad.CurrentRow.Cells["FIO"].Value.ToString();
+                    readactAndAddSclad.CbEmployee.Text = TbSclad.CurrentRow.Cells["FIO"].Value.ToString(); // Ошибка
 
 
                     readactAndAddSclad.LbRedactAndAdd.Text = "Редактирование";
@@ -358,7 +360,7 @@ namespace HozDepartment
                             }
 
                         }
-                            
+
                     }
 
                     fillTableSclad();
@@ -404,7 +406,7 @@ namespace HozDepartment
                             trancaction.Commit();
                         }
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         MessageBox.Show("Ошибка удаления инвентаря!\n\nПодробности: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -464,6 +466,7 @@ namespace HozDepartment
             BtSeal.Visible = true;
             CbFilterShift.Visible = true;
 
+            TextSearchSclad.Visible = false;
             TbSclad.Visible = false;
             TbUser.Visible = false;
             TextSearchStaff.Visible = false;
@@ -524,6 +527,7 @@ namespace HozDepartment
             {
                 using (RedactAndAddShift readactAndAddShift = new RedactAndAddShift(connString))
                 {
+                    readactAndAddShift.LbRedactAndAdd.Text = "Добавление";
                     if (readactAndAddShift.ShowDialog() == DialogResult.OK)
                     {
                         int idEmployee = Convert.ToInt32(readactAndAddShift.CbStaff.SelectedValue);
@@ -596,7 +600,7 @@ namespace HozDepartment
                                     trancaction.Commit();
                                 }
                             }
-                            catch(Exception ex) 
+                            catch (Exception ex)
                             {
                                 MessageBox.Show("Ошибка добовления смены!\n\nПодробности: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
@@ -615,6 +619,8 @@ namespace HozDepartment
             {
                 using (RedactAndAddShift readactAndAddShift = new RedactAndAddShift(connString))
                 {
+                    readactAndAddShift.LbRedactAndAdd.Text = "Редактирование";
+
                     readactAndAddShift.DtNzGraf.Value = Convert.ToDateTime(TbShift.CurrentRow.Cells["Schedule_assignment_date"].Value);
                     readactAndAddShift.DtShift.Value = Convert.ToDateTime(TbShift.CurrentRow.Cells["Date_of_shift"].Value);
                     readactAndAddShift.TbPrichIzmen.Text = TbShift.CurrentRow.Cells["Fact_Shifts"].Value.ToString();
@@ -684,7 +690,7 @@ namespace HozDepartment
                                     trancaction.Commit();
                                 }
                             }
-                            catch (Exception ex) 
+                            catch (Exception ex)
                             {
                                 MessageBox.Show("Ошибка редактирования смены!\n\nПодробности: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
@@ -732,7 +738,7 @@ namespace HozDepartment
                             transaction.Commit();
                         }
                     }
-                    catch (Exception ex) 
+                    catch (Exception ex)
                     {
                         MessageBox.Show("Ошибка удаления смены!\n\nПодробности: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -820,7 +826,7 @@ namespace HozDepartment
             {
                 using (RedactAndAddUsers readactAndAddUser = new RedactAndAddUsers())
                 {
-
+                    readactAndAddUser.LbRedactAndAdd.Text = "Добавление";
                     if (readactAndAddUser.ShowDialog() == DialogResult.OK)
                     {
                         using (MySqlConnection conn = new MySqlConnection(connString))
@@ -846,7 +852,7 @@ namespace HozDepartment
                                     cmd.ExecuteNonQuery();
                                 }
                             }
-                            catch (Exception ex) 
+                            catch (Exception ex)
                             {
                                 MessageBox.Show("Ошибка добовления сотрудника!\n\nПодробности: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
@@ -865,6 +871,8 @@ namespace HozDepartment
                 int Id_Employee = Convert.ToInt32(TbUser.CurrentRow.Cells["Id_Employye"].Value);
                 using (RedactAndAddUsers readactAndAddUser = new RedactAndAddUsers())
                 {
+                    readactAndAddUser.LbRedactAndAdd.Text = "Редактирование";
+
                     readactAndAddUser.TextPost.Text = TbUser.CurrentRow.Cells["Post"].Value.ToString();
                     readactAndAddUser.TextTypeGraphy.Text = TbUser.CurrentRow.Cells["Type_graphy"].Value.ToString();
                     readactAndAddUser.CalendarAcceptanceDate.SelectionStart = Convert.ToDateTime(TbUser.CurrentRow.Cells["Acceptance_date"].Value);
@@ -911,9 +919,9 @@ namespace HozDepartment
                                 }
                                 fillTableStaff();
                             }
-                            catch(Exception ex)
+                            catch (Exception ex)
                             {
-                                MessageBox.Show("Ошибка редактирования сотрудника!\n\nПодробности: " + ex.Message,"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Ошибка редактирования сотрудника!\n\nПодробности: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }
@@ -940,7 +948,7 @@ namespace HozDepartment
                             cmd.ExecuteNonQuery();
                         }
                     }
-                    catch (Exception ex) 
+                    catch (Exception ex)
                     {
                         MessageBox.Show("Ошибка удаления сотрудника!\n\nПодробности: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -1259,6 +1267,21 @@ namespace HozDepartment
                 dt.DefaultView.RowFilter = string.Format("FIO LIKE '%{0}%'", TextSearchSclad.Text);
                 dt.DefaultView.RowFilter = string.Format("Inventory_Name LIKE '%{0}%'", TextSearchSclad.Text);
             }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void PbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Pbcollapse_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

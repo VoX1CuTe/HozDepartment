@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -36,6 +39,10 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
@@ -48,10 +55,6 @@
             DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -62,10 +65,14 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             PanelToolbar = new Panel();
+            Pbcollapse = new Guna.UI2.WinForms.Guna2PictureBox();
+            guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
+            PbClose = new Guna.UI2.WinForms.Guna2PictureBox();
             LogoName = new Guna.UI2.WinForms.Guna2HtmlLabel();
             UserLb = new Guna.UI2.WinForms.Guna2HtmlLabel();
             PanelButton = new Panel();
@@ -74,20 +81,6 @@
             BtShift = new Guna.UI2.WinForms.Guna2Button();
             Sclad = new Guna.UI2.WinForms.Guna2Button();
             TbSclad = new Guna.UI2.WinForms.Guna2DataGridView();
-            Id_Inventory = new DataGridViewTextBoxColumn();
-            Id_Category = new DataGridViewTextBoxColumn();
-            Id_Entrance = new DataGridViewTextBoxColumn();
-            Id_Issue = new DataGridViewTextBoxColumn();
-            Id_Employee = new DataGridViewTextBoxColumn();
-            Inventory_Name = new DataGridViewTextBoxColumn();
-            Category_name = new DataGridViewTextBoxColumn();
-            Unit_Measurements = new DataGridViewTextBoxColumn();
-            Entrance_Quantity = new DataGridViewTextBoxColumn();
-            Access_Date = new DataGridViewTextBoxColumn();
-            Payout_Quantity = new DataGridViewTextBoxColumn();
-            Release_date = new DataGridViewTextBoxColumn();
-            Return_date = new DataGridViewTextBoxColumn();
-            Сотрудник = new DataGridViewTextBoxColumn();
             ContextMenuSclad = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             StripMenuAddSclad = new ToolStripMenuItem();
             StripMenuRedactSclad = new ToolStripMenuItem();
@@ -136,8 +129,24 @@
             TextSearchSclad = new TextBox();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
+            Id_Inventory = new DataGridViewTextBoxColumn();
+            Id_Category = new DataGridViewTextBoxColumn();
+            Id_Entrance = new DataGridViewTextBoxColumn();
+            Id_Issue = new DataGridViewTextBoxColumn();
+            Id_Employee = new DataGridViewTextBoxColumn();
+            Inventory_Name = new DataGridViewTextBoxColumn();
+            Category_name = new DataGridViewTextBoxColumn();
+            Unit_Measurements = new DataGridViewTextBoxColumn();
+            Entrance_Quantity = new DataGridViewTextBoxColumn();
+            Access_Date = new DataGridViewTextBoxColumn();
+            Payout_Quantity = new DataGridViewTextBoxColumn();
+            Release_date = new DataGridViewTextBoxColumn();
+            Return_date = new DataGridViewTextBoxColumn();
+            FIO = new DataGridViewTextBoxColumn();
             PanelToolbar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Pbcollapse).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PbClose).BeginInit();
             PanelButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TbSclad).BeginInit();
             ContextMenuSclad.SuspendLayout();
@@ -147,13 +156,14 @@
             ContextMenuStaff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)guna2PictureBox3).BeginInit();
             SuspendLayout();
             // 
             // PanelToolbar
             // 
             PanelToolbar.BackColor = Color.FromArgb(253, 253, 150);
+            PanelToolbar.Controls.Add(Pbcollapse);
             PanelToolbar.Controls.Add(guna2PictureBox3);
+            PanelToolbar.Controls.Add(PbClose);
             PanelToolbar.Controls.Add(LogoName);
             PanelToolbar.Controls.Add(UserLb);
             PanelToolbar.Dock = DockStyle.Top;
@@ -162,6 +172,47 @@
             PanelToolbar.Size = new Size(1304, 25);
             PanelToolbar.TabIndex = 0;
             PanelToolbar.MouseDown += PanelToolbar_MouseDown;
+            // 
+            // Pbcollapse
+            // 
+            Pbcollapse.CustomizableEdges = customizableEdges1;
+            Pbcollapse.Image = (Image)resources.GetObject("Pbcollapse.Image");
+            Pbcollapse.ImageRotate = 0F;
+            Pbcollapse.Location = new Point(1246, 2);
+            Pbcollapse.Name = "Pbcollapse";
+            Pbcollapse.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            Pbcollapse.Size = new Size(29, 23);
+            Pbcollapse.SizeMode = PictureBoxSizeMode.Zoom;
+            Pbcollapse.TabIndex = 94;
+            Pbcollapse.TabStop = false;
+            Pbcollapse.Click += Pbcollapse_Click;
+            // 
+            // guna2PictureBox3
+            // 
+            guna2PictureBox3.CustomizableEdges = customizableEdges3;
+            guna2PictureBox3.Image = (Image)resources.GetObject("guna2PictureBox3.Image");
+            guna2PictureBox3.ImageRotate = 0F;
+            guna2PictureBox3.Location = new Point(3, 3);
+            guna2PictureBox3.Name = "guna2PictureBox3";
+            guna2PictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2PictureBox3.Size = new Size(29, 19);
+            guna2PictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            guna2PictureBox3.TabIndex = 89;
+            guna2PictureBox3.TabStop = false;
+            // 
+            // PbClose
+            // 
+            PbClose.CustomizableEdges = customizableEdges5;
+            PbClose.Image = (Image)resources.GetObject("PbClose.Image");
+            PbClose.ImageRotate = 0F;
+            PbClose.Location = new Point(1272, 1);
+            PbClose.Name = "PbClose";
+            PbClose.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            PbClose.Size = new Size(29, 24);
+            PbClose.SizeMode = PictureBoxSizeMode.Zoom;
+            PbClose.TabIndex = 93;
+            PbClose.TabStop = false;
+            PbClose.Click += PbClose_Click;
             // 
             // LogoName
             // 
@@ -175,7 +226,7 @@
             // UserLb
             // 
             UserLb.BackColor = Color.Transparent;
-            UserLb.Location = new Point(1132, 5);
+            UserLb.Location = new Point(990, 5);
             UserLb.Name = "UserLb";
             UserLb.Size = new Size(80, 17);
             UserLb.TabIndex = 8;
@@ -197,7 +248,7 @@
             // BtRedactUser
             // 
             BtRedactUser.BorderRadius = 15;
-            BtRedactUser.CustomizableEdges = customizableEdges3;
+            BtRedactUser.CustomizableEdges = customizableEdges7;
             BtRedactUser.DisabledState.BorderColor = Color.DarkGray;
             BtRedactUser.DisabledState.CustomBorderColor = Color.DarkGray;
             BtRedactUser.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -208,7 +259,7 @@
             BtRedactUser.ImageSize = new Size(35, 35);
             BtRedactUser.Location = new Point(977, 6);
             BtRedactUser.Name = "BtRedactUser";
-            BtRedactUser.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            BtRedactUser.ShadowDecoration.CustomizableEdges = customizableEdges8;
             BtRedactUser.Size = new Size(315, 59);
             BtRedactUser.TabIndex = 8;
             BtRedactUser.Text = "О пользователя";
@@ -217,7 +268,7 @@
             // BtStaff
             // 
             BtStaff.BorderRadius = 15;
-            BtStaff.CustomizableEdges = customizableEdges5;
+            BtStaff.CustomizableEdges = customizableEdges9;
             BtStaff.DisabledState.BorderColor = Color.DarkGray;
             BtStaff.DisabledState.CustomBorderColor = Color.DarkGray;
             BtStaff.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -228,7 +279,7 @@
             BtStaff.ImageSize = new Size(35, 35);
             BtStaff.Location = new Point(12, 6);
             BtStaff.Name = "BtStaff";
-            BtStaff.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            BtStaff.ShadowDecoration.CustomizableEdges = customizableEdges10;
             BtStaff.Size = new Size(315, 59);
             BtStaff.TabIndex = 7;
             BtStaff.Text = "Работники";
@@ -237,7 +288,7 @@
             // BtShift
             // 
             BtShift.BorderRadius = 15;
-            BtShift.CustomizableEdges = customizableEdges7;
+            BtShift.CustomizableEdges = customizableEdges11;
             BtShift.DisabledState.BorderColor = Color.DarkGray;
             BtShift.DisabledState.CustomBorderColor = Color.DarkGray;
             BtShift.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -248,7 +299,7 @@
             BtShift.ImageSize = new Size(40, 40);
             BtShift.Location = new Point(333, 6);
             BtShift.Name = "BtShift";
-            BtShift.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            BtShift.ShadowDecoration.CustomizableEdges = customizableEdges12;
             BtShift.Size = new Size(315, 59);
             BtShift.TabIndex = 6;
             BtShift.Text = "Смены";
@@ -257,7 +308,7 @@
             // Sclad
             // 
             Sclad.BorderRadius = 15;
-            Sclad.CustomizableEdges = customizableEdges9;
+            Sclad.CustomizableEdges = customizableEdges13;
             Sclad.DisabledState.BorderColor = Color.DarkGray;
             Sclad.DisabledState.CustomBorderColor = Color.DarkGray;
             Sclad.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -268,7 +319,7 @@
             Sclad.ImageSize = new Size(35, 35);
             Sclad.Location = new Point(654, 6);
             Sclad.Name = "Sclad";
-            Sclad.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            Sclad.ShadowDecoration.CustomizableEdges = customizableEdges14;
             Sclad.Size = new Size(315, 59);
             Sclad.TabIndex = 4;
             Sclad.Text = "Склад";
@@ -299,7 +350,7 @@
             TbSclad.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             TbSclad.ColumnHeadersHeight = 20;
             TbSclad.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            TbSclad.Columns.AddRange(new DataGridViewColumn[] { Id_Inventory, Id_Category, Id_Entrance, Id_Issue, Id_Employee, Inventory_Name, Category_name, Unit_Measurements, Entrance_Quantity, Access_Date, Payout_Quantity, Release_date, Return_date, Сотрудник });
+            TbSclad.Columns.AddRange(new DataGridViewColumn[] { Id_Inventory, Id_Category, Id_Entrance, Id_Issue, Id_Employee, Inventory_Name, Category_name, Unit_Measurements, Entrance_Quantity, Access_Date, Payout_Quantity, Release_date, Return_date, FIO });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(230, 230, 230);
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -349,111 +400,6 @@
             TbSclad.Visible = false;
             TbSclad.CellMouseClick += TbSclad_CellMouseClick;
             TbSclad.MouseDown += TbSclad_MouseDown;
-            // 
-            // Id_Inventory
-            // 
-            Id_Inventory.DataPropertyName = "Id_Inventory";
-            Id_Inventory.HeaderText = "Id_Inventory";
-            Id_Inventory.Name = "Id_Inventory";
-            Id_Inventory.ReadOnly = true;
-            Id_Inventory.Visible = false;
-            // 
-            // Id_Category
-            // 
-            Id_Category.DataPropertyName = "Id_Category";
-            Id_Category.HeaderText = "Id_Category";
-            Id_Category.Name = "Id_Category";
-            Id_Category.ReadOnly = true;
-            Id_Category.Visible = false;
-            // 
-            // Id_Entrance
-            // 
-            Id_Entrance.DataPropertyName = "Id_Entrance";
-            Id_Entrance.HeaderText = "Id_Entrance";
-            Id_Entrance.Name = "Id_Entrance";
-            Id_Entrance.ReadOnly = true;
-            Id_Entrance.Visible = false;
-            // 
-            // Id_Issue
-            // 
-            Id_Issue.DataPropertyName = "Id_Issue";
-            Id_Issue.HeaderText = "Id_Issue";
-            Id_Issue.Name = "Id_Issue";
-            Id_Issue.ReadOnly = true;
-            Id_Issue.Visible = false;
-            // 
-            // Id_Employee
-            // 
-            Id_Employee.DataPropertyName = "Id_Employee";
-            Id_Employee.HeaderText = "Id_Employee";
-            Id_Employee.Name = "Id_Employee";
-            Id_Employee.ReadOnly = true;
-            Id_Employee.Visible = false;
-            // 
-            // Inventory_Name
-            // 
-            Inventory_Name.DataPropertyName = "Inventory_Name";
-            Inventory_Name.HeaderText = "Наименование инвентаря";
-            Inventory_Name.Name = "Inventory_Name";
-            Inventory_Name.ReadOnly = true;
-            // 
-            // Category_name
-            // 
-            Category_name.DataPropertyName = "Category_name";
-            Category_name.HeaderText = "Категория";
-            Category_name.Name = "Category_name";
-            Category_name.ReadOnly = true;
-            // 
-            // Unit_Measurements
-            // 
-            Unit_Measurements.DataPropertyName = "Unit_Measurements";
-            Unit_Measurements.HeaderText = "Ед. измерения";
-            Unit_Measurements.Name = "Unit_Measurements";
-            Unit_Measurements.ReadOnly = true;
-            // 
-            // Entrance_Quantity
-            // 
-            Entrance_Quantity.DataPropertyName = "Entrance_Quantity";
-            Entrance_Quantity.HeaderText = "Кол-во поступления";
-            Entrance_Quantity.Name = "Entrance_Quantity";
-            Entrance_Quantity.ReadOnly = true;
-            // 
-            // Access_Date
-            // 
-            Access_Date.DataPropertyName = "Access_Date";
-            Access_Date.HeaderText = "Дата поступления";
-            Access_Date.Name = "Access_Date";
-            Access_Date.ReadOnly = true;
-            // 
-            // Payout_Quantity
-            // 
-            Payout_Quantity.DataPropertyName = "Payout_Quantity";
-            Payout_Quantity.HeaderText = "Выдано в работу";
-            Payout_Quantity.Name = "Payout_Quantity";
-            Payout_Quantity.ReadOnly = true;
-            // 
-            // Release_date
-            // 
-            Release_date.DataPropertyName = "Release_date";
-            Release_date.HeaderText = "Дата выдачи";
-            Release_date.Name = "Release_date";
-            Release_date.ReadOnly = true;
-            // 
-            // Return_date
-            // 
-            Return_date.DataPropertyName = "Return_date";
-            Return_date.HeaderText = "Дата возврата";
-            Return_date.Name = "Return_date";
-            Return_date.ReadOnly = true;
-            // 
-            // Сотрудник
-            // 
-            Сотрудник.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            Сотрудник.DataPropertyName = "FIO";
-            Сотрудник.HeaderText = "Ф.И.О";
-            Сотрудник.Name = "Сотрудник";
-            Сотрудник.ReadOnly = true;
-            Сотрудник.Width = 64;
             // 
             // ContextMenuSclad
             // 
@@ -908,7 +854,7 @@
             // 
             CbFilterStaff.BackColor = Color.FromArgb(253, 253, 150);
             CbFilterStaff.BorderColor = Color.FromArgb(253, 253, 150);
-            CbFilterStaff.CustomizableEdges = customizableEdges11;
+            CbFilterStaff.CustomizableEdges = customizableEdges15;
             CbFilterStaff.DrawMode = DrawMode.OwnerDrawFixed;
             CbFilterStaff.DropDownStyle = ComboBoxStyle.DropDownList;
             CbFilterStaff.DropDownWidth = 140;
@@ -921,7 +867,7 @@
             CbFilterStaff.Items.AddRange(new object[] { "Сбросить всё", "Пол (А-Я)", "Пол (Я-А)", "Должность (А-Я)", "Должность (Я-А)", "Дата приема (Новые)", "Дата приема (Старый)" });
             CbFilterStaff.Location = new Point(391, 109);
             CbFilterStaff.Name = "CbFilterStaff";
-            CbFilterStaff.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            CbFilterStaff.ShadowDecoration.CustomizableEdges = customizableEdges16;
             CbFilterStaff.Size = new Size(183, 29);
             CbFilterStaff.TabIndex = 81;
             CbFilterStaff.SelectedIndexChanged += CbFilterStaff_SelectedIndexChanged;
@@ -929,7 +875,7 @@
             // BtSeal
             // 
             BtSeal.BorderRadius = 5;
-            BtSeal.CustomizableEdges = customizableEdges13;
+            BtSeal.CustomizableEdges = customizableEdges17;
             BtSeal.DisabledState.BorderColor = Color.DarkGray;
             BtSeal.DisabledState.CustomBorderColor = Color.DarkGray;
             BtSeal.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -943,7 +889,7 @@
             BtSeal.ImeMode = ImeMode.NoControl;
             BtSeal.Location = new Point(1183, 104);
             BtSeal.Name = "BtSeal";
-            BtSeal.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            BtSeal.ShadowDecoration.CustomizableEdges = customizableEdges18;
             BtSeal.Size = new Size(109, 34);
             BtSeal.TabIndex = 9;
             BtSeal.Text = "Печать";
@@ -953,7 +899,7 @@
             // BtnBackup
             // 
             BtnBackup.BorderRadius = 5;
-            BtnBackup.CustomizableEdges = customizableEdges15;
+            BtnBackup.CustomizableEdges = customizableEdges19;
             BtnBackup.DisabledState.BorderColor = Color.DarkGray;
             BtnBackup.DisabledState.CustomBorderColor = Color.DarkGray;
             BtnBackup.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -962,10 +908,10 @@
             BtnBackup.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             BtnBackup.ForeColor = Color.Black;
             BtnBackup.Image = (Image)resources.GetObject("BtnBackup.Image");
-            BtnBackup.ImageSize = new Size(27, 27);
+            BtnBackup.ImageSize = new Size(25, 25);
             BtnBackup.Location = new Point(990, 104);
             BtnBackup.Name = "BtnBackup";
-            BtnBackup.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            BtnBackup.ShadowDecoration.CustomizableEdges = customizableEdges20;
             BtnBackup.Size = new Size(166, 34);
             BtnBackup.TabIndex = 82;
             BtnBackup.Text = "Резервная копия";
@@ -984,7 +930,7 @@
             // 
             CbFilterShift.BackColor = Color.FromArgb(253, 253, 150);
             CbFilterShift.BorderColor = Color.FromArgb(253, 253, 150);
-            CbFilterShift.CustomizableEdges = customizableEdges17;
+            CbFilterShift.CustomizableEdges = customizableEdges21;
             CbFilterShift.DrawMode = DrawMode.OwnerDrawFixed;
             CbFilterShift.DropDownStyle = ComboBoxStyle.DropDownList;
             CbFilterShift.DropDownWidth = 140;
@@ -997,7 +943,7 @@
             CbFilterShift.Items.AddRange(new object[] { "Сбросить всё", "Отработана смена (от +)", "Отработана смена (от -)", "Номер этажа (от большего)", "Номер этажа (от меньшего)" });
             CbFilterShift.Location = new Point(391, 109);
             CbFilterShift.Name = "CbFilterShift";
-            CbFilterShift.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            CbFilterShift.ShadowDecoration.CustomizableEdges = customizableEdges22;
             CbFilterShift.Size = new Size(183, 29);
             CbFilterShift.TabIndex = 84;
             CbFilterShift.SelectedIndexChanged += CbFilterShift_SelectedIndexChanged;
@@ -1006,7 +952,7 @@
             // 
             CbFilterSclad.BackColor = Color.FromArgb(253, 253, 150);
             CbFilterSclad.BorderColor = Color.FromArgb(253, 253, 150);
-            CbFilterSclad.CustomizableEdges = customizableEdges19;
+            CbFilterSclad.CustomizableEdges = customizableEdges23;
             CbFilterSclad.DrawMode = DrawMode.OwnerDrawFixed;
             CbFilterSclad.DropDownStyle = ComboBoxStyle.DropDownList;
             CbFilterSclad.DropDownWidth = 140;
@@ -1020,7 +966,7 @@
             CbFilterSclad.Items.AddRange(new object[] { "Сбросить всё", "Категории (А-Я)", "Категории (Я-А)", "Кол-во поступлений (от большего)", "Кол-во поступлений (от меньшего)", "Выдано в работу (от большего)", "Выдано в работу (от меньшего)" });
             CbFilterSclad.Location = new Point(391, 109);
             CbFilterSclad.Name = "CbFilterSclad";
-            CbFilterSclad.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            CbFilterSclad.ShadowDecoration.CustomizableEdges = customizableEdges24;
             CbFilterSclad.Size = new Size(183, 29);
             CbFilterSclad.TabIndex = 85;
             CbFilterSclad.SelectedIndexChanged += CbFilterSclad_SelectedIndexChanged;
@@ -1036,12 +982,12 @@
             // 
             // guna2PictureBox1
             // 
-            guna2PictureBox1.CustomizableEdges = customizableEdges21;
+            guna2PictureBox1.CustomizableEdges = customizableEdges25;
             guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
             guna2PictureBox1.ImageRotate = 0F;
             guna2PictureBox1.Location = new Point(12, 109);
             guna2PictureBox1.Name = "guna2PictureBox1";
-            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges26;
             guna2PictureBox1.Size = new Size(29, 29);
             guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox1.TabIndex = 87;
@@ -1049,29 +995,121 @@
             // 
             // guna2PictureBox2
             // 
-            guna2PictureBox2.CustomizableEdges = customizableEdges23;
+            guna2PictureBox2.CustomizableEdges = customizableEdges27;
             guna2PictureBox2.Image = (Image)resources.GetObject("guna2PictureBox2.Image");
             guna2PictureBox2.ImageRotate = 0F;
             guna2PictureBox2.Location = new Point(356, 109);
             guna2PictureBox2.Name = "guna2PictureBox2";
-            guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges28;
             guna2PictureBox2.Size = new Size(29, 29);
             guna2PictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox2.TabIndex = 88;
             guna2PictureBox2.TabStop = false;
             // 
-            // guna2PictureBox3
+            // Id_Inventory
             // 
-            guna2PictureBox3.CustomizableEdges = customizableEdges1;
-            guna2PictureBox3.Image = (Image)resources.GetObject("guna2PictureBox3.Image");
-            guna2PictureBox3.ImageRotate = 0F;
-            guna2PictureBox3.Location = new Point(3, 3);
-            guna2PictureBox3.Name = "guna2PictureBox3";
-            guna2PictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2PictureBox3.Size = new Size(29, 19);
-            guna2PictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            guna2PictureBox3.TabIndex = 89;
-            guna2PictureBox3.TabStop = false;
+            Id_Inventory.DataPropertyName = "Id_Inventory";
+            Id_Inventory.HeaderText = "Id_Inventory";
+            Id_Inventory.Name = "Id_Inventory";
+            Id_Inventory.ReadOnly = true;
+            Id_Inventory.Visible = false;
+            // 
+            // Id_Category
+            // 
+            Id_Category.DataPropertyName = "Id_Category";
+            Id_Category.HeaderText = "Id_Category";
+            Id_Category.Name = "Id_Category";
+            Id_Category.ReadOnly = true;
+            Id_Category.Visible = false;
+            // 
+            // Id_Entrance
+            // 
+            Id_Entrance.DataPropertyName = "Id_Entrance";
+            Id_Entrance.HeaderText = "Id_Entrance";
+            Id_Entrance.Name = "Id_Entrance";
+            Id_Entrance.ReadOnly = true;
+            Id_Entrance.Visible = false;
+            // 
+            // Id_Issue
+            // 
+            Id_Issue.DataPropertyName = "Id_Issue";
+            Id_Issue.HeaderText = "Id_Issue";
+            Id_Issue.Name = "Id_Issue";
+            Id_Issue.ReadOnly = true;
+            Id_Issue.Visible = false;
+            // 
+            // Id_Employee
+            // 
+            Id_Employee.DataPropertyName = "Id_Employee";
+            Id_Employee.HeaderText = "Id_Employee";
+            Id_Employee.Name = "Id_Employee";
+            Id_Employee.ReadOnly = true;
+            Id_Employee.Visible = false;
+            // 
+            // Inventory_Name
+            // 
+            Inventory_Name.DataPropertyName = "Inventory_Name";
+            Inventory_Name.HeaderText = "Наименование инвентаря";
+            Inventory_Name.Name = "Inventory_Name";
+            Inventory_Name.ReadOnly = true;
+            // 
+            // Category_name
+            // 
+            Category_name.DataPropertyName = "Category_name";
+            Category_name.HeaderText = "Категория";
+            Category_name.Name = "Category_name";
+            Category_name.ReadOnly = true;
+            // 
+            // Unit_Measurements
+            // 
+            Unit_Measurements.DataPropertyName = "Unit_Measurements";
+            Unit_Measurements.HeaderText = "Ед. измерения";
+            Unit_Measurements.Name = "Unit_Measurements";
+            Unit_Measurements.ReadOnly = true;
+            // 
+            // Entrance_Quantity
+            // 
+            Entrance_Quantity.DataPropertyName = "Entrance_Quantity";
+            Entrance_Quantity.HeaderText = "Кол-во поступления";
+            Entrance_Quantity.Name = "Entrance_Quantity";
+            Entrance_Quantity.ReadOnly = true;
+            // 
+            // Access_Date
+            // 
+            Access_Date.DataPropertyName = "Access_Date";
+            Access_Date.HeaderText = "Дата поступления";
+            Access_Date.Name = "Access_Date";
+            Access_Date.ReadOnly = true;
+            // 
+            // Payout_Quantity
+            // 
+            Payout_Quantity.DataPropertyName = "Payout_Quantity";
+            Payout_Quantity.HeaderText = "Выдано в работу";
+            Payout_Quantity.Name = "Payout_Quantity";
+            Payout_Quantity.ReadOnly = true;
+            // 
+            // Release_date
+            // 
+            Release_date.DataPropertyName = "Release_date";
+            Release_date.HeaderText = "Дата выдачи";
+            Release_date.Name = "Release_date";
+            Release_date.ReadOnly = true;
+            // 
+            // Return_date
+            // 
+            Return_date.DataPropertyName = "Return_date";
+            Return_date.HeaderText = "Дата возврата";
+            Return_date.Name = "Return_date";
+            Return_date.ReadOnly = true;
+            // 
+            // FIO
+            // 
+            FIO.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            FIO.DataPropertyName = "FIO";
+            FIO.HeaderText = "Сотрудник";
+            FIO.Name = "FIO";
+            FIO.ReadOnly = true;
+            FIO.Width = 90;
             // 
             // MainForm
             // 
@@ -1096,9 +1134,13 @@
             Controls.Add(TbShift);
             FormBorderStyle = FormBorderStyle.None;
             Name = "MainForm";
+            FormClosing += MainForm_FormClosing;
             Load += MainForm_Load;
             PanelToolbar.ResumeLayout(false);
             PanelToolbar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)Pbcollapse).EndInit();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PbClose).EndInit();
             PanelButton.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)TbSclad).EndInit();
             ContextMenuSclad.ResumeLayout(false);
@@ -1108,7 +1150,6 @@
             ContextMenuStaff.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)guna2PictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1154,20 +1195,6 @@
         private DataGridViewTextBoxColumn Post;
         private DataGridViewTextBoxColumn Type_graphy;
         public TextBox TextSearchShift;
-        private DataGridViewTextBoxColumn Id_Inventory;
-        private DataGridViewTextBoxColumn Id_Category;
-        private DataGridViewTextBoxColumn Id_Entrance;
-        private DataGridViewTextBoxColumn Id_Issue;
-        private DataGridViewTextBoxColumn Id_Employee;
-        private DataGridViewTextBoxColumn Inventory_Name;
-        private DataGridViewTextBoxColumn Category_name;
-        private DataGridViewTextBoxColumn Unit_Measurements;
-        private DataGridViewTextBoxColumn Entrance_Quantity;
-        private DataGridViewTextBoxColumn Access_Date;
-        private DataGridViewTextBoxColumn Payout_Quantity;
-        private DataGridViewTextBoxColumn Release_date;
-        private DataGridViewTextBoxColumn Return_date;
-        private DataGridViewTextBoxColumn Сотрудник;
         public Guna.UI2.WinForms.Guna2ComboBox CbFilterShift;
         private DataGridViewTextBoxColumn Id_Grahy;
         private DataGridViewTextBoxColumn Id_Floor;
@@ -1188,5 +1215,21 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox3;
+        private Guna.UI2.WinForms.Guna2PictureBox Pbcollapse;
+        private Guna.UI2.WinForms.Guna2PictureBox PbClose;
+        private DataGridViewTextBoxColumn Id_Inventory;
+        private DataGridViewTextBoxColumn Id_Category;
+        private DataGridViewTextBoxColumn Id_Entrance;
+        private DataGridViewTextBoxColumn Id_Issue;
+        private DataGridViewTextBoxColumn Id_Employee;
+        private DataGridViewTextBoxColumn Inventory_Name;
+        private DataGridViewTextBoxColumn Category_name;
+        private DataGridViewTextBoxColumn Unit_Measurements;
+        private DataGridViewTextBoxColumn Entrance_Quantity;
+        private DataGridViewTextBoxColumn Access_Date;
+        private DataGridViewTextBoxColumn Payout_Quantity;
+        private DataGridViewTextBoxColumn Release_date;
+        private DataGridViewTextBoxColumn Return_date;
+        private DataGridViewTextBoxColumn FIO;
     }
 }

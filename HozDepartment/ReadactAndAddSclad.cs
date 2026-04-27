@@ -25,6 +25,19 @@ namespace HozDepartment
             LoadEmployees();
         }
 
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+        [DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        private void PanelToolbar_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, 0xA1, 2, 0);
+            }
+        }
+
         private void LoadCategories()
         {
             string sql = "SELECT Id_Category, Category_name FROM Category_material";
@@ -66,20 +79,6 @@ namespace HozDepartment
             }
         }
 
-
-        [DllImport("user32.dll")]
-        public static extern bool ReleaseCapture();
-        [DllImport("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        private void PanelToolbar_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, 0xA1, 2, 0);
-            }
-        }
-
         private void BtSave_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
@@ -88,6 +87,16 @@ namespace HozDepartment
         private void BtCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void PbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Pbcollapse_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

@@ -82,7 +82,7 @@ namespace HozDepartment
             }
         }
 
-        private void LoadTypeSmena() 
+        private void LoadTypeSmena()
         {
             string sql = @"SELECT Id_Tvm_Smena, Change_name,
                 CONCAT(TIME_FORMAT(Start_Time, '%H:%i'), ' - ', TIME_FORMAT(End_Time, '%H:%i')) AS TimeWork FROM Shift_type";
@@ -114,6 +114,16 @@ namespace HozDepartment
         private void BtCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void PbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Pbcollapse_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

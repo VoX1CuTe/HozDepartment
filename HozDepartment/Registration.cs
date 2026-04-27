@@ -29,7 +29,7 @@ namespace HozDepartment
         public static extern bool ReleaseCapture();
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        private void PanelControl_MouseDown(object sender, MouseEventArgs e)
+        private void PanelToolbar_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -145,7 +145,7 @@ Password=";
                         }
                     }
                 }
-                    MessageBox.Show("Дамп загружен!");
+                MessageBox.Show("Дамп загружен!");
                 return true;
             }
             catch (Exception ex)
@@ -256,6 +256,16 @@ Password=";
         private void Registration_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void PbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Pbcollapse_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

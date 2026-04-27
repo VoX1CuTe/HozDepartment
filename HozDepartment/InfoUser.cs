@@ -36,14 +36,6 @@ namespace HozDepartment
             }
         }
 
-        private void TbUserData_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
-            {
-                ContextMenuStrip.Show(TbUserData, e.Location);
-            }
-        }
-
 
 
         string connString;
@@ -135,6 +127,9 @@ namespace HozDepartment
 
             Size = new Size(1019, 277);
 
+            PbClose.Location = new Point(990, 0);
+            Pbcollapse.Location = new Point(964, 1);
+
             LbLogin.Visible = true;
             LbPassword.Visible = true;
             LbRole.Visible = true;
@@ -225,7 +220,7 @@ namespace HozDepartment
 
                         fillTableInfoUser();
                     }
-                    catch (Exception ex) 
+                    catch (Exception ex)
                     {
                         MessageBox.Show("Ошибка добавления пользователя!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -290,7 +285,7 @@ namespace HozDepartment
                         MessageBox.Show("Ошибка редактирования: " + ex.Message);
                     }
                 }
-                                              
+
 
                 if (TbLogin.Text == "")
                 {
@@ -314,6 +309,9 @@ namespace HozDepartment
 
                 Size = new Size(619, 277);
 
+                PbClose.Location = new Point(586, 0);
+                Pbcollapse.Location = new Point(560, 1);
+
                 LbLogin.Visible = false;
                 LbPassword.Visible = false;
                 LbRole.Visible = false;
@@ -332,7 +330,7 @@ namespace HozDepartment
         {
             DialogResult result = MessageBox.Show(
                 "Вы уверены, что хотите безвозвратно удалить этого пользователя?",
-                "Подтверждение удаления",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                "Подтверждение удаления", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -386,6 +384,16 @@ namespace HozDepartment
                 dt.DefaultView.RowFilter = string.Format("Login LIKE '%{0}%'", TextSearchUser.Text);
                 dt.DefaultView.RowFilter = string.Format("FuelName '%{0}%'", TextSearchUser.Text);
             }
+        }
+
+        private void PbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Pbcollapse_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

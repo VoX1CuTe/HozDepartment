@@ -26,5 +26,15 @@ namespace HozDepartment
         {
             DialogResult = DialogResult.Cancel;
         }
+
+        private void PbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Pbcollapse_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }
