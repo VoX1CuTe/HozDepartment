@@ -69,12 +69,12 @@ namespace HozDepartment
 
                     if (role == "Admin")
                     {
-                        UserLb.Text = $"Роль: {FuelName}";
+                        UserLb.Text = $"Пользователь: {FuelName}";
                     }
 
                     else if (role == "Manager")
                     {
-                        UserLb.Text = $"Роль: {FuelName}";
+                        UserLb.Text = $"Пользователь: {FuelName}";
                         BtRedactUser.Visible = false;
 
                         BtStaff.Size = new System.Drawing.Size(424, 59);
@@ -89,7 +89,7 @@ namespace HozDepartment
 
                     if (role == "User")
                     {
-                        UserLb.Text = $"Роль: {FuelName}";
+                        UserLb.Text = $"Пользователь: {FuelName}";
                         BtRedactUser.Visible = false;
                         BtStaff.Visible = false;
                         Sclad.Visible = false;
@@ -386,46 +386,51 @@ namespace HozDepartment
         {
             if (activeTable == TbSclad || clickedEmptySpace)
             {
-                using (MySqlConnection conn = new MySqlConnection(this.connString))
+                DialogResult result = MessageBox.Show("Вы уверены? Будет удалены данные со склада!",
+               "Удаление склада", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
                 {
-                    try
+                    using (MySqlConnection conn = new MySqlConnection(this.connString))
                     {
-                        int idInv = Convert.ToInt32(TbSclad.CurrentRow.Cells["Id_Inventory"].Value);
-                        conn.Open();
-
-                        using (MySqlTransaction trancaction = conn.BeginTransaction())
+                        try
                         {
+                            int idInv = Convert.ToInt32(TbSclad.CurrentRow.Cells["Id_Inventory"].Value);
+                            conn.Open();
 
-                            string sqlDeletePayoutInWork = "DELETE FROM Payout_in_work WHERE Id_Inventory = @id";
-                            using (MySqlCommand cmd = new MySqlCommand(sqlDeletePayoutInWork, conn, trancaction))
+                            using (MySqlTransaction trancaction = conn.BeginTransaction())
                             {
-                                cmd.Parameters.AddWithValue("@id", idInv);
-                                cmd.ExecuteNonQuery();
-                            }
 
-                            string sqlDeleteEntrance = "DELETE FROM entrance WHERE Id_Inventory = @id";
-                            using (MySqlCommand cmd = new MySqlCommand(sqlDeleteEntrance, conn, trancaction))
-                            {
-                                cmd.Parameters.AddWithValue("@id", idInv);
-                                cmd.ExecuteNonQuery();
-                            }
+                                string sqlDeletePayoutInWork = "DELETE FROM Payout_in_work WHERE Id_Inventory = @id";
+                                using (MySqlCommand cmd = new MySqlCommand(sqlDeletePayoutInWork, conn, trancaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@id", idInv);
+                                    cmd.ExecuteNonQuery();
+                                }
 
-                            string sqlDeleteInventory = "DELETE FROM Inventory WHERE Id_Inventory = @id";
-                            using (MySqlCommand cmd = new MySqlCommand(sqlDeleteInventory, conn, trancaction))
-                            {
-                                cmd.Parameters.AddWithValue("@id", idInv);
-                                cmd.ExecuteNonQuery();
-                            }
+                                string sqlDeleteEntrance = "DELETE FROM entrance WHERE Id_Inventory = @id";
+                                using (MySqlCommand cmd = new MySqlCommand(sqlDeleteEntrance, conn, trancaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@id", idInv);
+                                    cmd.ExecuteNonQuery();
+                                }
 
-                            trancaction.Commit();
+                                string sqlDeleteInventory = "DELETE FROM Inventory WHERE Id_Inventory = @id";
+                                using (MySqlCommand cmd = new MySqlCommand(sqlDeleteInventory, conn, trancaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@id", idInv);
+                                    cmd.ExecuteNonQuery();
+                                }
+
+                                trancaction.Commit();
+                            }
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Ошибка удаления инвентаря!\n\nПодробности: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Ошибка удаления инвентаря!\n\nПодробности: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
 
-                    fillTableSclad();
+                        fillTableSclad();
+                    }
                 }
             }
         }
@@ -721,43 +726,48 @@ namespace HozDepartment
         {
             if (activeTable == TbShift || clickedEmptySpaceShift)
             {
-                using (MySqlConnection conn = new MySqlConnection(this.connString))
+                DialogResult result = MessageBox.Show("Вы уверены? Будет удалена смена!",
+               "Удаление смены", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
                 {
-                    try
+                    using (MySqlConnection conn = new MySqlConnection(this.connString))
                     {
-                        conn.Open();
-                        using (MySqlTransaction transaction = conn.BeginTransaction())
+                        try
                         {
-                            int Id_Grahy = Convert.ToInt32(TbShift.CurrentRow.Cells["Id_Grahy"].Value);
-                            string sqlDeleteTheActualShift = "DELETE FROM The_actual_shift WHERE Id_Grahy = @Id_Grahy";
-                            using (MySqlCommand cmd = new MySqlCommand(sqlDeleteTheActualShift, conn, transaction))
+                            conn.Open();
+                            using (MySqlTransaction transaction = conn.BeginTransaction())
                             {
-                                cmd.Parameters.AddWithValue("@Id_Grahy", Id_Grahy);
-                                cmd.ExecuteNonQuery();
-                            }
+                                int Id_Grahy = Convert.ToInt32(TbShift.CurrentRow.Cells["Id_Grahy"].Value);
+                                string sqlDeleteTheActualShift = "DELETE FROM The_actual_shift WHERE Id_Grahy = @Id_Grahy";
+                                using (MySqlCommand cmd = new MySqlCommand(sqlDeleteTheActualShift, conn, transaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@Id_Grahy", Id_Grahy);
+                                    cmd.ExecuteNonQuery();
+                                }
 
-                            string sqlDeletePlannedSchedulу = "DELETE FROM Planned_schedulу WHERE Id_Grahy = @Id_Grahy";
-                            using (MySqlCommand cmd = new MySqlCommand(sqlDeletePlannedSchedulу, conn, transaction))
-                            {
-                                cmd.Parameters.AddWithValue("@Id_Grahy", Id_Grahy);
-                                cmd.ExecuteNonQuery();
-                            }
+                                string sqlDeletePlannedSchedulу = "DELETE FROM Planned_schedulу WHERE Id_Grahy = @Id_Grahy";
+                                using (MySqlCommand cmd = new MySqlCommand(sqlDeletePlannedSchedulу, conn, transaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@Id_Grahy", Id_Grahy);
+                                    cmd.ExecuteNonQuery();
+                                }
 
-                            string sqlPlace = "DELETE FROM Place_work WHERE Id_Place = @Id_Place";
-                            int Id_Place = Convert.ToInt32(TbShift.CurrentRow.Cells["Id_Place"].Value);
-                            using (MySqlCommand cmd = new MySqlCommand(sqlPlace, conn, transaction))
-                            {
-                                cmd.Parameters.AddWithValue("@Id_Place", Id_Place);
-                                cmd.ExecuteNonQuery();
+                                string sqlPlace = "DELETE FROM Place_work WHERE Id_Place = @Id_Place";
+                                int Id_Place = Convert.ToInt32(TbShift.CurrentRow.Cells["Id_Place"].Value);
+                                using (MySqlCommand cmd = new MySqlCommand(sqlPlace, conn, transaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@Id_Place", Id_Place);
+                                    cmd.ExecuteNonQuery();
+                                }
+                                transaction.Commit();
                             }
-                            transaction.Commit();
                         }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Ошибка удаления смены!\n\nПодробности: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        fillTabelShift();
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Ошибка удаления смены!\n\nПодробности: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    fillTabelShift();
                 }
             }
         }
