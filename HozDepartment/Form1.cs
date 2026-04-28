@@ -76,22 +76,36 @@ namespace HozDepartment
                     {
                         UserLb.Text = $"Роль: {FuelName}";
                         BtRedactUser.Visible = false;
+
+                        BtStaff.Size = new System.Drawing.Size(424, 59);
+                        BtStaff.Location = new Point(12, 6);
+
+                        BtShift.Size = new System.Drawing.Size(424, 59);
+                        BtShift.Location = new Point(442, 6);
+
+                        BtShift.Size = new System.Drawing.Size(424, 59);
+                        BtShift.Location = new Point(872, 6);
                     }
 
                     if (role == "User")
                     {
                         UserLb.Text = $"Роль: {FuelName}";
                         BtRedactUser.Visible = false;
+                        BtStaff.Visible = false;
+                        Sclad.Visible = false;
+                        BtRedactUser.Visible=false;
+                        BtShift.Size = new System.Drawing.Size(1280, 59);
                     }
 
 
                     TextSearchStaff.Visible = true;
                     CbFilterStaff.Visible = true;
                     TbUser.Visible = true;
-                    TextSearchSclad.Visible = false;
 
                     BtSeal.Visible = false;
                     CbFilterShift.Visible = false;
+                    TextSearchSclad.Visible = false;
+                    TextSearchShift.Visible = false;
 
                     BtnBackup.Location = new Point(1135, 104);
 
@@ -295,7 +309,7 @@ namespace HozDepartment
                     readactAndAddSclad.DtReturnInventory.Value = Convert.ToDateTime(TbSclad.CurrentRow.Cells["Return_date"].Value);
                     readactAndAddSclad.TbQualityInventory.Text = TbSclad.CurrentRow.Cells["Payout_Quantity"].Value.ToString();
                     readactAndAddSclad.CbUnitMeasurements.Text = TbSclad.CurrentRow.Cells["Unit_Measurements"].Value.ToString();
-                    readactAndAddSclad.CbEmployee.Text = TbSclad.CurrentRow.Cells["FIO"].Value.ToString(); // Ошибка
+                    readactAndAddSclad.CbEmployee.Text = TbSclad.CurrentRow.Cells["FIO"].Value.ToString();
 
 
                     readactAndAddSclad.LbRedactAndAdd.Text = "Редактирование";
@@ -465,6 +479,7 @@ namespace HozDepartment
             TbShift.Visible = true;
             BtSeal.Visible = true;
             CbFilterShift.Visible = true;
+            TextSearchShift.Visible = true;
 
             TextSearchSclad.Visible = false;
             TbSclad.Visible = false;
@@ -964,10 +979,12 @@ namespace HozDepartment
         {
             if (TbUser.DataSource is DataTable dt)
             {
-                dt.DefaultView.RowFilter = string.Format("Staff_FIO LIKE '%{0}%'", TextSearchStaff.Text);
-                dt.DefaultView.RowFilter = string.Format("Post LIKE '%{0}%'", TextSearchStaff.Text);
-                dt.DefaultView.RowFilter = string.Format("Phone_number LIKE '%{0}%'", TextSearchStaff.Text);
-                dt.DefaultView.RowFilter = string.Format("Type_graphy LIKE '%{0}%'", TextSearchStaff.Text);
+                string filterText = TextSearchStaff.Text.Replace("'", "''");
+
+                dt.DefaultView.RowFilter = string.Format(
+                    "Staff_FIO LIKE '%{0}%' OR Post LIKE '%{0}%' OR Phone_number LIKE '%{0}%' OR Type_graphy LIKE '%{0}%'",
+                    filterText
+                );
             }
         }
 
@@ -1159,9 +1176,12 @@ namespace HozDepartment
         {
             if (TbShift.DataSource is DataTable dt)
             {
-                dt.DefaultView.RowFilter = string.Format("FIO_Shift LIKE '%{0}%'", TextSearchShift.Text);
-                dt.DefaultView.RowFilter = string.Format("Body_name LIKE '%{0}%'", TextSearchShift.Text);
-                dt.DefaultView.RowFilter = string.Format("Change_name LIKE '%{0}%'", TextSearchShift.Text);
+                string searchValue = TextSearchShift.Text.Replace("'", "''");
+
+                dt.DefaultView.RowFilter = string.Format(
+                    "FIO_Shift LIKE '%{0}%' OR Body_name LIKE '%{0}%' OR Change_name LIKE '%{0}%'",
+                    searchValue
+                );
             }
         }
 
@@ -1264,8 +1284,8 @@ namespace HozDepartment
         {
             if (TbSclad.DataSource is DataTable dt)
             {
-                dt.DefaultView.RowFilter = string.Format("FIO LIKE '%{0}%'", TextSearchSclad.Text);
-                dt.DefaultView.RowFilter = string.Format("Inventory_Name LIKE '%{0}%'", TextSearchSclad.Text);
+                string search = TextSearchSclad.Text.Replace("'", "''");
+                dt.DefaultView.RowFilter = string.Format("FIO LIKE '%{0}%' OR Inventory_Name LIKE '%{0}%'", search);
             }
         }
 

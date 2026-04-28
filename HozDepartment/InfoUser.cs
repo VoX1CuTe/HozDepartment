@@ -36,8 +36,6 @@ namespace HozDepartment
             }
         }
 
-
-
         string connString;
         private void InfoUser_Load(object sender, EventArgs e)
         {
@@ -381,8 +379,12 @@ namespace HozDepartment
         {
             if (TbUserData.DataSource is DataTable dt)
             {
-                dt.DefaultView.RowFilter = string.Format("Login LIKE '%{0}%'", TextSearchUser.Text);
-                dt.DefaultView.RowFilter = string.Format("FuelName '%{0}%'", TextSearchUser.Text);
+                string search = TextSearchUser.Text.Replace("'", "''");
+
+                dt.DefaultView.RowFilter = string.Format(
+                    "Login LIKE '%{0}%' OR FuelName LIKE '%{0}%'",
+                    search
+                );
             }
         }
 
