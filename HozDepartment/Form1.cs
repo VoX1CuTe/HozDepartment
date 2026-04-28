@@ -946,33 +946,56 @@ namespace HozDepartment
 
         private void StripMenuDeleteStaff_Click(object sender, EventArgs e)
         {
-            if (activeTable == TbUser || clickedEmptySpaceStaff)
+            if (TbUser.CurrentRow == null || activeTable != TbUser) return;
+
+            DialogResult result = MessageBox.Show("Вы уверены? Будет удален сотрудник и ВСЕ его смены!",
+                "Удаление сотрудника", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
             {
-                using (MySqlConnection conn = new MySqlConnection(connString))
+                int Id_Employee = Convert.ToInt32(TbUser.CurrentRow.Cells["Id_Employye"].Value);
+
+                using (MySqlConnection conn = new MySqlConnection(this.connString))
                 {
-                    try
+                    conn.Open();
+                    using (MySqlTransaction tr = conn.BeginTransaction())
                     {
-                        conn.Open();
-
-                        int Id_Employee = Convert.ToInt32(TbUser.CurrentRow.Cells["Id_Employye"].Value);
-                        string sqlDeleteStaff = "DELETE FROM Staff WHERE Id_Employee = @Id_Employee";
-
-                        using (MySqlCommand cmd = new MySqlCommand(sqlDeleteStaff, conn))
+                        try
                         {
-                            cmd.Parameters.AddWithValue("@Id_Employee", Id_Employee);
-                            cmd.ExecuteNonQuery();
+                            string sqlActual = @"DELETE FROM The_actual_shift 
+                                         WHERE Id_Grahy IN (SELECT Id_Grahy FROM planned_schedulу WHERE Id_Employee = @id)";
+                            using (MySqlCommand cmd = new MySqlCommand(sqlActual, conn, tr))
+                            {
+                                cmd.Parameters.AddWithValue("@id", Id_Employee);
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            string sqlPlanned = "DELETE FROM planned_schedulу WHERE Id_Employee = @id";
+                            using (MySqlCommand cmd = new MySqlCommand(sqlPlanned, conn, tr))
+                            {
+                                cmd.Parameters.AddWithValue("@id", Id_Employee);
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            string sqlStaff = "DELETE FROM Staff WHERE Id_Employee = @id";
+                            using (MySqlCommand cmd = new MySqlCommand(sqlStaff, conn, tr))
+                            {
+                                cmd.Parameters.AddWithValue("@id", Id_Employee);
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            tr.Commit();
+                            MessageBox.Show("Сотрудник полностью удален из системы.", "Успех");
+                        }
+                        catch (Exception ex)
+                        {
+                            tr.Rollback();
+                            MessageBox.Show("Ошибка удаления!\n\nПодробности: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Ошибка удаления сотрудника!\n\nПодробности: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
                 }
-
+                fillTableStaff();
             }
-
-            fillTableStaff();
         }
 
         private void TextSearchStaff_TextChanged(object sender, EventArgs e)
