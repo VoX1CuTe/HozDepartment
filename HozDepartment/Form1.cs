@@ -70,6 +70,7 @@ namespace HozDepartment
                     if (role == "Admin")
                     {
                         UserLb.Text = $"Пользователь: {FuelName}";
+                        TbUser.Visible = true;
                     }
 
                     else if (role == "Manager")
@@ -81,26 +82,40 @@ namespace HozDepartment
                         BtStaff.Location = new Point(12, 6);
 
                         BtShift.Size = new System.Drawing.Size(424, 59);
-                        BtShift.Location = new Point(442, 6);
-
-                        BtShift.Size = new System.Drawing.Size(424, 59);
                         BtShift.Location = new Point(872, 6);
+
+                        Sclad.Size = new System.Drawing.Size(424, 59);
+                        Sclad.Location = new Point(442, 6);
+
+
+                        TbUser.Visible = true;
+                        BtnBackup.Visible = false;
                     }
 
-                    if (role == "User")
+                    else if (role == "User")
                     {
                         UserLb.Text = $"Пользователь: {FuelName}";
                         BtRedactUser.Visible = false;
                         BtStaff.Visible = false;
                         Sclad.Visible = false;
-                        BtRedactUser.Visible=false;
-                        BtShift.Size = new System.Drawing.Size(1280, 59);
-                    }
 
+                        BtShift.Size = new System.Drawing.Size(1280, 59);
+                        BtShift.Location = new Point(12, 6);
+                        BtShift.Visible = true;
+
+                        TbShift.Visible = true;
+                        TbUser.Visible = false;
+                        TbSclad.Visible = false;
+
+                        BtSeal.Visible = false;
+                        BtnBackup.Visible = false;
+
+                        TbShift.ContextMenuStrip = null;
+
+                    }
 
                     TextSearchStaff.Visible = true;
                     CbFilterStaff.Visible = true;
-                    TbUser.Visible = true;
 
                     BtSeal.Visible = false;
                     CbFilterShift.Visible = false;
@@ -481,6 +496,7 @@ namespace HozDepartment
 
         private void BtShift_Click(object sender, EventArgs e)
         {
+
             TbShift.Visible = true;
             BtSeal.Visible = true;
             CbFilterShift.Visible = true;
@@ -494,6 +510,16 @@ namespace HozDepartment
 
             BtnBackup.Location = new Point(999, 104);
 
+            if (role == "User")
+            {
+                BtSeal.Visible = false;
+                TextSearchShift.Location = new Point(12, 104);
+            }
+            else
+            {
+                BtSeal.Visible = true;
+            }
+
 
             fillTabelShift();
         }
@@ -501,6 +527,7 @@ namespace HozDepartment
         {
             if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
             {
+                if (role == "User") return;
                 activeTable = TbShift;
                 ContextMenuShift.Show(TbShift, e.Location);
             }
@@ -512,6 +539,7 @@ namespace HozDepartment
         private bool clickedEmptySpaceShift;
         private void TbShift_MouseDown(object sender, MouseEventArgs e)
         {
+            if (role == "User") return;
             if (e.Button == MouseButtons.Right)
             {
                 activeTable = TbShift;
@@ -958,8 +986,12 @@ namespace HozDepartment
         {
             if (TbUser.CurrentRow == null || activeTable != TbUser) return;
 
-            DialogResult result = MessageBox.Show("Вы уверены? Будет удален сотрудник и ВСЕ его смены!",
-                "Удаление сотрудника", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            // 2. Подтверждение удаления
+            DialogResult result = MessageBox.Show(
+                "Вы уверены? Будет удален сотрудник, все его смены и записи о выдаче инвентаря!",
+                "Удаление сотрудника",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
             {
@@ -967,41 +999,55 @@ namespace HozDepartment
 
                 using (MySqlConnection conn = new MySqlConnection(this.connString))
                 {
-                    conn.Open();
-                    using (MySqlTransaction tr = conn.BeginTransaction())
+                    try
                     {
-                        try
+                        conn.Open();
+                        using (MySqlTransaction transaction = conn.BeginTransaction())
                         {
-                            string sqlActual = @"DELETE FROM The_actual_shift 
-                                         WHERE Id_Grahy IN (SELECT Id_Grahy FROM planned_schedulу WHERE Id_Employee = @id)";
-                            using (MySqlCommand cmd = new MySqlCommand(sqlActual, conn, tr))
+                            try
                             {
-                                cmd.Parameters.AddWithValue("@id", Id_Employee);
-                                cmd.ExecuteNonQuery();
-                            }
+                                string sqlPayout = "DELETE FROM payout_in_work WHERE Id_Employee = @id";
+                                using (MySqlCommand cmd = new MySqlCommand(sqlPayout, conn, transaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@id", Id_Employee);
+                                    cmd.ExecuteNonQuery();
+                                }
 
-                            string sqlPlanned = "DELETE FROM planned_schedulу WHERE Id_Employee = @id";
-                            using (MySqlCommand cmd = new MySqlCommand(sqlPlanned, conn, tr))
+                                string sqlActual = @"DELETE FROM The_actual_shift 
+                                             WHERE Id_Grahy IN (SELECT Id_Grahy FROM planned_schedulу WHERE Id_Employee = @id)";
+                                using (MySqlCommand cmd = new MySqlCommand(sqlActual, conn, transaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@id", Id_Employee);
+                                    cmd.ExecuteNonQuery();
+                                }
+
+                                string sqlPlanned = "DELETE FROM planned_schedulу WHERE Id_Employee = @id";
+                                using (MySqlCommand cmd = new MySqlCommand(sqlPlanned, conn, transaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@id", Id_Employee);
+                                    cmd.ExecuteNonQuery();
+                                }
+
+                                string sqlStaff = "DELETE FROM Staff WHERE Id_Employee = @id";
+                                using (MySqlCommand cmd = new MySqlCommand(sqlStaff, conn, transaction))
+                                {
+                                    cmd.Parameters.AddWithValue("@id", Id_Employee);
+                                    cmd.ExecuteNonQuery();
+                                }
+
+                                transaction.Commit();
+                                MessageBox.Show("Сотрудник и все связанные данные успешно удалены.", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            catch (Exception ex)
                             {
-                                cmd.Parameters.AddWithValue("@id", Id_Employee);
-                                cmd.ExecuteNonQuery();
+                                transaction.Rollback();
+                                MessageBox.Show("Ошибка при выполнении транзакции!\n\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-
-                            string sqlStaff = "DELETE FROM Staff WHERE Id_Employee = @id";
-                            using (MySqlCommand cmd = new MySqlCommand(sqlStaff, conn, tr))
-                            {
-                                cmd.Parameters.AddWithValue("@id", Id_Employee);
-                                cmd.ExecuteNonQuery();
-                            }
-
-                            tr.Commit();
-                            MessageBox.Show("Сотрудник полностью удален из системы.", "Успех");
                         }
-                        catch (Exception ex)
-                        {
-                            tr.Rollback();
-                            MessageBox.Show("Ошибка удаления!\n\nПодробности: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Не удалось подключиться к базе данных:\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 fillTableStaff();

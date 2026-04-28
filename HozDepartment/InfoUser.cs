@@ -342,7 +342,6 @@ namespace HozDepartment
                         return;
                     }
 
-                    //ЗАЩИТА ОТ САМОУДАЛЕНИЯ
                     if (selectedId == CurrentUserId)
                     {
                         MessageBox.Show("Вы не можете удалить самого себя!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
