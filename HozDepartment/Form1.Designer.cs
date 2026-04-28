@@ -37,12 +37,12 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
@@ -77,9 +77,9 @@
             UserLb = new Guna.UI2.WinForms.Guna2HtmlLabel();
             PanelButton = new Panel();
             BtStaff = new Guna.UI2.WinForms.Guna2Button();
-            Sclad = new Guna.UI2.WinForms.Guna2Button();
-            BtShift = new Guna.UI2.WinForms.Guna2Button();
             BtRedactUser = new Guna.UI2.WinForms.Guna2Button();
+            BtShift = new Guna.UI2.WinForms.Guna2Button();
+            Sclad = new Guna.UI2.WinForms.Guna2Button();
             TbSclad = new Guna.UI2.WinForms.Guna2DataGridView();
             Id_Inventory = new DataGridViewTextBoxColumn();
             Id_Category = new DataGridViewTextBoxColumn();
@@ -265,25 +265,25 @@
             BtStaff.Text = "Работники";
             BtStaff.Click += BtStaff_Click;
             // 
-            // Sclad
+            // BtRedactUser
             // 
-            Sclad.BorderRadius = 15;
-            Sclad.CustomizableEdges = customizableEdges13;
-            Sclad.DisabledState.BorderColor = Color.DarkGray;
-            Sclad.DisabledState.CustomBorderColor = Color.DarkGray;
-            Sclad.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            Sclad.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            Sclad.FillColor = Color.FromArgb(253, 253, 130);
-            Sclad.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            Sclad.ForeColor = Color.Black;
-            Sclad.ImageSize = new Size(35, 35);
-            Sclad.Location = new Point(654, 6);
-            Sclad.Name = "Sclad";
-            Sclad.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            Sclad.Size = new Size(315, 59);
-            Sclad.TabIndex = 4;
-            Sclad.Text = "Склад";
-            Sclad.Click += Sclad_Click;
+            BtRedactUser.BorderRadius = 15;
+            BtRedactUser.CustomizableEdges = customizableEdges9;
+            BtRedactUser.DisabledState.BorderColor = Color.DarkGray;
+            BtRedactUser.DisabledState.CustomBorderColor = Color.DarkGray;
+            BtRedactUser.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            BtRedactUser.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            BtRedactUser.FillColor = Color.FromArgb(253, 253, 130);
+            BtRedactUser.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            BtRedactUser.ForeColor = Color.Black;
+            BtRedactUser.ImageSize = new Size(35, 35);
+            BtRedactUser.Location = new Point(977, 6);
+            BtRedactUser.Name = "BtRedactUser";
+            BtRedactUser.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            BtRedactUser.Size = new Size(315, 59);
+            BtRedactUser.TabIndex = 8;
+            BtRedactUser.Text = "О пользователя";
+            BtRedactUser.Click += BtRedactUser_Click;
             // 
             // BtShift
             // 
@@ -305,25 +305,25 @@
             BtShift.Text = "Смены";
             BtShift.Click += BtShift_Click;
             // 
-            // BtRedactUser
+            // Sclad
             // 
-            BtRedactUser.BorderRadius = 15;
-            BtRedactUser.CustomizableEdges = customizableEdges9;
-            BtRedactUser.DisabledState.BorderColor = Color.DarkGray;
-            BtRedactUser.DisabledState.CustomBorderColor = Color.DarkGray;
-            BtRedactUser.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            BtRedactUser.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            BtRedactUser.FillColor = Color.FromArgb(253, 253, 130);
-            BtRedactUser.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            BtRedactUser.ForeColor = Color.Black;
-            BtRedactUser.ImageSize = new Size(35, 35);
-            BtRedactUser.Location = new Point(977, 6);
-            BtRedactUser.Name = "BtRedactUser";
-            BtRedactUser.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            BtRedactUser.Size = new Size(315, 59);
-            BtRedactUser.TabIndex = 8;
-            BtRedactUser.Text = "О пользователя";
-            BtRedactUser.Click += BtRedactUser_Click;
+            Sclad.BorderRadius = 15;
+            Sclad.CustomizableEdges = customizableEdges13;
+            Sclad.DisabledState.BorderColor = Color.DarkGray;
+            Sclad.DisabledState.CustomBorderColor = Color.DarkGray;
+            Sclad.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            Sclad.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            Sclad.FillColor = Color.FromArgb(253, 253, 130);
+            Sclad.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            Sclad.ForeColor = Color.Black;
+            Sclad.ImageSize = new Size(35, 35);
+            Sclad.Location = new Point(654, 6);
+            Sclad.Name = "Sclad";
+            Sclad.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            Sclad.Size = new Size(315, 59);
+            Sclad.TabIndex = 4;
+            Sclad.Text = "Склад";
+            Sclad.Click += Sclad_Click;
             // 
             // TbSclad
             // 
