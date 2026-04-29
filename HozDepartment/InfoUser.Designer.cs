@@ -121,11 +121,11 @@
             // guna2HtmlLabel5
             // 
             guna2HtmlLabel5.BackColor = Color.Transparent;
-            guna2HtmlLabel5.Location = new Point(55, 5);
+            guna2HtmlLabel5.Location = new Point(3, 3);
             guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            guna2HtmlLabel5.Size = new Size(93, 17);
+            guna2HtmlLabel5.Size = new Size(95, 17);
             guna2HtmlLabel5.TabIndex = 13;
-            guna2HtmlLabel5.Text = "HozDepartament";
+            guna2HtmlLabel5.Text = "О пользователях";
             // 
             // TbLogin
             // 

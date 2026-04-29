@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -43,6 +40,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
@@ -55,8 +54,6 @@
             DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -69,6 +66,11 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             PanelToolbar = new Panel();
             Pbcollapse = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -143,6 +145,7 @@
             TextSearchSclad = new TextBox();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
             PanelToolbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Pbcollapse).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox3).BeginInit();
@@ -156,11 +159,13 @@
             ContextMenuStaff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox4).BeginInit();
             SuspendLayout();
             // 
             // PanelToolbar
             // 
             PanelToolbar.BackColor = Color.FromArgb(253, 253, 150);
+            PanelToolbar.Controls.Add(guna2PictureBox4);
             PanelToolbar.Controls.Add(Pbcollapse);
             PanelToolbar.Controls.Add(guna2PictureBox3);
             PanelToolbar.Controls.Add(PbClose);
@@ -175,12 +180,12 @@
             // 
             // Pbcollapse
             // 
-            Pbcollapse.CustomizableEdges = customizableEdges1;
+            Pbcollapse.CustomizableEdges = customizableEdges3;
             Pbcollapse.Image = (Image)resources.GetObject("Pbcollapse.Image");
             Pbcollapse.ImageRotate = 0F;
             Pbcollapse.Location = new Point(1246, 2);
             Pbcollapse.Name = "Pbcollapse";
-            Pbcollapse.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            Pbcollapse.ShadowDecoration.CustomizableEdges = customizableEdges4;
             Pbcollapse.Size = new Size(29, 23);
             Pbcollapse.SizeMode = PictureBoxSizeMode.Zoom;
             Pbcollapse.TabIndex = 94;
@@ -189,12 +194,12 @@
             // 
             // guna2PictureBox3
             // 
-            guna2PictureBox3.CustomizableEdges = customizableEdges3;
+            guna2PictureBox3.CustomizableEdges = customizableEdges5;
             guna2PictureBox3.Image = (Image)resources.GetObject("guna2PictureBox3.Image");
             guna2PictureBox3.ImageRotate = 0F;
             guna2PictureBox3.Location = new Point(3, 3);
             guna2PictureBox3.Name = "guna2PictureBox3";
-            guna2PictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2PictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges6;
             guna2PictureBox3.Size = new Size(29, 19);
             guna2PictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox3.TabIndex = 89;
@@ -202,12 +207,12 @@
             // 
             // PbClose
             // 
-            PbClose.CustomizableEdges = customizableEdges5;
+            PbClose.CustomizableEdges = customizableEdges7;
             PbClose.Image = (Image)resources.GetObject("PbClose.Image");
             PbClose.ImageRotate = 0F;
             PbClose.Location = new Point(1272, 1);
             PbClose.Name = "PbClose";
-            PbClose.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            PbClose.ShadowDecoration.CustomizableEdges = customizableEdges8;
             PbClose.Size = new Size(29, 24);
             PbClose.SizeMode = PictureBoxSizeMode.Zoom;
             PbClose.TabIndex = 93;
@@ -248,18 +253,19 @@
             // BtStaff
             // 
             BtStaff.BorderRadius = 15;
-            BtStaff.CustomizableEdges = customizableEdges7;
+            BtStaff.CustomizableEdges = customizableEdges9;
             BtStaff.DisabledState.BorderColor = Color.DarkGray;
             BtStaff.DisabledState.CustomBorderColor = Color.DarkGray;
             BtStaff.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             BtStaff.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             BtStaff.FillColor = Color.FromArgb(253, 253, 130);
-            BtStaff.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            BtStaff.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
             BtStaff.ForeColor = Color.Black;
-            BtStaff.ImageSize = new Size(35, 35);
+            BtStaff.Image = (Image)resources.GetObject("BtStaff.Image");
+            BtStaff.ImageSize = new Size(30, 30);
             BtStaff.Location = new Point(12, 6);
             BtStaff.Name = "BtStaff";
-            BtStaff.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            BtStaff.ShadowDecoration.CustomizableEdges = customizableEdges10;
             BtStaff.Size = new Size(315, 59);
             BtStaff.TabIndex = 7;
             BtStaff.Text = "Работники";
@@ -268,18 +274,19 @@
             // BtRedactUser
             // 
             BtRedactUser.BorderRadius = 15;
-            BtRedactUser.CustomizableEdges = customizableEdges9;
+            BtRedactUser.CustomizableEdges = customizableEdges11;
             BtRedactUser.DisabledState.BorderColor = Color.DarkGray;
             BtRedactUser.DisabledState.CustomBorderColor = Color.DarkGray;
             BtRedactUser.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             BtRedactUser.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             BtRedactUser.FillColor = Color.FromArgb(253, 253, 130);
-            BtRedactUser.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            BtRedactUser.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
             BtRedactUser.ForeColor = Color.Black;
-            BtRedactUser.ImageSize = new Size(35, 35);
+            BtRedactUser.Image = (Image)resources.GetObject("BtRedactUser.Image");
+            BtRedactUser.ImageSize = new Size(30, 30);
             BtRedactUser.Location = new Point(977, 6);
             BtRedactUser.Name = "BtRedactUser";
-            BtRedactUser.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            BtRedactUser.ShadowDecoration.CustomizableEdges = customizableEdges12;
             BtRedactUser.Size = new Size(315, 59);
             BtRedactUser.TabIndex = 8;
             BtRedactUser.Text = "О пользователя";
@@ -288,18 +295,19 @@
             // BtShift
             // 
             BtShift.BorderRadius = 15;
-            BtShift.CustomizableEdges = customizableEdges11;
+            BtShift.CustomizableEdges = customizableEdges13;
             BtShift.DisabledState.BorderColor = Color.DarkGray;
             BtShift.DisabledState.CustomBorderColor = Color.DarkGray;
             BtShift.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             BtShift.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             BtShift.FillColor = Color.FromArgb(253, 253, 130);
-            BtShift.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            BtShift.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
             BtShift.ForeColor = Color.Black;
-            BtShift.ImageSize = new Size(40, 40);
+            BtShift.Image = (Image)resources.GetObject("BtShift.Image");
+            BtShift.ImageSize = new Size(32, 32);
             BtShift.Location = new Point(333, 6);
             BtShift.Name = "BtShift";
-            BtShift.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            BtShift.ShadowDecoration.CustomizableEdges = customizableEdges14;
             BtShift.Size = new Size(315, 59);
             BtShift.TabIndex = 6;
             BtShift.Text = "Смены";
@@ -308,18 +316,19 @@
             // Sclad
             // 
             Sclad.BorderRadius = 15;
-            Sclad.CustomizableEdges = customizableEdges13;
+            Sclad.CustomizableEdges = customizableEdges15;
             Sclad.DisabledState.BorderColor = Color.DarkGray;
             Sclad.DisabledState.CustomBorderColor = Color.DarkGray;
             Sclad.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             Sclad.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             Sclad.FillColor = Color.FromArgb(253, 253, 130);
-            Sclad.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            Sclad.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Sclad.ForeColor = Color.Black;
-            Sclad.ImageSize = new Size(35, 35);
+            Sclad.Image = (Image)resources.GetObject("Sclad.Image");
+            Sclad.ImageSize = new Size(30, 30);
             Sclad.Location = new Point(654, 6);
             Sclad.Name = "Sclad";
-            Sclad.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            Sclad.ShadowDecoration.CustomizableEdges = customizableEdges16;
             Sclad.Size = new Size(315, 59);
             Sclad.TabIndex = 4;
             Sclad.Text = "Склад";
@@ -959,7 +968,7 @@
             // 
             CbFilterStaff.BackColor = Color.FromArgb(253, 253, 150);
             CbFilterStaff.BorderColor = Color.FromArgb(253, 253, 150);
-            CbFilterStaff.CustomizableEdges = customizableEdges15;
+            CbFilterStaff.CustomizableEdges = customizableEdges17;
             CbFilterStaff.DrawMode = DrawMode.OwnerDrawFixed;
             CbFilterStaff.DropDownStyle = ComboBoxStyle.DropDownList;
             CbFilterStaff.DropDownWidth = 140;
@@ -972,7 +981,7 @@
             CbFilterStaff.Items.AddRange(new object[] { "Сбросить всё", "Пол (А-Я)", "Пол (Я-А)", "Должность (А-Я)", "Должность (Я-А)", "Дата приема (Новые)", "Дата приема (Старый)" });
             CbFilterStaff.Location = new Point(391, 109);
             CbFilterStaff.Name = "CbFilterStaff";
-            CbFilterStaff.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            CbFilterStaff.ShadowDecoration.CustomizableEdges = customizableEdges18;
             CbFilterStaff.Size = new Size(183, 29);
             CbFilterStaff.TabIndex = 81;
             CbFilterStaff.SelectedIndexChanged += CbFilterStaff_SelectedIndexChanged;
@@ -980,7 +989,7 @@
             // BtSeal
             // 
             BtSeal.BorderRadius = 5;
-            BtSeal.CustomizableEdges = customizableEdges17;
+            BtSeal.CustomizableEdges = customizableEdges19;
             BtSeal.DisabledState.BorderColor = Color.DarkGray;
             BtSeal.DisabledState.CustomBorderColor = Color.DarkGray;
             BtSeal.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -994,7 +1003,7 @@
             BtSeal.ImeMode = ImeMode.NoControl;
             BtSeal.Location = new Point(1183, 104);
             BtSeal.Name = "BtSeal";
-            BtSeal.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            BtSeal.ShadowDecoration.CustomizableEdges = customizableEdges20;
             BtSeal.Size = new Size(109, 34);
             BtSeal.TabIndex = 9;
             BtSeal.Text = "Печать";
@@ -1004,7 +1013,7 @@
             // BtnBackup
             // 
             BtnBackup.BorderRadius = 5;
-            BtnBackup.CustomizableEdges = customizableEdges19;
+            BtnBackup.CustomizableEdges = customizableEdges21;
             BtnBackup.DisabledState.BorderColor = Color.DarkGray;
             BtnBackup.DisabledState.CustomBorderColor = Color.DarkGray;
             BtnBackup.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -1016,7 +1025,7 @@
             BtnBackup.ImageSize = new Size(25, 25);
             BtnBackup.Location = new Point(990, 104);
             BtnBackup.Name = "BtnBackup";
-            BtnBackup.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            BtnBackup.ShadowDecoration.CustomizableEdges = customizableEdges22;
             BtnBackup.Size = new Size(166, 34);
             BtnBackup.TabIndex = 82;
             BtnBackup.Text = "Резервная копия";
@@ -1035,7 +1044,7 @@
             // 
             CbFilterShift.BackColor = Color.FromArgb(253, 253, 150);
             CbFilterShift.BorderColor = Color.FromArgb(253, 253, 150);
-            CbFilterShift.CustomizableEdges = customizableEdges21;
+            CbFilterShift.CustomizableEdges = customizableEdges23;
             CbFilterShift.DrawMode = DrawMode.OwnerDrawFixed;
             CbFilterShift.DropDownStyle = ComboBoxStyle.DropDownList;
             CbFilterShift.DropDownWidth = 140;
@@ -1048,7 +1057,7 @@
             CbFilterShift.Items.AddRange(new object[] { "Сбросить всё", "Отработана смена (от +)", "Отработана смена (от -)", "Номер этажа (от большего)", "Номер этажа (от меньшего)" });
             CbFilterShift.Location = new Point(391, 109);
             CbFilterShift.Name = "CbFilterShift";
-            CbFilterShift.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            CbFilterShift.ShadowDecoration.CustomizableEdges = customizableEdges24;
             CbFilterShift.Size = new Size(183, 29);
             CbFilterShift.TabIndex = 84;
             CbFilterShift.SelectedIndexChanged += CbFilterShift_SelectedIndexChanged;
@@ -1057,7 +1066,7 @@
             // 
             CbFilterSclad.BackColor = Color.FromArgb(253, 253, 150);
             CbFilterSclad.BorderColor = Color.FromArgb(253, 253, 150);
-            CbFilterSclad.CustomizableEdges = customizableEdges23;
+            CbFilterSclad.CustomizableEdges = customizableEdges25;
             CbFilterSclad.DrawMode = DrawMode.OwnerDrawFixed;
             CbFilterSclad.DropDownStyle = ComboBoxStyle.DropDownList;
             CbFilterSclad.DropDownWidth = 140;
@@ -1071,7 +1080,7 @@
             CbFilterSclad.Items.AddRange(new object[] { "Сбросить всё", "Категории (А-Я)", "Категории (Я-А)", "Кол-во поступлений (от большего)", "Кол-во поступлений (от меньшего)", "Выдано в работу (от большего)", "Выдано в работу (от меньшего)" });
             CbFilterSclad.Location = new Point(391, 109);
             CbFilterSclad.Name = "CbFilterSclad";
-            CbFilterSclad.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            CbFilterSclad.ShadowDecoration.CustomizableEdges = customizableEdges26;
             CbFilterSclad.Size = new Size(183, 29);
             CbFilterSclad.TabIndex = 85;
             CbFilterSclad.SelectedIndexChanged += CbFilterSclad_SelectedIndexChanged;
@@ -1087,12 +1096,12 @@
             // 
             // guna2PictureBox1
             // 
-            guna2PictureBox1.CustomizableEdges = customizableEdges25;
+            guna2PictureBox1.CustomizableEdges = customizableEdges27;
             guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
             guna2PictureBox1.ImageRotate = 0F;
             guna2PictureBox1.Location = new Point(12, 109);
             guna2PictureBox1.Name = "guna2PictureBox1";
-            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges28;
             guna2PictureBox1.Size = new Size(29, 29);
             guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox1.TabIndex = 87;
@@ -1100,16 +1109,29 @@
             // 
             // guna2PictureBox2
             // 
-            guna2PictureBox2.CustomizableEdges = customizableEdges27;
+            guna2PictureBox2.CustomizableEdges = customizableEdges29;
             guna2PictureBox2.Image = (Image)resources.GetObject("guna2PictureBox2.Image");
             guna2PictureBox2.ImageRotate = 0F;
             guna2PictureBox2.Location = new Point(356, 109);
             guna2PictureBox2.Name = "guna2PictureBox2";
-            guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges30;
             guna2PictureBox2.Size = new Size(29, 29);
             guna2PictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox2.TabIndex = 88;
             guna2PictureBox2.TabStop = false;
+            // 
+            // guna2PictureBox4
+            // 
+            guna2PictureBox4.CustomizableEdges = customizableEdges1;
+            guna2PictureBox4.Image = (Image)resources.GetObject("guna2PictureBox4.Image");
+            guna2PictureBox4.ImageRotate = 0F;
+            guna2PictureBox4.Location = new Point(965, 3);
+            guna2PictureBox4.Name = "guna2PictureBox4";
+            guna2PictureBox4.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2PictureBox4.Size = new Size(19, 19);
+            guna2PictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+            guna2PictureBox4.TabIndex = 95;
+            guna2PictureBox4.TabStop = false;
             // 
             // MainForm
             // 
@@ -1150,6 +1172,7 @@
             ContextMenuStaff.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox4).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1231,5 +1254,6 @@
         private DataGridViewTextBoxColumn Release_date;
         private DataGridViewTextBoxColumn Return_date;
         private DataGridViewTextBoxColumn FIO;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox4;
     }
 }
