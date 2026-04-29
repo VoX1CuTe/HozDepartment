@@ -127,6 +127,10 @@ namespace HozDepartment
                     fillTableStaff();
                     fillTableSclad();
                     fillTabelShift();
+
+                    timer1.Interval = 100;
+                    timer1.Enabled = true;
+                    timer1.Start();
                 }
             }
             catch (Exception ex)
@@ -1381,6 +1385,11 @@ namespace HozDepartment
         private void Pbcollapse_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            LbTime.Text = DateTime.Now.ToString("HH:mm:ss");
         }
     }
 }
