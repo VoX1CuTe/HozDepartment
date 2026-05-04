@@ -215,6 +215,7 @@
             TbInventorнColl.PlaceholderText = "0";
             TbInventorнColl.Size = new Size(62, 19);
             TbInventorнColl.TabIndex = 19;
+            TbInventorнColl.KeyPress += TbInventorнColl_KeyPress;
             // 
             // TbQualityInventory
             // 
@@ -227,6 +228,7 @@
             TbQualityInventory.PlaceholderText = "0";
             TbQualityInventory.Size = new Size(61, 19);
             TbQualityInventory.TabIndex = 22;
+            TbQualityInventory.KeyPress += TbQualityInventory_KeyPress;
             // 
             // DtPuttingWork
             // 

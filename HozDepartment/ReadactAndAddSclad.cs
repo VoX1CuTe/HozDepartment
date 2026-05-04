@@ -105,5 +105,23 @@ namespace HozDepartment
             DtPuttingWork.Value = DateTime.Now;
             DtReturnInventory.Value = DateTime.Now;
         }
+
+        private void TbInventorнColl_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            if (!char.IsDigit(c) && !char.IsControl(c))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TbQualityInventory_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            if (!char.IsDigit(c) && !char.IsControl(c))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
