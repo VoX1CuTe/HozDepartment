@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReadactAndAddSclad));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -73,6 +74,10 @@
             CbCategory = new Guna.UI2.WinForms.Guna2ComboBox();
             CbUnitMeasurements = new Guna.UI2.WinForms.Guna2ComboBox();
             CbEmployee = new Guna.UI2.WinForms.Guna2ComboBox();
+            label5 = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
             PanelToolbarRedactAndDelete.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Pbcollapse).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PbClose).BeginInit();
@@ -190,22 +195,29 @@
             // 
             // TbNameInventory
             // 
+            TbNameInventory.BackColor = Color.LightGoldenrodYellow;
+            TbNameInventory.BorderStyle = BorderStyle.None;
             TbNameInventory.Location = new Point(12, 51);
             TbNameInventory.Multiline = true;
             TbNameInventory.Name = "TbNameInventory";
+            TbNameInventory.PlaceholderText = "Молоток, Гвозди, Швабра, т.д";
             TbNameInventory.Size = new Size(269, 19);
             TbNameInventory.TabIndex = 17;
             // 
             // TbInventorнColl
             // 
+            TbInventorнColl.BackColor = Color.LightGoldenrodYellow;
+            TbInventorнColl.BorderStyle = BorderStyle.None;
             TbInventorнColl.Location = new Point(12, 146);
             TbInventorнColl.Multiline = true;
             TbInventorнColl.Name = "TbInventorнColl";
-            TbInventorнColl.Size = new Size(61, 19);
+            TbInventorнColl.Size = new Size(62, 19);
             TbInventorнColl.TabIndex = 19;
             // 
             // TbQualityInventory
             // 
+            TbQualityInventory.BackColor = Color.LightGoldenrodYellow;
+            TbQualityInventory.BorderStyle = BorderStyle.None;
             TbQualityInventory.Location = new Point(12, 334);
             TbQualityInventory.Multiline = true;
             TbQualityInventory.Name = "TbQualityInventory";
@@ -220,13 +232,13 @@
             DtPuttingWork.FillColor = Color.FromArgb(253, 253, 150);
             DtPuttingWork.FocusedColor = Color.Black;
             DtPuttingWork.Font = new Font("Segoe UI", 9F);
-            DtPuttingWork.Format = DateTimePickerFormat.Long;
+            DtPuttingWork.Format = DateTimePickerFormat.Short;
             DtPuttingWork.Location = new Point(12, 237);
             DtPuttingWork.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             DtPuttingWork.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             DtPuttingWork.Name = "DtPuttingWork";
             DtPuttingWork.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            DtPuttingWork.Size = new Size(269, 23);
+            DtPuttingWork.Size = new Size(165, 23);
             DtPuttingWork.TabIndex = 23;
             DtPuttingWork.Value = new DateTime(2026, 4, 16, 11, 2, 5, 879);
             // 
@@ -238,13 +250,13 @@
             DtEntranceSclad.FillColor = Color.FromArgb(253, 253, 150);
             DtEntranceSclad.FocusedColor = Color.Black;
             DtEntranceSclad.Font = new Font("Segoe UI", 9F);
-            DtEntranceSclad.Format = DateTimePickerFormat.Long;
+            DtEntranceSclad.Format = DateTimePickerFormat.Short;
             DtEntranceSclad.Location = new Point(12, 190);
             DtEntranceSclad.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             DtEntranceSclad.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             DtEntranceSclad.Name = "DtEntranceSclad";
             DtEntranceSclad.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            DtEntranceSclad.Size = new Size(269, 23);
+            DtEntranceSclad.Size = new Size(165, 23);
             DtEntranceSclad.TabIndex = 24;
             DtEntranceSclad.Value = new DateTime(2026, 4, 16, 11, 2, 5, 879);
             // 
@@ -304,13 +316,13 @@
             DtReturnInventory.FillColor = Color.FromArgb(253, 253, 150);
             DtReturnInventory.FocusedColor = Color.Black;
             DtReturnInventory.Font = new Font("Segoe UI", 9F);
-            DtReturnInventory.Format = DateTimePickerFormat.Long;
+            DtReturnInventory.Format = DateTimePickerFormat.Short;
             DtReturnInventory.Location = new Point(12, 286);
             DtReturnInventory.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
             DtReturnInventory.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
             DtReturnInventory.Name = "DtReturnInventory";
             DtReturnInventory.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            DtReturnInventory.Size = new Size(269, 23);
+            DtReturnInventory.Size = new Size(165, 23);
             DtReturnInventory.TabIndex = 29;
             DtReturnInventory.Value = new DateTime(2026, 4, 16, 11, 2, 5, 879);
             // 
@@ -395,12 +407,46 @@
             CbEmployee.Size = new Size(268, 23);
             CbEmployee.TabIndex = 56;
             // 
+            // label5
+            // 
+            label5.BackColor = Color.Black;
+            label5.Location = new Point(13, 70);
+            label5.Name = "label5";
+            label5.Size = new Size(269, 3);
+            label5.TabIndex = 90;
+            label5.Text = "label5";
+            // 
+            // label1
+            // 
+            label1.BackColor = Color.Black;
+            label1.Location = new Point(13, 162);
+            label1.Name = "label1";
+            label1.Size = new Size(61, 3);
+            label1.TabIndex = 91;
+            label1.Text = "label1";
+            // 
+            // label2
+            // 
+            label2.BackColor = Color.Black;
+            label2.Location = new Point(13, 350);
+            label2.Name = "label2";
+            label2.Size = new Size(61, 3);
+            label2.TabIndex = 92;
+            label2.Text = "label2";
+            // 
+            // timer1
+            // 
+            timer1.Interval = 60000;
+            // 
             // ReadactAndAddSclad
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
             ClientSize = new Size(294, 534);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(label5);
             Controls.Add(CbEmployee);
             Controls.Add(CbUnitMeasurements);
             Controls.Add(CbCategory);
@@ -425,6 +471,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "ReadactAndAddSclad";
             Text = "ReadactAndAddSclad";
+            Load += ReadactAndAddSclad_Load;
             PanelToolbarRedactAndDelete.ResumeLayout(false);
             PanelToolbarRedactAndDelete.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)Pbcollapse).EndInit();
@@ -460,5 +507,9 @@
         public Guna.UI2.WinForms.Guna2ComboBox CbEmployee;
         private Guna.UI2.WinForms.Guna2PictureBox Pbcollapse;
         private Guna.UI2.WinForms.Guna2PictureBox PbClose;
+        private Label label5;
+        private Label label1;
+        private Label label2;
+        private System.Windows.Forms.Timer timer1;
     }
 }

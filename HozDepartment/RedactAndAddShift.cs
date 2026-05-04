@@ -125,5 +125,11 @@ namespace HozDepartment
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void RedactAndAddShift_Load(object sender, EventArgs e)
+        {
+            DtShift.Value = DateTime.Now;
+            DtNzGraf.Value = DateTime.Now;
+        }
     }
 }

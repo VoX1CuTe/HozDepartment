@@ -158,6 +158,7 @@
             guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             guna2PictureBox6 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox5 = new Guna.UI2.WinForms.Guna2PictureBox();
+            label5 = new Label();
             PanelToolbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Pbcollapse).BeginInit();
@@ -996,10 +997,13 @@
             // 
             // TextSearchStaff
             // 
-            TextSearchStaff.Location = new Point(44, 109);
+            TextSearchStaff.BackColor = Color.FromArgb(220, 240, 200);
+            TextSearchStaff.BorderStyle = BorderStyle.None;
+            TextSearchStaff.Location = new Point(44, 119);
             TextSearchStaff.Multiline = true;
             TextSearchStaff.Name = "TextSearchStaff";
-            TextSearchStaff.Size = new Size(283, 29);
+            TextSearchStaff.PlaceholderText = "Поиск";
+            TextSearchStaff.Size = new Size(283, 19);
             TextSearchStaff.TabIndex = 80;
             TextSearchStaff.TextChanged += TextSearchStaff_TextChanged;
             // 
@@ -1072,6 +1076,8 @@
             // 
             // TextSearchShift
             // 
+            TextSearchShift.BackColor = Color.FromArgb(220, 240, 200);
+            TextSearchShift.BorderStyle = BorderStyle.None;
             TextSearchShift.Location = new Point(44, 109);
             TextSearchShift.Multiline = true;
             TextSearchShift.Name = "TextSearchShift";
@@ -1126,6 +1132,8 @@
             // 
             // TextSearchSclad
             // 
+            TextSearchSclad.BackColor = Color.FromArgb(220, 240, 200);
+            TextSearchSclad.BorderStyle = BorderStyle.None;
             TextSearchSclad.Location = new Point(44, 109);
             TextSearchSclad.Multiline = true;
             TextSearchSclad.Name = "TextSearchSclad";
@@ -1141,7 +1149,7 @@
             guna2PictureBox1.Location = new Point(12, 109);
             guna2PictureBox1.Name = "guna2PictureBox1";
             guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges28;
-            guna2PictureBox1.Size = new Size(29, 29);
+            guna2PictureBox1.Size = new Size(26, 32);
             guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox1.TabIndex = 87;
             guna2PictureBox1.TabStop = false;
@@ -1206,20 +1214,28 @@
             guna2PictureBox5.TabIndex = 96;
             guna2PictureBox5.TabStop = false;
             // 
+            // label5
+            // 
+            label5.BackColor = Color.Black;
+            label5.Location = new Point(44, 138);
+            label5.Name = "label5";
+            label5.Size = new Size(283, 3);
+            label5.TabIndex = 90;
+            label5.Text = "label5";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(220, 240, 200);
             ClientSize = new Size(1304, 374);
+            Controls.Add(label5);
             Controls.Add(guna2CustomGradientPanel1);
             Controls.Add(guna2PictureBox2);
             Controls.Add(guna2PictureBox1);
-            Controls.Add(TextSearchSclad);
             Controls.Add(TbSclad);
             Controls.Add(CbFilterSclad);
             Controls.Add(CbFilterShift);
-            Controls.Add(TextSearchShift);
             Controls.Add(BtnBackup);
             Controls.Add(BtSeal);
             Controls.Add(TextSearchStaff);
@@ -1228,6 +1244,8 @@
             Controls.Add(PanelToolbar);
             Controls.Add(TbUser);
             Controls.Add(TbShift);
+            Controls.Add(TextSearchSclad);
+            Controls.Add(TextSearchShift);
             FormBorderStyle = FormBorderStyle.None;
             Name = "MainForm";
             FormClosing += MainForm_FormClosing;
@@ -1338,5 +1356,6 @@
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox5;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox6;
+        private Label label5;
     }
 }

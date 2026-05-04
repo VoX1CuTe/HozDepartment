@@ -98,5 +98,12 @@ namespace HozDepartment
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void ReadactAndAddSclad_Load(object sender, EventArgs e)
+        {
+            DtEntranceSclad.Value = DateTime.Now;
+            DtPuttingWork.Value = DateTime.Now;
+            DtReturnInventory.Value = DateTime.Now;
+        }
     }
 }

@@ -69,6 +69,7 @@
             FuelName = new DataGridViewTextBoxColumn();
             TextSearchUser = new TextBox();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            label5 = new Label();
             PanelToolbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Pbcollapse).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PbClose).BeginInit();
@@ -95,10 +96,10 @@
             Pbcollapse.CustomizableEdges = customizableEdges1;
             Pbcollapse.Image = (Image)resources.GetObject("Pbcollapse.Image");
             Pbcollapse.ImageRotate = 0F;
-            Pbcollapse.Location = new Point(558, -1);
+            Pbcollapse.Location = new Point(562, 0);
             Pbcollapse.Name = "Pbcollapse";
             Pbcollapse.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            Pbcollapse.Size = new Size(29, 23);
+            Pbcollapse.Size = new Size(25, 23);
             Pbcollapse.SizeMode = PictureBoxSizeMode.Zoom;
             Pbcollapse.TabIndex = 96;
             Pbcollapse.TabStop = false;
@@ -109,7 +110,7 @@
             PbClose.CustomizableEdges = customizableEdges3;
             PbClose.Image = (Image)resources.GetObject("PbClose.Image");
             PbClose.ImageRotate = 0F;
-            PbClose.Location = new Point(584, -2);
+            PbClose.Location = new Point(584, 0);
             PbClose.Name = "PbClose";
             PbClose.ShadowDecoration.CustomizableEdges = customizableEdges4;
             PbClose.Size = new Size(29, 24);
@@ -394,9 +395,12 @@
             // 
             // TextSearchUser
             // 
+            TextSearchUser.BackColor = Color.LightGoldenrodYellow;
+            TextSearchUser.BorderStyle = BorderStyle.None;
             TextSearchUser.Location = new Point(131, 31);
             TextSearchUser.Multiline = true;
             TextSearchUser.Name = "TextSearchUser";
+            TextSearchUser.PlaceholderText = "Поиск";
             TextSearchUser.Size = new Size(283, 23);
             TextSearchUser.TabIndex = 84;
             TextSearchUser.TextChanged += TextSearchUser_TextChanged;
@@ -414,12 +418,22 @@
             guna2PictureBox1.TabIndex = 88;
             guna2PictureBox1.TabStop = false;
             // 
+            // label5
+            // 
+            label5.BackColor = Color.Black;
+            label5.Location = new Point(131, 51);
+            label5.Name = "label5";
+            label5.Size = new Size(282, 3);
+            label5.TabIndex = 89;
+            label5.Text = "label5";
+            // 
             // InfoUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
             ClientSize = new Size(613, 277);
+            Controls.Add(label5);
             Controls.Add(guna2PictureBox1);
             Controls.Add(TextSearchUser);
             Controls.Add(TbUserData);
@@ -476,5 +490,6 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2PictureBox Pbcollapse;
         private Guna.UI2.WinForms.Guna2PictureBox PbClose;
+        private Label label5;
     }
 }

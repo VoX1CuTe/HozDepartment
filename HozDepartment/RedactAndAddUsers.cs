@@ -36,5 +36,32 @@ namespace HozDepartment
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void TextPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            if (!char.IsDigit(c) && !char.IsControl(c) && c != '+' && c != '-' && c != '(' && c != ')')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TextSeriaPass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            if (!char.IsDigit(c) && !char.IsControl(c))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TextNumberPass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            if (!char.IsDigit(c) && !char.IsControl(c))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

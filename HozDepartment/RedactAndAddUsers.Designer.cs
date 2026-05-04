@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RedactAndAddUsers));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             PanelToolbarRedactAndDelete = new Panel();
             Pbcollapse = new Guna.UI2.WinForms.Guna2PictureBox();
             PbClose = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -69,6 +69,14 @@
             TextNumberPass = new TextBox();
             TextPhone = new TextBox();
             guna2HtmlLabel11 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            label5 = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
             PanelToolbarRedactAndDelete.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Pbcollapse).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PbClose).BeginInit();
@@ -89,12 +97,12 @@
             // 
             // Pbcollapse
             // 
-            Pbcollapse.CustomizableEdges = customizableEdges1;
+            Pbcollapse.CustomizableEdges = customizableEdges11;
             Pbcollapse.Image = (Image)resources.GetObject("Pbcollapse.Image");
             Pbcollapse.ImageRotate = 0F;
             Pbcollapse.Location = new Point(335, 1);
             Pbcollapse.Name = "Pbcollapse";
-            Pbcollapse.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            Pbcollapse.ShadowDecoration.CustomizableEdges = customizableEdges12;
             Pbcollapse.Size = new Size(29, 23);
             Pbcollapse.SizeMode = PictureBoxSizeMode.Zoom;
             Pbcollapse.TabIndex = 96;
@@ -103,12 +111,12 @@
             // 
             // PbClose
             // 
-            PbClose.CustomizableEdges = customizableEdges3;
+            PbClose.CustomizableEdges = customizableEdges13;
             PbClose.Image = (Image)resources.GetObject("PbClose.Image");
             PbClose.ImageRotate = 0F;
             PbClose.Location = new Point(361, 0);
             PbClose.Name = "PbClose";
-            PbClose.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            PbClose.ShadowDecoration.CustomizableEdges = customizableEdges14;
             PbClose.Size = new Size(29, 24);
             PbClose.SizeMode = PictureBoxSizeMode.Zoom;
             PbClose.TabIndex = 95;
@@ -211,10 +219,10 @@
             guna2Panel1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
             guna2Panel1.Controls.Add(rbFemale);
             guna2Panel1.Controls.Add(rbMale);
-            guna2Panel1.CustomizableEdges = customizableEdges5;
+            guna2Panel1.CustomizableEdges = customizableEdges15;
             guna2Panel1.Location = new Point(13, 430);
             guna2Panel1.Name = "guna2Panel1";
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges16;
             guna2Panel1.Size = new Size(101, 50);
             guna2Panel1.TabIndex = 66;
             // 
@@ -287,7 +295,7 @@
             // BtCancel
             // 
             BtCancel.BorderRadius = 10;
-            BtCancel.CustomizableEdges = customizableEdges7;
+            BtCancel.CustomizableEdges = customizableEdges17;
             BtCancel.DisabledState.BorderColor = Color.DarkGray;
             BtCancel.DisabledState.CustomBorderColor = Color.DarkGray;
             BtCancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -297,7 +305,7 @@
             BtCancel.ForeColor = Color.Black;
             BtCancel.Location = new Point(251, 509);
             BtCancel.Name = "BtCancel";
-            BtCancel.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            BtCancel.ShadowDecoration.CustomizableEdges = customizableEdges18;
             BtCancel.Size = new Size(122, 24);
             BtCancel.TabIndex = 73;
             BtCancel.Text = "Отмена";
@@ -306,7 +314,7 @@
             // BtSave
             // 
             BtSave.BorderRadius = 10;
-            BtSave.CustomizableEdges = customizableEdges9;
+            BtSave.CustomizableEdges = customizableEdges19;
             BtSave.DisabledState.BorderColor = Color.DarkGray;
             BtSave.DisabledState.CustomBorderColor = Color.DarkGray;
             BtSave.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -316,7 +324,7 @@
             BtSave.ForeColor = Color.Black;
             BtSave.Location = new Point(13, 509);
             BtSave.Name = "BtSave";
-            BtSave.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            BtSave.ShadowDecoration.CustomizableEdges = customizableEdges20;
             BtSave.Size = new Size(125, 24);
             BtSave.TabIndex = 72;
             BtSave.Text = "Сохранить";
@@ -324,67 +332,102 @@
             // 
             // TextPost
             // 
+            TextPost.BackColor = Color.LightGoldenrodYellow;
+            TextPost.BorderStyle = BorderStyle.None;
             TextPost.Location = new Point(98, 31);
+            TextPost.MaxLength = 30;
             TextPost.Multiline = true;
             TextPost.Name = "TextPost";
+            TextPost.PlaceholderText = "Слесарь-электрик, Плотник и т.д.";
             TextPost.Size = new Size(280, 22);
             TextPost.TabIndex = 74;
             // 
             // TextTypeGraphy
             // 
+            TextTypeGraphy.BackColor = Color.LightGoldenrodYellow;
+            TextTypeGraphy.BorderStyle = BorderStyle.None;
             TextTypeGraphy.Location = new Point(98, 59);
+            TextTypeGraphy.MaxLength = 30;
             TextTypeGraphy.Multiline = true;
             TextTypeGraphy.Name = "TextTypeGraphy";
+            TextTypeGraphy.PlaceholderText = "Пятидневка (5/2), Двухсменный (Утро/Вечер) и т.д.";
             TextTypeGraphy.Size = new Size(280, 22);
             TextTypeGraphy.TabIndex = 75;
             // 
             // TextSurname
             // 
+            TextSurname.BackColor = Color.LightGoldenrodYellow;
+            TextSurname.BorderStyle = BorderStyle.None;
             TextSurname.Location = new Point(86, 282);
+            TextSurname.MaxLength = 50;
             TextSurname.Multiline = true;
             TextSurname.Name = "TextSurname";
+            TextSurname.PlaceholderText = "Иванов";
             TextSurname.Size = new Size(292, 22);
             TextSurname.TabIndex = 76;
             // 
             // TextName
             // 
+            TextName.BackColor = Color.LightGoldenrodYellow;
+            TextName.BorderStyle = BorderStyle.None;
             TextName.Location = new Point(86, 310);
+            TextName.MaxLength = 50;
             TextName.Multiline = true;
             TextName.Name = "TextName";
+            TextName.PlaceholderText = "Иван";
             TextName.Size = new Size(292, 22);
             TextName.TabIndex = 77;
             // 
             // TextMiddleName
             // 
+            TextMiddleName.BackColor = Color.LightGoldenrodYellow;
+            TextMiddleName.BorderStyle = BorderStyle.None;
             TextMiddleName.Location = new Point(86, 338);
+            TextMiddleName.MaxLength = 50;
             TextMiddleName.Multiline = true;
             TextMiddleName.Name = "TextMiddleName";
+            TextMiddleName.PlaceholderText = "Иванович";
             TextMiddleName.Size = new Size(292, 22);
             TextMiddleName.TabIndex = 78;
             // 
             // TextSeriaPass
             // 
+            TextSeriaPass.BackColor = Color.LightGoldenrodYellow;
+            TextSeriaPass.BorderStyle = BorderStyle.None;
             TextSeriaPass.Location = new Point(179, 430);
+            TextSeriaPass.MaxLength = 4;
             TextSeriaPass.Multiline = true;
             TextSeriaPass.Name = "TextSeriaPass";
+            TextSeriaPass.PlaceholderText = "00-00";
             TextSeriaPass.Size = new Size(199, 22);
             TextSeriaPass.TabIndex = 79;
+            TextSeriaPass.KeyPress += TextSeriaPass_KeyPress;
             // 
             // TextNumberPass
             // 
+            TextNumberPass.BackColor = Color.LightGoldenrodYellow;
+            TextNumberPass.BorderStyle = BorderStyle.None;
             TextNumberPass.Location = new Point(179, 458);
+            TextNumberPass.MaxLength = 6;
             TextNumberPass.Multiline = true;
             TextNumberPass.Name = "TextNumberPass";
+            TextNumberPass.PlaceholderText = "000-000";
             TextNumberPass.Size = new Size(199, 22);
             TextNumberPass.TabIndex = 80;
+            TextNumberPass.KeyPress += TextNumberPass_KeyPress;
             // 
             // TextPhone
             // 
+            TextPhone.BackColor = Color.LightGoldenrodYellow;
+            TextPhone.BorderStyle = BorderStyle.None;
             TextPhone.Location = new Point(139, 366);
+            TextPhone.MaxLength = 18;
             TextPhone.Multiline = true;
             TextPhone.Name = "TextPhone";
+            TextPhone.PlaceholderText = "+7 (___) ___-__-__";
             TextPhone.Size = new Size(239, 22);
             TextPhone.TabIndex = 82;
+            TextPhone.KeyPress += TextPhone_KeyPress;
             // 
             // guna2HtmlLabel11
             // 
@@ -396,12 +439,92 @@
             guna2HtmlLabel11.TabIndex = 81;
             guna2HtmlLabel11.Text = "Номер телефона";
             // 
+            // label5
+            // 
+            label5.BackColor = Color.Black;
+            label5.Location = new Point(98, 50);
+            label5.Name = "label5";
+            label5.Size = new Size(280, 3);
+            label5.TabIndex = 92;
+            label5.Text = "label5";
+            // 
+            // label1
+            // 
+            label1.BackColor = Color.Black;
+            label1.Location = new Point(98, 78);
+            label1.Name = "label1";
+            label1.Size = new Size(280, 3);
+            label1.TabIndex = 93;
+            label1.Text = "label1";
+            // 
+            // label2
+            // 
+            label2.BackColor = Color.Black;
+            label2.Location = new Point(86, 301);
+            label2.Name = "label2";
+            label2.Size = new Size(292, 3);
+            label2.TabIndex = 94;
+            label2.Text = "label2";
+            // 
+            // label3
+            // 
+            label3.BackColor = Color.Black;
+            label3.Location = new Point(86, 329);
+            label3.Name = "label3";
+            label3.Size = new Size(292, 3);
+            label3.TabIndex = 95;
+            label3.Text = "label3";
+            // 
+            // label4
+            // 
+            label4.BackColor = Color.Black;
+            label4.Location = new Point(86, 357);
+            label4.Name = "label4";
+            label4.Size = new Size(292, 3);
+            label4.TabIndex = 96;
+            label4.Text = "label4";
+            // 
+            // label6
+            // 
+            label6.BackColor = Color.Black;
+            label6.Location = new Point(139, 385);
+            label6.Name = "label6";
+            label6.Size = new Size(239, 3);
+            label6.TabIndex = 97;
+            label6.Text = "label6";
+            // 
+            // label7
+            // 
+            label7.BackColor = Color.Black;
+            label7.Location = new Point(179, 449);
+            label7.Name = "label7";
+            label7.Size = new Size(199, 3);
+            label7.TabIndex = 98;
+            label7.Text = "label7";
+            // 
+            // label8
+            // 
+            label8.BackColor = Color.Black;
+            label8.Location = new Point(179, 477);
+            label8.Name = "label8";
+            label8.Size = new Size(199, 3);
+            label8.TabIndex = 99;
+            label8.Text = "label8";
+            // 
             // RedactAndAddUsers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
             ClientSize = new Size(390, 552);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(label5);
             Controls.Add(TextPhone);
             Controls.Add(guna2HtmlLabel11);
             Controls.Add(TextNumberPass);
@@ -472,5 +595,13 @@
         public Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel11;
         private Guna.UI2.WinForms.Guna2PictureBox Pbcollapse;
         private Guna.UI2.WinForms.Guna2PictureBox PbClose;
+        private Label label5;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label label6;
+        private Label label7;
+        private Label label8;
     }
 }
