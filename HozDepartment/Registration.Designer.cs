@@ -37,8 +37,6 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             textLogin = new TextBox();
             label2 = new Label();
             label3 = new Label();
@@ -50,21 +48,21 @@
             PanelToolbar = new Panel();
             Pbcollapse = new Guna.UI2.WinForms.Guna2PictureBox();
             PbClose = new Guna.UI2.WinForms.Guna2PictureBox();
-            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            label5 = new Label();
+            label6 = new Label();
             PanelToolbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Pbcollapse).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PbClose).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).BeginInit();
             SuspendLayout();
             // 
             // textLogin
             // 
-            textLogin.BackColor = SystemColors.ControlDarkDark;
-            textLogin.BorderStyle = BorderStyle.FixedSingle;
+            textLogin.BackColor = Color.LightGoldenrodYellow;
+            textLogin.BorderStyle = BorderStyle.None;
             textLogin.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textLogin.ForeColor = Color.White;
+            textLogin.ForeColor = Color.Black;
             textLogin.Location = new Point(71, 171);
             textLogin.Multiline = true;
             textLogin.Name = "textLogin";
@@ -75,7 +73,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label2.Location = new Point(5, 174);
+            label2.Location = new Point(6, 174);
             label2.Name = "label2";
             label2.Size = new Size(52, 20);
             label2.TabIndex = 3;
@@ -85,7 +83,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label3.Location = new Point(5, 206);
+            label3.Location = new Point(5, 209);
             label3.Name = "label3";
             label3.Size = new Size(62, 20);
             label3.TabIndex = 4;
@@ -93,10 +91,10 @@
             // 
             // textPassword
             // 
-            textPassword.BackColor = SystemColors.ControlDarkDark;
-            textPassword.BorderStyle = BorderStyle.FixedSingle;
+            textPassword.BackColor = Color.LightGoldenrodYellow;
+            textPassword.BorderStyle = BorderStyle.None;
             textPassword.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            textPassword.ForeColor = Color.White;
+            textPassword.ForeColor = Color.Black;
             textPassword.Location = new Point(71, 206);
             textPassword.Multiline = true;
             textPassword.Name = "textPassword";
@@ -146,7 +144,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label1.Location = new Point(35, 5);
+            label1.Location = new Point(3, 5);
             label1.Name = "label1";
             label1.Size = new Size(81, 17);
             label1.TabIndex = 2;
@@ -157,7 +155,6 @@
             PanelToolbar.BackColor = Color.FromArgb(253, 253, 150);
             PanelToolbar.Controls.Add(Pbcollapse);
             PanelToolbar.Controls.Add(PbClose);
-            PanelToolbar.Controls.Add(guna2PictureBox1);
             PanelToolbar.Controls.Add(label1);
             PanelToolbar.Controls.Add(UserLb);
             PanelToolbar.Dock = DockStyle.Top;
@@ -195,31 +192,36 @@
             PbClose.TabStop = false;
             PbClose.Click += PbClose_Click;
             // 
-            // guna2PictureBox1
-            // 
-            guna2PictureBox1.CustomizableEdges = customizableEdges7;
-            guna2PictureBox1.Image = (Image)resources.GetObject("guna2PictureBox1.Image");
-            guna2PictureBox1.ImageRotate = 0F;
-            guna2PictureBox1.Location = new Point(0, 1);
-            guna2PictureBox1.Name = "guna2PictureBox1";
-            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            guna2PictureBox1.Size = new Size(29, 21);
-            guna2PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            guna2PictureBox1.TabIndex = 90;
-            guna2PictureBox1.TabStop = false;
-            // 
             // guna2PictureBox2
             // 
-            guna2PictureBox2.CustomizableEdges = customizableEdges9;
+            guna2PictureBox2.CustomizableEdges = customizableEdges7;
             guna2PictureBox2.Image = (Image)resources.GetObject("guna2PictureBox2.Image");
             guna2PictureBox2.ImageRotate = 0F;
-            guna2PictureBox2.Location = new Point(0, 25);
+            guna2PictureBox2.Location = new Point(30, 25);
             guna2PictureBox2.Name = "guna2PictureBox2";
-            guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            guna2PictureBox2.Size = new Size(336, 140);
+            guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            guna2PictureBox2.Size = new Size(294, 140);
             guna2PictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox2.TabIndex = 89;
             guna2PictureBox2.TabStop = false;
+            // 
+            // label5
+            // 
+            label5.BackColor = Color.Black;
+            label5.Location = new Point(70, 191);
+            label5.Name = "label5";
+            label5.Size = new Size(254, 3);
+            label5.TabIndex = 10;
+            label5.Text = "label5";
+            // 
+            // label6
+            // 
+            label6.BackColor = Color.Black;
+            label6.Location = new Point(71, 226);
+            label6.Name = "label6";
+            label6.Size = new Size(254, 3);
+            label6.TabIndex = 90;
+            label6.Text = "label6";
             // 
             // Registration
             // 
@@ -227,6 +229,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightGoldenrodYellow;
             ClientSize = new Size(336, 296);
+            Controls.Add(label6);
+            Controls.Add(label5);
             Controls.Add(guna2PictureBox2);
             Controls.Add(label4);
             Controls.Add(PanelToolbar);
@@ -244,7 +248,6 @@
             PanelToolbar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)Pbcollapse).EndInit();
             ((System.ComponentModel.ISupportInitialize)PbClose).EndInit();
-            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -261,8 +264,9 @@
         private Label label1;
         private Panel PanelToolbar;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2PictureBox Pbcollapse;
         private Guna.UI2.WinForms.Guna2PictureBox PbClose;
+        private Label label5;
+        private Label label6;
     }
 }

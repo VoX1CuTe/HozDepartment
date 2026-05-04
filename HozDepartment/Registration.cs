@@ -81,6 +81,8 @@ Password=";
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question);
 
+                        MessageBox.Show("В приложении уже есть учетная запись, которая является главной и не доступна к удаления \n Логин GlavAdmin \n Пароль 00000000", "Информация о системе", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                         string dumpFile;
                         if (dialog == DialogResult.Yes)
                         {

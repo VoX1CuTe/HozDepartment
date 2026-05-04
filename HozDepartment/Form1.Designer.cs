@@ -72,14 +72,20 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges29 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges30 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges35 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges36 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges31 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges32 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges33 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges34 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             PanelToolbar = new Panel();
-            LbTime = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
             Pbcollapse = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             PbClose = new Guna.UI2.WinForms.Guna2PictureBox();
             LogoName = new Guna.UI2.WinForms.Guna2HtmlLabel();
             UserLb = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            LbTime = new Guna.UI2.WinForms.Guna2HtmlLabel();
             PanelButton = new Panel();
             BtStaff = new Guna.UI2.WinForms.Guna2Button();
             BtRedactUser = new Guna.UI2.WinForms.Guna2Button();
@@ -149,6 +155,9 @@
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             timer1 = new System.Windows.Forms.Timer(components);
+            guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            guna2PictureBox6 = new Guna.UI2.WinForms.Guna2PictureBox();
+            guna2PictureBox5 = new Guna.UI2.WinForms.Guna2PictureBox();
             PanelToolbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Pbcollapse).BeginInit();
@@ -163,12 +172,14 @@
             ContextMenuStaff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).BeginInit();
+            guna2CustomGradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox5).BeginInit();
             SuspendLayout();
             // 
             // PanelToolbar
             // 
             PanelToolbar.BackColor = Color.FromArgb(253, 253, 150);
-            PanelToolbar.Controls.Add(LbTime);
             PanelToolbar.Controls.Add(guna2PictureBox4);
             PanelToolbar.Controls.Add(Pbcollapse);
             PanelToolbar.Controls.Add(guna2PictureBox3);
@@ -182,23 +193,12 @@
             PanelToolbar.TabIndex = 0;
             PanelToolbar.MouseDown += PanelToolbar_MouseDown;
             // 
-            // LbTime
-            // 
-            LbTime.BackColor = Color.Transparent;
-            LbTime.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            LbTime.ForeColor = Color.FromArgb(0, 64, 0);
-            LbTime.Location = new Point(595, 5);
-            LbTime.Name = "LbTime";
-            LbTime.Size = new Size(43, 19);
-            LbTime.TabIndex = 96;
-            LbTime.Text = "Время";
-            // 
             // guna2PictureBox4
             // 
             guna2PictureBox4.CustomizableEdges = customizableEdges1;
             guna2PictureBox4.Image = (Image)resources.GetObject("guna2PictureBox4.Image");
             guna2PictureBox4.ImageRotate = 0F;
-            guna2PictureBox4.Location = new Point(965, 3);
+            guna2PictureBox4.Location = new Point(1055, 3);
             guna2PictureBox4.Name = "guna2PictureBox4";
             guna2PictureBox4.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2PictureBox4.Size = new Size(19, 19);
@@ -259,11 +259,22 @@
             // UserLb
             // 
             UserLb.BackColor = Color.Transparent;
-            UserLb.Location = new Point(990, 5);
+            UserLb.Location = new Point(1080, 5);
             UserLb.Name = "UserLb";
             UserLb.Size = new Size(80, 17);
             UserLb.TabIndex = 8;
             UserLb.Text = "Пользователь";
+            // 
+            // LbTime
+            // 
+            LbTime.BackColor = Color.Transparent;
+            LbTime.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            LbTime.ForeColor = Color.FromArgb(0, 64, 0);
+            LbTime.Location = new Point(3, 3);
+            LbTime.Name = "LbTime";
+            LbTime.Size = new Size(89, 19);
+            LbTime.TabIndex = 96;
+            LbTime.Text = "Дата и время";
             // 
             // PanelButton
             // 
@@ -317,7 +328,7 @@
             BtRedactUser.ShadowDecoration.CustomizableEdges = customizableEdges12;
             BtRedactUser.Size = new Size(315, 59);
             BtRedactUser.TabIndex = 8;
-            BtRedactUser.Text = "О пользователя";
+            BtRedactUser.Text = "О пользователях";
             BtRedactUser.Click += BtRedactUser_Click;
             // 
             // BtShift
@@ -411,7 +422,7 @@
             TbSclad.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             TbSclad.RowHeadersVisible = false;
             TbSclad.RowTemplate.Height = 30;
-            TbSclad.Size = new Size(1304, 229);
+            TbSclad.Size = new Size(1304, 206);
             TbSclad.TabIndex = 4;
             TbSclad.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             TbSclad.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -628,7 +639,7 @@
             TbShift.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             TbShift.RowHeadersVisible = false;
             TbShift.RowTemplate.Height = 30;
-            TbShift.Size = new Size(1304, 229);
+            TbShift.Size = new Size(1304, 206);
             TbShift.TabIndex = 5;
             TbShift.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             TbShift.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -847,7 +858,7 @@
             TbUser.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             TbUser.RowHeadersVisible = false;
             TbUser.RowTemplate.Height = 30;
-            TbUser.Size = new Size(1304, 229);
+            TbUser.Size = new Size(1304, 206);
             TbUser.TabIndex = 6;
             TbUser.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             TbUser.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -1152,12 +1163,56 @@
             // 
             timer1.Tick += timer1_Tick;
             // 
+            // guna2CustomGradientPanel1
+            // 
+            guna2CustomGradientPanel1.BackColor = Color.FromArgb(253, 253, 150);
+            guna2CustomGradientPanel1.Controls.Add(guna2PictureBox6);
+            guna2CustomGradientPanel1.Controls.Add(guna2PictureBox5);
+            guna2CustomGradientPanel1.Controls.Add(LbTime);
+            guna2CustomGradientPanel1.CustomizableEdges = customizableEdges35;
+            guna2CustomGradientPanel1.FillColor = Color.FromArgb(253, 253, 150);
+            guna2CustomGradientPanel1.FillColor2 = Color.FromArgb(253, 253, 150);
+            guna2CustomGradientPanel1.FillColor3 = Color.FromArgb(253, 253, 150);
+            guna2CustomGradientPanel1.FillColor4 = Color.FromArgb(253, 253, 150);
+            guna2CustomGradientPanel1.Location = new Point(-3, 349);
+            guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
+            guna2CustomGradientPanel1.ShadowDecoration.CustomizableEdges = customizableEdges36;
+            guna2CustomGradientPanel1.Size = new Size(1307, 26);
+            guna2CustomGradientPanel1.TabIndex = 89;
+            // 
+            // guna2PictureBox6
+            // 
+            guna2PictureBox6.CustomizableEdges = customizableEdges31;
+            guna2PictureBox6.Image = (Image)resources.GetObject("guna2PictureBox6.Image");
+            guna2PictureBox6.ImageRotate = 0F;
+            guna2PictureBox6.Location = new Point(1249, 3);
+            guna2PictureBox6.Name = "guna2PictureBox6";
+            guna2PictureBox6.ShadowDecoration.CustomizableEdges = customizableEdges32;
+            guna2PictureBox6.Size = new Size(29, 19);
+            guna2PictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
+            guna2PictureBox6.TabIndex = 97;
+            guna2PictureBox6.TabStop = false;
+            // 
+            // guna2PictureBox5
+            // 
+            guna2PictureBox5.CustomizableEdges = customizableEdges33;
+            guna2PictureBox5.Image = (Image)resources.GetObject("guna2PictureBox5.Image");
+            guna2PictureBox5.ImageRotate = 0F;
+            guna2PictureBox5.Location = new Point(1275, 3);
+            guna2PictureBox5.Name = "guna2PictureBox5";
+            guna2PictureBox5.ShadowDecoration.CustomizableEdges = customizableEdges34;
+            guna2PictureBox5.Size = new Size(29, 19);
+            guna2PictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
+            guna2PictureBox5.TabIndex = 96;
+            guna2PictureBox5.TabStop = false;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(220, 240, 200);
             ClientSize = new Size(1304, 374);
+            Controls.Add(guna2CustomGradientPanel1);
             Controls.Add(guna2PictureBox2);
             Controls.Add(guna2PictureBox1);
             Controls.Add(TextSearchSclad);
@@ -1192,6 +1247,10 @@
             ContextMenuStaff.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox2).EndInit();
+            guna2CustomGradientPanel1.ResumeLayout(false);
+            guna2CustomGradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox5).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1276,5 +1335,8 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox4;
         private Guna.UI2.WinForms.Guna2HtmlLabel LbTime;
         private System.Windows.Forms.Timer timer1;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel1;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox5;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox6;
     }
 }
