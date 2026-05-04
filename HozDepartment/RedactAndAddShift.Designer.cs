@@ -268,8 +268,10 @@
             TbPrichIzmen.BackColor = Color.LightGoldenrodYellow;
             TbPrichIzmen.BorderStyle = BorderStyle.None;
             TbPrichIzmen.Location = new Point(210, 233);
+            TbPrichIzmen.MaxLength = 1;
             TbPrichIzmen.Multiline = true;
             TbPrichIzmen.Name = "TbPrichIzmen";
+            TbPrichIzmen.PlaceholderText = "Отработана (+), (-) не отработана, ( ) в процессе";
             TbPrichIzmen.Size = new Size(269, 22);
             TbPrichIzmen.TabIndex = 49;
             // 

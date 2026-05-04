@@ -209,8 +209,10 @@
             TbInventorнColl.BackColor = Color.LightGoldenrodYellow;
             TbInventorнColl.BorderStyle = BorderStyle.None;
             TbInventorнColl.Location = new Point(12, 146);
+            TbInventorнColl.MaxLength = 6;
             TbInventorнColl.Multiline = true;
             TbInventorнColl.Name = "TbInventorнColl";
+            TbInventorнColl.PlaceholderText = "0";
             TbInventorнColl.Size = new Size(62, 19);
             TbInventorнColl.TabIndex = 19;
             // 
@@ -219,8 +221,10 @@
             TbQualityInventory.BackColor = Color.LightGoldenrodYellow;
             TbQualityInventory.BorderStyle = BorderStyle.None;
             TbQualityInventory.Location = new Point(12, 334);
+            TbQualityInventory.MaxLength = 6;
             TbQualityInventory.Multiline = true;
             TbQualityInventory.Name = "TbQualityInventory";
+            TbQualityInventory.PlaceholderText = "0";
             TbQualityInventory.Size = new Size(61, 19);
             TbQualityInventory.TabIndex = 22;
             // 
