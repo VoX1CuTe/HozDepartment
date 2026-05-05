@@ -1200,6 +1200,7 @@
             guna2PictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox6.TabIndex = 97;
             guna2PictureBox6.TabStop = false;
+            guna2PictureBox6.Click += guna2PictureBox6_Click;
             // 
             // guna2PictureBox5
             // 
@@ -1213,6 +1214,7 @@
             guna2PictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
             guna2PictureBox5.TabIndex = 96;
             guna2PictureBox5.TabStop = false;
+            guna2PictureBox5.Click += guna2PictureBox5_Click;
             // 
             // label5
             // 

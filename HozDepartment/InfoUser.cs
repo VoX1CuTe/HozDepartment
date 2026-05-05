@@ -150,6 +150,9 @@ namespace HozDepartment
 
             Size = new Size(1019, 277);
 
+            PbClose.Location = new Point(990, 0);
+            Pbcollapse.Location = new Point(964, 1);
+
             LbLogin.Visible = true;
             LbPassword.Visible = true;
             LbRole.Visible = true;

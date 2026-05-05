@@ -1391,5 +1391,17 @@ namespace HozDepartment
         {
             LbTime.Text = "Дата и время: " + DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
         }
+
+        private void guna2PictureBox5_Click(object sender, EventArgs e)
+        {
+            string helpPath = System.IO.Path.Combine(Application.StartupPath, "Certificate.chm");
+            Help.ShowHelp(this, helpPath);
+        }
+
+        private void guna2PictureBox6_Click(object sender, EventArgs e)
+        {
+            InfoProgram infoProgram = new InfoProgram();
+            infoProgram.Show();
+        }
     }
 }

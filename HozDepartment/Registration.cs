@@ -81,7 +81,7 @@ Password=";
                             MessageBoxButtons.YesNo,
                             MessageBoxIcon.Question);
 
-                        MessageBox.Show("В приложении уже есть учетная запись, которая является главной и не доступна к удаления \n Логин GlavAdmin \n Пароль 00000000", "Информация о системе", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("В приложении уже есть учетная запись, которая является главной и не доступна к удаления \n Логин Root \n Пароль Kj9!pL2#mX5v", "Информация о системе", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         string dumpFile;
                         if (dialog == DialogResult.Yes)
@@ -268,6 +268,18 @@ Password=";
         private void Pbcollapse_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void guna2PictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            textPassword.PasswordChar = '\0';
+            guna2PictureBox1.Image = Image.FromFile("free-icon-view-11450606.png");
+        }
+
+        private void guna2PictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            textPassword.PasswordChar = '*';
+            guna2PictureBox1.Image = Image.FromFile("free-icon-hidden-7191313.png");
         }
     }
 }
