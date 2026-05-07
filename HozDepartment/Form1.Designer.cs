@@ -1100,7 +1100,7 @@
             CbFilterShift.ForeColor = Color.Black;
             CbFilterShift.ItemHeight = 23;
             CbFilterShift.Items.AddRange(new object[] { "Сбросить всё", "Отработана смена (от +)", "Отработана смена (от -)", "Номер этажа (от большего)", "Номер этажа (от меньшего)" });
-            CbFilterShift.Location = new Point(391, 109);
+            CbFilterShift.Location = new Point(769, 109);
             CbFilterShift.Name = "CbFilterShift";
             CbFilterShift.ShadowDecoration.CustomizableEdges = customizableEdges24;
             CbFilterShift.Size = new Size(183, 29);
@@ -1123,7 +1123,7 @@
             CbFilterSclad.ImeMode = ImeMode.NoControl;
             CbFilterSclad.ItemHeight = 23;
             CbFilterSclad.Items.AddRange(new object[] { "Сбросить всё", "Категории (А-Я)", "Категории (Я-А)", "Кол-во поступлений (от большего)", "Кол-во поступлений (от меньшего)", "Выдано в работу (от большего)", "Выдано в работу (от меньшего)" });
-            CbFilterSclad.Location = new Point(391, 109);
+            CbFilterSclad.Location = new Point(580, 109);
             CbFilterSclad.Name = "CbFilterSclad";
             CbFilterSclad.ShadowDecoration.CustomizableEdges = customizableEdges26;
             CbFilterSclad.Size = new Size(183, 29);

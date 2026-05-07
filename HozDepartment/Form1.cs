@@ -121,6 +121,7 @@ namespace HozDepartment
                     CbFilterShift.Visible = false;
                     TextSearchSclad.Visible = false;
                     TextSearchShift.Visible = false;
+                    CbFilterSclad.Visible = false;
 
                     BtnBackup.Location = new Point(1135, 104);
 
@@ -189,6 +190,7 @@ namespace HozDepartment
             TextSearchStaff.Visible = false;
             CbFilterStaff.Visible = false;
             CbFilterShift.Visible = false;
+            CbFilterSclad.Visible = true;
 
             BtnBackup.Location = new Point(1135, 104);
 
@@ -511,6 +513,7 @@ namespace HozDepartment
             TbUser.Visible = false;
             TextSearchStaff.Visible = false;
             CbFilterStaff.Visible = false;
+            CbFilterSclad.Visible = false;
 
             BtnBackup.Location = new Point(999, 104);
 
@@ -873,6 +876,7 @@ namespace HozDepartment
             TbShift.Visible = false;
             BtSeal.Visible = false;
             CbFilterShift.Visible = false;
+            CbFilterSclad.Visible = false;
 
             BtnBackup.Location = new Point(1135, 104);
         }
