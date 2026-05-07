@@ -1186,10 +1186,10 @@ namespace HozDepartment
                 if (result == DialogResult.Yes)
                 {
                     DateTime today = DateTime.Now.Date;
-                    DateTime end = today.AddDays(14);
+                    DateTime end = today.AddDays(14).AddDays(1);
 
                     dt.DefaultView.RowFilter = string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                        "Date_of_shift >= #{0:MM/dd/yyyy}# AND Date_of_shift <= #{1:MM/dd/yyyy}#", today, end); ;
+                        "Date_of_shift >= #{0:MM/dd/yyyy}# AND Date_of_shift <= #{1:MM/dd/yyyy}#", today, end);
 
                     reportTitle = "ÃÐÀÔÈÊ ÑÌÅÍ ÍÀ 2 ÍÅÄÅËÈ";
                 }
